@@ -6,7 +6,7 @@
 > [oceanprotocol.com](https://oceanprotocol.com)
 
 
-___"🌊 Plecos is a fish which mostly eats green surface algae and are excellent window cleaners."___
+___"🌊 Plecos are fish which mostly eat green surface algae and are excellent window cleaners."___
 
 
 **🐲🦑 THERE BE DRAGONS AND SQUIDS. This is in alpha state and you can expect running into problems. If you run into them, please open up [a new issue](https://github.com/oceanprotocol/brizo/issues). 🦑🐲**
