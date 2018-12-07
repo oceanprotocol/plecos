@@ -5,7 +5,7 @@ valid_schema = {
             "properties": {
                 "name": {"type": "string"},
                 "type": {"type": "string"},
-                "size": {"type": "number"},
+                "size": {"type": "string"},
                 "dateCreated": {"type": "string",
                                 "format": "date-time"},
                 "description": {"type": "string"},
@@ -27,14 +27,16 @@ valid_schema = {
                     "type": "array",
                     "description": "ContentUrls",
                     "items": [
-                        {"type": "string"},
+                        {"type": "string",
+                         "format": "uri"},
                     ]
                 },
                 "inLanguage": {"type": "string"},
                 "tags": {"type": "string"},
                 "price": {"type": "number"},
                 },
-            "required": ["name", "type", "description", "size", "author", "license", "contentType", "contentUrls", "links", "inLanguage", "price", "tags"]
+            "required": ["name", "type", "description", "size", "author", "license", "contentType",
+                         "contentUrls", "links", "inLanguage", "price", "tags"]
             },
         "curation": {
             "type": "object",
