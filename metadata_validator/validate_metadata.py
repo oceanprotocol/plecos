@@ -13,7 +13,7 @@ validator = Draft4Validator(valid_schema)
 
 # %%
 # parse urls in  and return list which contains metadata as json
-def get_assets(meta_list):
+def get_json_from_links(meta_list):
     list_meta_2 = []
     for i in meta_list:
         i = requests.get(i)
@@ -29,23 +29,26 @@ def get_assets(meta_list):
       # print(x)
 
 
-# get_assets(meta_data_links)
+get_json_from_links(meta_data_links)
 
 # %%
 # Return errors in a list
-def validate_json_1(data):
-    list = []
+def validate_single_json(data):
+    error_list = []
+    error_path_list = []
+
 
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
     for error in errors:
 
-        error = error.message
-        # error = error.path
+        # error = error.message
+        error = error.path
 
-        list.append(error)
-        # list_2.append(error_path)
+        error_list.append(error)
+        # error_path_list.append(error_path)
 
-    print(list)
+    print(error_list)
+    # print(error_path_list)
 
 
 # validate_json_1(json4)
@@ -53,7 +56,7 @@ def validate_json_1(data):
 
 # %%
 # validate multiple assets within a list
-def validate_json_2(link_list):
+def validate_multiple_json(link_list):
     list_meta_2 = []
     for i in link_list:
         i = requests.get(i)
@@ -77,7 +80,7 @@ def validate_json_2(link_list):
         print(error_list)
 
 
-# validate_json_2(meta_data_links)
+validate_multiple_json(meta_data_links)
 
 
 
