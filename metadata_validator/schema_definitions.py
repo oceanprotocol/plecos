@@ -36,7 +36,7 @@ valid_schema = {
                 "price": {"type": "number"},
                 },
             "required": ["name", "type", "description", "size", "author", "license", "contentType",
-                         "contentUrls", "links", "inLanguage", "price", "tags"]
+                         "inLanguage", "price", "tags"]  # put contentURLs and links back in as required
             },
         "curation": {
             "type": "object",
