@@ -71,7 +71,8 @@ def validate_multiple_json(link_list):
         error_list = []
         error_path_list = []
         errors = sorted(validator.iter_errors(x), key=lambda e: e.path)
-        # print(errors)
+
+        # this returns all validation errors in a list 
         for error in errors:
             error = error.message
 
@@ -79,6 +80,7 @@ def validate_multiple_json(link_list):
 
         print(error_list)
 
+        # this returns the error paths in a list
         for error_path in errors:
 
             error_path = error_path.path
