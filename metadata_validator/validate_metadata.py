@@ -31,6 +31,7 @@ def get_json_from_links(meta_list):
 
 get_json_from_links(meta_data_links)
 
+
 # %%
 # Return errors in a list
 def validate_single_json(data):
@@ -68,19 +69,27 @@ def validate_multiple_json(link_list):
 
     for x in list_meta_2:
         error_list = []
+        error_path_list = []
         errors = sorted(validator.iter_errors(x), key=lambda e: e.path)
         # print(errors)
         for error in errors:
             error = error.message
-            # error = error.path
 
             error_list.append(error)
-            # list_2.append(error_path)
 
         print(error_list)
 
+        for error_path in errors:
 
-validate_multiple_json(meta_data_links)
+            error_path = error_path.path
+
+            error_path_list.append(error_path)
+
+        print(error_path_list)
+        print("check out https://s3.eu-central-1.amazonaws.com/trilobite/Humpback_identification/metadata.json for reference \n")
+
+
+# validate_multiple_json(meta_data_links)
 
 
 
