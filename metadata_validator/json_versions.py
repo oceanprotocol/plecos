@@ -1,3 +1,5 @@
+# %%
+# valid metadata
 json1 = {
    "base":{
       "name":"British Birdsong",
@@ -37,6 +39,19 @@ json1 = {
 }
 
 
+# %%
+# list containing links to metadata
+meta_data_links = [
+    "https://s3.eu-central-1.amazonaws.com/trilobite/British_birdsong/metadata.json",
+    "https://s3.eu-central-1.amazonaws.com/trilobite/Humpback_identification/metadata.json",
+    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
+    "https://s3.eu-central-1.amazonaws.com/trilobite/World_Population/metadata.json",
+    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
+    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
+]
+
+# %%
+# incomplete metadata
 json2 = {
    "base":{
       "name": "British Birdsong",
