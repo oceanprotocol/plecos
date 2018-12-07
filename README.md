@@ -16,7 +16,7 @@ ___"🌊 Plecos is a fish which mostly eats green surface algae and are excellen
 ## Table of Contents
 
 - [Features](#features)
-- [Get Started](#Get Started)
+- [Get Started](#getstarted)
 - [License](#license) 
 
 ---
