@@ -1,4 +1,4 @@
-from json_versions import json2, json4, meta_data_links
+from json_versions import json1, json2, json4, meta_data_links
 from schema_definitions import valid_schema
 import requests
 
@@ -25,34 +25,39 @@ def get_json_from_links(meta_list):
 
     print(list_meta_2)
 
-    # for x in list_meta_2:
-      # print(x)
 
-
-get_json_from_links(meta_data_links)
+# get_json_from_links(meta_data_links)
 
 
 # %%
 # Return errors in a list
-def validate_single_json(data):
+def validate_single_json(single_json):
     error_list = []
     error_path_list = []
 
+    if validator.is_valid(single_json):
+        print("is valid")
 
-    errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
-    for error in errors:
+    else:
+        errors = sorted(validator.iter_errors(single_json), key=lambda e: e.path)
+        for error in errors:
 
-        # error = error.message
-        error = error.path
+            error = error.message
+            error_list.append(error)
 
-        error_list.append(error)
-        # error_path_list.append(error_path)
+        print(error_list)
+        # print(error_path_list)
 
-    print(error_list)
-    # print(error_path_list)
+        # this returns the error paths in a list
+        for error_path in errors:
+            error_path = error_path.path
+
+            error_path_list.append(error_path)
+
+        print(error_path_list)
 
 
-# validate_json_1(json4)
+# validate_single_json(json2)
 
 
 # %%
@@ -68,27 +73,33 @@ def validate_multiple_json(link_list):
             list_meta_2.append(i.json())
 
     for x in list_meta_2:
-        error_list = []
-        error_path_list = []
-        errors = sorted(validator.iter_errors(x), key=lambda e: e.path)
 
-        # this returns all validation errors in a list 
-        for error in errors:
-            error = error.message
+        if validator.is_valid(x):
+            print(" is valid \n ")
 
-            error_list.append(error)
+        else:
+            error_list = []
+            error_path_list = []
+            errors = sorted(validator.iter_errors(x), key=lambda e: e.path)
 
-        print(error_list)
+            # this returns all validation errors in a list
+            for error in errors:
+                error = error.message
 
-        # this returns the error paths in a list
-        for error_path in errors:
+                error_list.append(error)
 
-            error_path = error_path.path
+            print(error_list)
 
-            error_path_list.append(error_path)
+            # this returns the error paths in a list
+            for error_path in errors:
 
-        print(error_path_list)
-        print("check out https://s3.eu-central-1.amazonaws.com/trilobite/Humpback_identification/metadata.json for reference \n")
+                error_path = error_path.path
+
+                error_path_list.append(error_path)
+
+            print("{} \n".format(error_path_list))
+
+            # TODO: if valid return true
 
 
 # validate_multiple_json(meta_data_links)
