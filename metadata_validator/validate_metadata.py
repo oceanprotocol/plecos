@@ -6,6 +6,7 @@ from jsonschema.validators import Draft4Validator
 
 
 # %%
+# Define validator and use pre-defined schema 
 validator = Draft4Validator(valid_schema)
 
 
@@ -31,7 +32,7 @@ def validate_json_1(data):
     print(list)
 
 
-validate_json_1(json4)
+# validate_json_1(json4)
 
 
 # %%
