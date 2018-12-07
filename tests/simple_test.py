@@ -1,38 +1,21 @@
-import requests
-#  from ../metadata_validator/json_versions import meta_data_links
+from metadata_validator.json_versions import json4, json1
+from metadata_validator.schema_definitions import valid_schema
+from jsonschema.validators import Draft4Validator
 
-
-# %%
-# list containing links to metadata
-meta_data_links = [
-    "https://s3.eu-central-1.amazonaws.com/trilobite/British_birdsong/metadata.json",
-    "https://s3.eu-central-1.amazonaws.com/trilobite/Humpback_identification/metadata.json",
-    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
-    "https://s3.eu-central-1.amazonaws.com/trilobite/World_Population/metadata.json",
-    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
-    "https://s3.eu-central-1.amazonaws.com/trilobite/Monkey_Species/metadata.json",
-]
+validator = Draft4Validator(valid_schema)
 
 
 # %%
 # test links in list
-def test_metadata(link_list):
+def test_metadata(json_data):
     """
-    Tests that correct responses are returned and that data
-    can be validated against schema.
+    Test a valid as well as invalid json metadata.
     """
-    list_meta_2 = []
-    for i in link_list:
-        i = requests.get(i)
 
-        if i.status_code != 200:
-            print(" {} does not return a valid response".format(i))
-            continue
-        elif i.status_code == 200:
-            list_meta_2.append(i.json())
-            print(" {} returns a valid response".format(i))
-
-    print(list_meta_2)
+    assert validator.is_valid(json_data)
 
 
-test_metadata(meta_data_links)
+test_metadata(json1)
+test_metadata(json4)
+
+
