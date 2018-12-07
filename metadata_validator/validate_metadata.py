@@ -1,16 +1,16 @@
 
 from json_versions import json2, json4
-from query import requests, meta_data_links, get_assets
+# from query import requests, meta_data_links, get_assets
 
 
-from schema_definitions import schema_1
+from schema_definitions import valid_schema
 
 from jsonschema import validate, ErrorTree, exceptions
 from jsonschema.validators import Draft4Validator
 
 
 # %%
-validator = Draft4Validator(schema_1)
+validator = Draft4Validator(valid_schema)
 
 
 # %%
@@ -35,7 +35,7 @@ def validate_json_1(data):
     print(list)
 
 
-# validate_json_1(json4)
+validate_json_1(json4)
 
 
 # %%
