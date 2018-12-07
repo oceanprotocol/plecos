@@ -1,8 +1,4 @@
-
 from json_versions import json2, json4
-# from query import requests, meta_data_links, get_assets
-
-
 from schema_definitions import valid_schema
 
 from jsonschema import validate, ErrorTree, exceptions
