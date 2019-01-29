@@ -6,15 +6,15 @@ import json
 
 import logging
 
-def test_load_schema():
-    pass
+# def test_load_schema():
+#     pass
 
 
 
 # %%
 
-def test_fixtures(test1):
-    test1()
+# def test_fixtures(test1):
+#     test1()
 
 # test links in list
 def test_metadata(schema_dict,sample_metadata_dict):
@@ -24,7 +24,13 @@ def test_metadata(schema_dict,sample_metadata_dict):
     # print(schema_dict)
 
     validator = Draft4Validator(valid_schema)
-    assert validator.is_valid(sample_metadata_dict)
+    # try:
+    #     validator.validate(sample_metadata_dict)
+    # except ValidationError:
+    #     print("asdfasdf;lkasjdf;laskdjf")
+    assert validator.validate(sample_metadata_dict)
+    # print(validator.is_valid(sample_metadata_dict))
+    # assert validator.is_valid(sample_metadata_dict)
 
 
 # test_metadata(json1)
