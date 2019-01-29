@@ -4,16 +4,28 @@ valid_schema = {
             "type": "object",
             "properties": {
                 "name": {"type": "string"},
-                "type": {"type": "string"},
-                "size": {"type": "string"},
                 "dateCreated": {"type": "string",
                                 "format": "date-time"},
-                "description": {"type": "string"},
                 "author": {"type": "string"},
                 "license": {"type": "string"},
+                "contentType": {"type": "string"},
+                "price": {"type": "number"},
+
+                "links": {
+                    "type": "array",
+                    "description": "files",
+                    "items": [
+                        {"type": "string",
+                         "format": "uri"},
+                    ]
+                },
+
+
+                "size": {"type": "string"},
+                "description": {"type": "string"},
                 "copyrightHolder": {"type": "string"},
                 "compression": {"type": "string"},
-                "contentType": {"type": "string"},
+
                 "workExample": {"type": "string"},
                 "contentUrls": {
                     "type": "array",
@@ -23,17 +35,9 @@ valid_schema = {
                          "format": "uri"}
                     ]
                 },
-                "links": {
-                    "type": "array",
-                    "description": "ContentUrls",
-                    "items": [
-                        {"type": "string",
-                         "format": "uri"},
-                    ]
-                },
+
                 "inLanguage": {"type": "string"},
                 "tags": {"type": "string"},
-                "price": {"type": "number"},
                 },
             "required": ["name", "type", "description", "size", "author", "license", "contentType",
                          "inLanguage", "price", "tags"]  # put contentURLs and links back in as required

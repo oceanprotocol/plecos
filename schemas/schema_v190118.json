@@ -1,0 +1,401 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "metadata"
+  ],
+  "properties": {
+    "metadata": {
+      "$id": "#/properties/metadata",
+      "type": "object",
+      "title": "The Metadata Schema",
+      "required": [
+        "base",
+        "curation",
+        "additionalInformation"
+      ],
+      "properties": {
+        "base": {
+          "$id": "#/properties/metadata/properties/base",
+          "type": "object",
+          "title": "The Base Schema",
+          "required": [
+            "name",
+            "type",
+            "description",
+            "size",
+            "dateCreated",
+            "author",
+            "license",
+            "copyrightHolder",
+            "encoding",
+            "compression",
+            "contentType",
+            "workExample",
+            "files",
+            "links",
+            "inLanguage",
+            "tags",
+            "price"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/metadata/properties/base/properties/name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "UK Weather information 2011"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "type": {
+              "$id": "#/properties/metadata/properties/base/properties/type",
+              "type": "string",
+              "title": "The Type Schema",
+              "default": "",
+              "examples": [
+                "dataset"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "description": {
+              "$id": "#/properties/metadata/properties/base/properties/description",
+              "type": "string",
+              "title": "The Description Schema",
+              "default": "",
+              "examples": [
+                "Weather information of UK including temperature and humidity"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "size": {
+              "$id": "#/properties/metadata/properties/base/properties/size",
+              "type": "string",
+              "title": "The Size Schema",
+              "default": "",
+              "examples": [
+                "3.1gb"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "dateCreated": {
+              "$id": "#/properties/metadata/properties/base/properties/dateCreated",
+              "type": "string",
+              "title": "The Datecreated Schema",
+              "default": "",
+              "examples": [
+                "2012-02-01T10:55:11+00:00"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "author": {
+              "$id": "#/properties/metadata/properties/base/properties/author",
+              "type": "string",
+              "title": "The Author Schema",
+              "default": "",
+              "examples": [
+                "Met Office"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "license": {
+              "$id": "#/properties/metadata/properties/base/properties/license",
+              "type": "string",
+              "title": "The License Schema",
+              "default": "",
+              "examples": [
+                "CC-BY"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "copyrightHolder": {
+              "$id": "#/properties/metadata/properties/base/properties/copyrightHolder",
+              "type": "string",
+              "title": "The Copyrightholder Schema",
+              "default": "",
+              "examples": [
+                "Met Office"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "encoding": {
+              "$id": "#/properties/metadata/properties/base/properties/encoding",
+              "type": "string",
+              "title": "The Encoding Schema",
+              "default": "",
+              "examples": [
+                "UTF-8"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "compression": {
+              "$id": "#/properties/metadata/properties/base/properties/compression",
+              "type": "string",
+              "title": "The Compression Schema",
+              "default": "",
+              "examples": [
+                "zip"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "contentType": {
+              "$id": "#/properties/metadata/properties/base/properties/contentType",
+              "type": "string",
+              "title": "The Contenttype Schema",
+              "default": "",
+              "examples": [
+                "text/csv"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "workExample": {
+              "$id": "#/properties/metadata/properties/base/properties/workExample",
+              "type": "string",
+              "title": "The Workexample Schema",
+              "default": "",
+              "examples": [
+                "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "files": {
+              "$id": "#/properties/metadata/properties/base/properties/files",
+              "type": "array",
+              "title": "The Files Schema",
+              "items": {
+                "$id": "#/properties/metadata/properties/base/properties/files/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "url",
+                  "checksum",
+                  "contentLength",
+                  "resourceId"
+                ],
+                "properties": {
+                  "url": {
+                    "$id": "#/properties/metadata/properties/base/properties/files/items/properties/url",
+                    "type": "string",
+                    "title": "The Url Schema",
+                    "default": "",
+                    "examples": [
+                      "234ab87234acbd09543085340abffh21983ddhiiee982143827423421"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "checksum": {
+                    "$id": "#/properties/metadata/properties/base/properties/files/items/properties/checksum",
+                    "type": "string",
+                    "title": "The Checksum Schema",
+                    "default": "",
+                    "examples": [
+                      "efb2c764274b745f5fc37f97c6b0e761"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "contentLength": {
+                    "$id": "#/properties/metadata/properties/base/properties/files/items/properties/contentLength",
+                    "type": "string",
+                    "title": "The Contentlength Schema",
+                    "default": "",
+                    "examples": [
+                      "4535431"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "resourceId": {
+                    "$id": "#/properties/metadata/properties/base/properties/files/items/properties/resourceId",
+                    "type": "string",
+                    "title": "The Resourceid Schema",
+                    "default": "",
+                    "examples": [
+                      "access-log2018-02-13-15-17-29-18386C502CAEA932"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            },
+            "links": {
+              "$id": "#/properties/metadata/properties/base/properties/links",
+              "type": "array",
+              "title": "The Links Schema",
+              "items": {
+                "$id": "#/properties/metadata/properties/base/properties/links/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "name",
+                  "type",
+                  "url"
+                ],
+                "properties": {
+                  "name": {
+                    "$id": "#/properties/metadata/properties/base/properties/links/items/properties/name",
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "Sample of Asset Data"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "type": {
+                    "$id": "#/properties/metadata/properties/base/properties/links/items/properties/type",
+                    "type": "string",
+                    "title": "The Type Schema",
+                    "default": "",
+                    "examples": [
+                      "sample"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "url": {
+                    "$id": "#/properties/metadata/properties/base/properties/links/items/properties/url",
+                    "type": "string",
+                    "title": "The Url Schema",
+                    "default": "",
+                    "examples": [
+                      "https://foo.com/sample.csv"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            },
+            "inLanguage": {
+              "$id": "#/properties/metadata/properties/base/properties/inLanguage",
+              "type": "string",
+              "title": "The Inlanguage Schema",
+              "default": "",
+              "examples": [
+                "en"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "tags": {
+              "$id": "#/properties/metadata/properties/base/properties/tags",
+              "type": "string",
+              "title": "The Tags Schema",
+              "default": "",
+              "examples": [
+                "weather, uk, 2011, temperature, humidity"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "price": {
+              "$id": "#/properties/metadata/properties/base/properties/price",
+              "type": "integer",
+              "title": "The Price Schema",
+              "default": 0,
+              "examples": [
+                10
+              ]
+            }
+          }
+        },
+        "curation": {
+          "$id": "#/properties/metadata/properties/curation",
+          "type": "object",
+          "title": "The Curation Schema",
+          "required": [
+            "rating",
+            "numVotes",
+            "schema"
+          ],
+          "properties": {
+            "rating": {
+              "$id": "#/properties/metadata/properties/curation/properties/rating",
+              "type": "number",
+              "title": "The Rating Schema",
+              "default": 0.0,
+              "examples": [
+                0.93
+              ]
+            },
+            "numVotes": {
+              "$id": "#/properties/metadata/properties/curation/properties/numVotes",
+              "type": "integer",
+              "title": "The Numvotes Schema",
+              "default": 0,
+              "examples": [
+                123
+              ]
+            },
+            "schema": {
+              "$id": "#/properties/metadata/properties/curation/properties/schema",
+              "type": "string",
+              "title": "The Schema Schema",
+              "default": "",
+              "examples": [
+                "Binary Voting"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        },
+        "additionalInformation": {
+          "$id": "#/properties/metadata/properties/additionalInformation",
+          "type": "object",
+          "title": "The Additionalinformation Schema",
+          "required": [
+            "updateFrecuency",
+            "structuredMarkup"
+          ],
+          "properties": {
+            "updateFrecuency": {
+              "$id": "#/properties/metadata/properties/additionalInformation/properties/updateFrecuency",
+              "type": "string",
+              "title": "The Updatefrecuency Schema",
+              "default": "",
+              "examples": [
+                "yearly"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "structuredMarkup": {
+              "$id": "#/properties/metadata/properties/additionalInformation/properties/structuredMarkup",
+              "type": "array",
+              "title": "The Structuredmarkup Schema",
+              "items": {
+                "$id": "#/properties/metadata/properties/additionalInformation/properties/structuredMarkup/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "uri",
+                  "mediaType"
+                ],
+                "properties": {
+                  "uri": {
+                    "$id": "#/properties/metadata/properties/additionalInformation/properties/structuredMarkup/items/properties/uri",
+                    "type": "string",
+                    "title": "The Uri Schema",
+                    "default": "",
+                    "examples": [
+                      "http://skos.um.es/unescothes/C01194/jsonld"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "mediaType": {
+                    "$id": "#/properties/metadata/properties/additionalInformation/properties/structuredMarkup/items/properties/mediaType",
+                    "type": "string",
+                    "title": "The Mediatype Schema",
+                    "default": "",
+                    "examples": [
+                      "application/ld+json"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
