@@ -31,6 +31,30 @@ def test_validator_simple():
         assert e_info
     print("Raised",e_info.value.message)
 
+#%% Development
+# Select the latest schema path here
+PATH_SCHEMA_DIR = Path().cwd() / 'schemas'
+PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'schema_v190118.json'
+# PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'supersimple.json'
+PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'test.json'
+assert PATH_LATEST_SCHEMA.exists()
+
+PATH_SAMPLES_DIR = Path().cwd() / 'samples'
+PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'metadata UK weather.json'
+PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'supersimple.json'
+PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'test.json'
+assert PATH_SAMPLE_METADATA.exists()
+
+#%%
+with open(PATH_LATEST_SCHEMA) as json_file:
+    schema = json.load(json_file)
+print("Loaded schema:", PATH_LATEST_SCHEMA)
+
+with open(PATH_SAMPLE_METADATA) as json_file:
+    sample = json.load(json_file)
+print("Loaded sample:", PATH_SAMPLE_METADATA)
+
+#%%
 def test_base_metadata(schema_dict,sample_metadata_dict):
     """
     Test the valid metadata file
