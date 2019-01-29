@@ -2,18 +2,13 @@
 	"metadata": {
 		"base": {
 			"name": "UK Weather information 2011",
-			"type": "dataset",
-			"description": "Weather information of UK including temperature and humidity",
-			"size": "3.1gb",
 			"dateCreated": "2012-02-01T10:55:11+00:00",
 			"author": "Met Office",
 			"license": "CC-BY",
-			"copyrightHolder": "Met Office",
-			"encoding": "UTF-8",
-			"compression": "zip",
 			"contentType": "text/csv",
-			"workExample": "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68",
-			"files": [{
+			"price": 10
+			"files": [
+				{
 					"url": "234ab87234acbd09543085340abffh21983ddhiiee982143827423421",
 					"checksum": "efb2c764274b745f5fc37f97c6b0e761",
 					"contentLength": "4535431",
@@ -28,10 +23,25 @@
 					"url": "80684089027358963495379879a543085340abffh21983ddhiiee982143827abcc2"
 				}
 			],
-			"links": [{
+			"categories": ["category1", "category2"],
+			"tags": "weather, uk, 2011, temperature, humidity"
+			"type": "dataset",
+			"description": "Weather information of UK including temperature and humidity",
+			"size": "3.1gb",
+			"copyrightHolder": "Met Office",
+			"encoding": "UTF-8",
+			"compression": "zip",
+			"workExample": "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68",
+			"links": [
+				{
 					"name": "Sample of Asset Data",
 					"type": "sample",
 					"url": "https://foo.com/sample.csv"
+				},
+				{
+					"name": "Discovery image",
+					"type": "image",
+					"url": "https://foo.com/bannerimage.jpg"
 				},
 				{
 					"name": "Data Format Definition",
@@ -40,8 +50,6 @@
 				}
 			],
 			"inLanguage": "en",
-			"tags": "weather, uk, 2011, temperature, humidity",
-			"price": 10
 		},
 		"curation": {
 			"rating": 0.93,
@@ -49,8 +57,10 @@
 			"schema": "Binary Voting"
 		},
 		"additionalInformation": {
-			"updateFrecuency": "yearly",
-			"structuredMarkup": [{
+			"checksum": "434ab87234acbd89543085340abffh21983dahiiee982143827423421",
+			"updateFrequency": "yearly",
+			"structuredMarkup": [
+				{
 					"uri": "http://skos.um.es/unescothes/C01194/jsonld",
 					"mediaType": "application/ld+json"
 				},
