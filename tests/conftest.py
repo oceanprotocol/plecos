@@ -7,12 +7,12 @@ import logging
 # Select the latest schema path here
 PATH_SCHEMA_DIR = Path().cwd() / 'schemas'
 PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'schema_v190118.json'
-PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'simple.json'
+# PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'supersimple.json'
 assert PATH_LATEST_SCHEMA.exists()
 
 PATH_SAMPLES_DIR = Path().cwd() / 'samples'
 PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'metadata UK weather.json'
-PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'simple.json'
+# PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'supersimple.json'
 assert PATH_SAMPLE_METADATA.exists()
 
 
@@ -27,13 +27,12 @@ assert PATH_SAMPLE_METADATA.exists()
 def schema_dict():
     with open(PATH_LATEST_SCHEMA) as json_file:
         this_json = json.load(json_file)
-    # logging.warning(":Test")
-    print("Loaded", PATH_LATEST_SCHEMA)
+    print("Loaded schema:", PATH_LATEST_SCHEMA)
     return this_json['properties']
 
 @pytest.fixture
 def sample_metadata_dict():
     with open(PATH_SAMPLE_METADATA) as json_file:
         this_json = json.load(json_file)
-    print("Loaded", PATH_LATEST_SCHEMA)
+    print("Loaded sample:", PATH_SAMPLE_METADATA)
     return this_json

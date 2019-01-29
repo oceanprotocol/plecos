@@ -1,5 +1,5 @@
 {
-	"metadata": {
+
 		"base": {
 			"name": "UK Weather information 2011",
 			"dateCreated": "2012-02-01T10:55:11+00:00",
@@ -70,5 +70,4 @@
 				}
 			]
 		}
-	}
 }
