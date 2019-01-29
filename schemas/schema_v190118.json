@@ -24,22 +24,12 @@
           "title": "The Base Schema",
           "required": [
             "name",
-            "type",
-            "description",
-            "size",
             "dateCreated",
             "author",
             "license",
-            "copyrightHolder",
-            "encoding",
-            "compression",
             "contentType",
-            "workExample",
-            "files",
-            "links",
-            "inLanguage",
-            "tags",
-            "price"
+            "price",
+            "files"
           ],
           "properties": {
             "name": {
@@ -49,36 +39,6 @@
               "default": "",
               "examples": [
                 "UK Weather information 2011"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "type": {
-              "$id": "#/properties/metadata/properties/base/properties/type",
-              "type": "string",
-              "title": "The Type Schema",
-              "default": "",
-              "examples": [
-                "dataset"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "description": {
-              "$id": "#/properties/metadata/properties/base/properties/description",
-              "type": "string",
-              "title": "The Description Schema",
-              "default": "",
-              "examples": [
-                "Weather information of UK including temperature and humidity"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "size": {
-              "$id": "#/properties/metadata/properties/base/properties/size",
-              "type": "string",
-              "title": "The Size Schema",
-              "default": "",
-              "examples": [
-                "3.1gb"
               ],
               "pattern": "^(.*)$"
             },
@@ -112,36 +72,6 @@
               ],
               "pattern": "^(.*)$"
             },
-            "copyrightHolder": {
-              "$id": "#/properties/metadata/properties/base/properties/copyrightHolder",
-              "type": "string",
-              "title": "The Copyrightholder Schema",
-              "default": "",
-              "examples": [
-                "Met Office"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "encoding": {
-              "$id": "#/properties/metadata/properties/base/properties/encoding",
-              "type": "string",
-              "title": "The Encoding Schema",
-              "default": "",
-              "examples": [
-                "UTF-8"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "compression": {
-              "$id": "#/properties/metadata/properties/base/properties/compression",
-              "type": "string",
-              "title": "The Compression Schema",
-              "default": "",
-              "examples": [
-                "zip"
-              ],
-              "pattern": "^(.*)$"
-            },
             "contentType": {
               "$id": "#/properties/metadata/properties/base/properties/contentType",
               "type": "string",
@@ -152,15 +82,14 @@
               ],
               "pattern": "^(.*)$"
             },
-            "workExample": {
-              "$id": "#/properties/metadata/properties/base/properties/workExample",
-              "type": "string",
-              "title": "The Workexample Schema",
-              "default": "",
+            "price": {
+              "$id": "#/properties/metadata/properties/base/properties/price",
+              "type": "integer",
+              "title": "The Price Schema",
+              "default": 0,
               "examples": [
-                "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68"
-              ],
-              "pattern": "^(.*)$"
+                10
+              ]
             },
             "files": {
               "$id": "#/properties/metadata/properties/base/properties/files",
@@ -171,10 +100,7 @@
                 "type": "object",
                 "title": "The Items Schema",
                 "required": [
-                  "url",
-                  "checksum",
-                  "contentLength",
-                  "resourceId"
+                  "url"
                 ],
                 "properties": {
                   "url": {
@@ -220,17 +146,114 @@
                 }
               }
             },
+            "categories": {
+              "$id": "#/properties/metadata/properties/base/properties/categories",
+              "type": "array",
+              "title": "The Categories Schema",
+              "default": null,
+              "items": {
+                "$id": "#/properties/metadata/properties/base/properties/categories/items",
+                "type": "string",
+                "title": "The Items Schema",
+                "default": "",
+                "examples": [
+                  "category1",
+                  "category2"
+                ],
+                "pattern": "^(.*)$"
+              }
+            },
+            "tags": {
+              "$id": "#/properties/metadata/properties/base/properties/tags",
+              "type": "string",
+              "title": "The Tags Schema",
+              "default": "",
+              "examples": [
+                "weather, uk, 2011, temperature, humidity"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "type": {
+              "$id": "#/properties/metadata/properties/base/properties/type",
+              "type": "string",
+              "title": "The Type Schema",
+              "default": "",
+              "examples": [
+                "dataset"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "description": {
+              "$id": "#/properties/metadata/properties/base/properties/description",
+              "type": "string",
+              "title": "The Description Schema",
+              "default": "",
+              "examples": [
+                "Weather information of UK including temperature and humidity"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "size": {
+              "$id": "#/properties/metadata/properties/base/properties/size",
+              "type": "string",
+              "title": "The Size Schema",
+              "default": "",
+              "examples": [
+                "3.1gb"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "copyrightHolder": {
+              "$id": "#/properties/metadata/properties/base/properties/copyrightHolder",
+              "type": "string",
+              "title": "The Copyrightholder Schema",
+              "default": "",
+              "examples": [
+                "Met Office"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "encoding": {
+              "$id": "#/properties/metadata/properties/base/properties/encoding",
+              "type": "string",
+              "title": "The Encoding Schema",
+              "default": "",
+              "examples": [
+                "UTF-8"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "compression": {
+              "$id": "#/properties/metadata/properties/base/properties/compression",
+              "type": "string",
+              "title": "The Compression Schema",
+              "default": "",
+              "examples": [
+                "zip"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "workExample": {
+              "$id": "#/properties/metadata/properties/base/properties/workExample",
+              "type": "string",
+              "title": "The Workexample Schema",
+              "default": "",
+              "examples": [
+                "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68"
+              ],
+              "pattern": "^(.*)$"
+            },
             "links": {
               "$id": "#/properties/metadata/properties/base/properties/links",
               "type": "array",
               "title": "The Links Schema",
+              "default": null,
               "items": {
                 "$id": "#/properties/metadata/properties/base/properties/links/items",
                 "type": "object",
                 "title": "The Items Schema",
                 "required": [
                   "name",
-                  "type",
                   "url"
                 ],
                 "properties": {
@@ -276,25 +299,6 @@
                 "en"
               ],
               "pattern": "^(.*)$"
-            },
-            "tags": {
-              "$id": "#/properties/metadata/properties/base/properties/tags",
-              "type": "string",
-              "title": "The Tags Schema",
-              "default": "",
-              "examples": [
-                "weather, uk, 2011, temperature, humidity"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "price": {
-              "$id": "#/properties/metadata/properties/base/properties/price",
-              "type": "integer",
-              "title": "The Price Schema",
-              "default": 0,
-              "examples": [
-                10
-              ]
             }
           }
         },
@@ -343,14 +347,25 @@
           "type": "object",
           "title": "The Additionalinformation Schema",
           "required": [
-            "updateFrecuency",
+            "checksum",
+            "updateFrequency",
             "structuredMarkup"
           ],
           "properties": {
-            "updateFrecuency": {
-              "$id": "#/properties/metadata/properties/additionalInformation/properties/updateFrecuency",
+            "checksum": {
+              "$id": "#/properties/metadata/properties/additionalInformation/properties/checksum",
               "type": "string",
-              "title": "The Updatefrecuency Schema",
+              "title": "The Checksum Schema",
+              "default": "",
+              "examples": [
+                "434ab87234acbd89543085340abffh21983dahiiee982143827423421"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "updateFrequency": {
+              "$id": "#/properties/metadata/properties/additionalInformation/properties/updateFrequency",
+              "type": "string",
+              "title": "The Updatefrequency Schema",
               "default": "",
               "examples": [
                 "yearly"
