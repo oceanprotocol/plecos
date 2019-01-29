@@ -4,30 +4,30 @@ from jsonschema.validators import Draft4Validator
 
 import json
 
-from pathlib import Path
-PATH_SCHEMA_DIR = Path().cwd() / 'schemas'
-assert PATH_SCHEMA_DIR.exists()
-PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'schema_v190118.json'
-assert PATH_LATEST_SCHEMA.exists()
+import logging
 
-with open(PATH_LATEST_SCHEMA) as json_file:
-    data = json.load(json_file)
+def test_load_schema():
+    pass
 
 
 
 # %%
+
+def test_fixtures(test1):
+    test1()
+
 # test links in list
-def test_metadata(json_data):
+def test_metadata(schema_dict,sample_metadata_dict):
     """
     Test a valid as well as invalid json metadata.
     """
+    # print(schema_dict)
 
     validator = Draft4Validator(valid_schema)
-    print(validator)
-    assert validator.is_valid(json_data)
+    assert validator.is_valid(sample_metadata_dict)
 
 
-test_metadata(json1)
-test_metadata(json4)
+# test_metadata(json1)
+# test_metadata(json4)
 
 
