@@ -6,7 +6,7 @@
 			"author": "Met Office",
 			"license": "CC-BY",
 			"contentType": "text/csv",
-			"price": 10
+			"price": 10,
 			"files": [
 				{
 					"url": "234ab87234acbd09543085340abffh21983ddhiiee982143827423421",
@@ -24,7 +24,7 @@
 				}
 			],
 			"categories": ["category1", "category2"],
-			"tags": "weather, uk, 2011, temperature, humidity"
+			"tags": "weather, uk, 2011, temperature, humidity",
 			"type": "dataset",
 			"description": "Weather information of UK including temperature and humidity",
 			"size": "3.1gb",
@@ -49,7 +49,7 @@
 					"AssetID": "4d517500da0acb0d65a716f61330969334630363ce4a6a9d39691026ac7908ea"
 				}
 			],
-			"inLanguage": "en",
+			"inLanguage": "en"
 		},
 		"curation": {
 			"rating": 0.93,
