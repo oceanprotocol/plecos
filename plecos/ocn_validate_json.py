@@ -16,15 +16,20 @@ import jsonschema as jsonschema
 # @click.argument('json_file', default="metadata_v190118.json")#, help='The schema version filename, must exist in /schemas folder')
 @click.argument('json_file')
 # @click.option('--file', default="metadata_v190118.json", help='The schema version filename, must exist in /schemas folder')
-def validate():
+def validate(schema_file_name, json_file):
     """This script validates a json file according a schema file.
     Wraps the jsonschema project, see https://pypi.org/project/jsonschema/.
 
     Arguments:
-        schema_file_name: the name of the schema file, found in ./schemas
-        json_file: the relative (to current directory) path of the json file to validate against
+
+        SCHEMA_FILE_NAME: the name of the schema file, found in ./schemas
+
+        JSON_FILE: the relative (to current directory) path of the json file to validate against
     """
+
     click.echo('Hello World!')
+    click.echo("schema_file_name: {}".format(schema_file_name))
+    click.echo("json_file {}".format(json_file))
 
 if __name__ == "__main__":
     validate()
