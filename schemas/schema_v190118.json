@@ -69,10 +69,7 @@
             "$id": "#/properties/base/properties/files/items",
             "type": "object",
             "required": [
-              "url",
-              "checksum",
-              "contentLength",
-              "resourceId"
+              "url"
             ],
             "properties": {
               "url": {

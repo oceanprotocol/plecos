@@ -31,7 +31,7 @@
 			"copyrightHolder": "Met Office",
 			"encoding": "UTF-8",
 			"compression": "zip",
-			"workExample": "stationId,latitude,longitude,datetime,temperature,humidity\n423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68",
+			"workExample": "stationId,latitude,longitude,datetime,temperature,humidity 423432fsd,51.509865,-0.118092,2011-01-01T10:55:11+00:00,7.2,68",
 			"links": [
 				{
 					"name": "Sample of Asset Data",
