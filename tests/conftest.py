@@ -8,13 +8,13 @@ import logging
 PATH_SCHEMA_DIR = Path().cwd() / 'schemas'
 PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'schema_v190118.json'
 # PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'supersimple.json'
-PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'test.json'
+# PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'test.json'
 assert PATH_LATEST_SCHEMA.exists()
 
 PATH_SAMPLES_DIR = Path().cwd() / 'samples'
 PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'metadata UK weather.json'
 # PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'supersimple.json'
-PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'test.json'
+# PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'test.json'
 assert PATH_SAMPLE_METADATA.exists()
 
 
@@ -30,7 +30,7 @@ def schema_dict():
     with open(PATH_LATEST_SCHEMA) as json_file:
         this_json = json.load(json_file)
     print("Loaded schema:", PATH_LATEST_SCHEMA)
-    return this_json['properties']
+    return this_json
 
 @pytest.fixture
 def sample_metadata_dict():

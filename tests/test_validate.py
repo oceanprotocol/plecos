@@ -34,23 +34,29 @@ def test_validator_simple():
 
 #%%
 def test_base_metadata(schema_dict,sample_metadata_dict):
-    """
-    Test the valid metadata file
-    """
     validator = Draft7Validator(schema_dict)
     validator.validate(sample_metadata_dict)
-    # assert validator.is_valid(sample_metadata_dict)
 
-def test_missing_name(schema_dict,sample_metadata_dict):
-    # sample_metadata_dict['base'].pop('name',None)
-    del sample_metadata_dict['productId']
-    # validator = Draft7Validator(schema_dict)
-    # assert validator.is_valid(sample_metadata_dict) == False
-    # 'name' in sample_metadata_dict[]
-    # validate(instance=sample_metadata_dict, schema=schema_dict)
+def test_missing_attribute(schema_dict,sample_metadata_dict):
+
+    del sample_metadata_dict['base']['price']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict, schema=schema_dict)
         assert e_info
 
-    # validator.validate(sample_metadata_dict)
+def test_type_mismatch(schema_dict, sample_metadata_dict):
+    
+    sample_metadata_dict['base']['price'] = "A string is not allowed!"
+
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict, schema=schema_dict)
+        assert e_info
+    assert e_info.value.absolute_path[0] == 'base'
+    assert e_info.value.absolute_path[1] == 'price'
+    assert e_info.value.validator_value == 'integer'
+
+
+
+
+
 
