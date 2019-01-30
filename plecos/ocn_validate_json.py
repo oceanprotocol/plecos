@@ -3,12 +3,6 @@
 import click
 from pathlib import Path
 import jsonschema as jsonschema
-# @click.command()
-# @click.argument('location')
-# @click.option(
-#     '--api-key', '-a',
-#     help='your API key for the OpenWeatherMap API',
-# )
 
 @click.command()
 # @click.option('--source', default="source", help='The schema version filename, must exist in /schemas folder')
@@ -32,11 +26,17 @@ def validate(schema_file, json_file):
     click.echo("json_file {}".format(json_file))
     print(type(schema_file))
     json_file_path = Path.cwd() / json_file
-    # assert json_file_path.exists(), "Json file path {} does not exist".format(json_file_path)
+    assert json_file_path.exists(), "Json file path {} does not exist".format(json_file_path)
     schema_file_path = Path.cwd() / schema_file
-    # assert schema_file_path.exists()
+    assert schema_file_path.exists()
 
-    
+    # Load schema
+
+    # Load file
+
+    validator = Draft4Validator(valid_schema)
+
+
 
 
 
