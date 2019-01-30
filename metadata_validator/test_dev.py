@@ -43,8 +43,8 @@ print("Loaded sample:", PATH_SAMPLE_METADATA)
 validate(instance=sample, schema=schema)
 #%%
 # del sample['productId']
-del sample['metadata']['base']['price']
-pprint(sample)
+del sample['base']['price']
+# pprint(sample)
 with pytest.raises(ValidationError) as e_info:
     validate(instance=sample, schema=schema)
     assert e_info

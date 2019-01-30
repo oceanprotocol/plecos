@@ -44,6 +44,7 @@
 					"url": "https://foo.com/bannerimage.jpg"
 				},
 				{
+					"url": "https://test.com/file.zip",
 					"name": "Data Format Definition",
 					"type": "format",
 					"AssetID": "4d517500da0acb0d65a716f61330969334630363ce4a6a9d39691026ac7908ea"
