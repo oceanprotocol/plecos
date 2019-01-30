@@ -16,7 +16,7 @@ with open('HISTORY.md') as history_file:
 # Installed by pip install squid-py
 # or pip install -e .
 install_requirements = [
-    jsonschema ="3.0.0b3"
+    'jsonschema==3.0.0b3'
 ]
 
 # Required to run setup.py:
@@ -39,10 +39,11 @@ docs_requirements = [
     'sphinxcontrib-apidoc',
 ]
 
-# packages = []
-# for d, _, _ in os.walk('squid_py'):
-#     if os.path.exists(join(d, '__init__.py')):
-#         packages.append(d.replace(os.path.sep, '.'))
+packages = []
+for d, _, _ in os.walk('plecos'):
+    if os.path.exists(join(d, '__init__.py')):
+        packages.append(d.replace(os.path.sep, '.'))
+        print("Added {}".format(d))
 
 setup(
     author="leucothia",
