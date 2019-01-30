@@ -18,14 +18,6 @@ PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'metadata UK weather.json'
 # PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'test.json'
 assert PATH_SAMPLE_METADATA.exists()
 
-
-# @pytest.fixture
-# def test1():
-#     def this_function():
-#         print("hello")
-#         print("asdfasd;lfk")
-#     return this_function
-
 @pytest.fixture
 def schema_dict():
     with open(PATH_LATEST_SCHEMA) as json_file:

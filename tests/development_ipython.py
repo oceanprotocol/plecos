@@ -1,4 +1,5 @@
-#%% Development
+#%% Development and debugging for tests using IPython
+# Ignore in production
 from pathlib import Path
 import json
 import pytest
