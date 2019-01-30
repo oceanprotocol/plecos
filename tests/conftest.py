@@ -13,6 +13,7 @@ assert PATH_LATEST_SCHEMA.exists()
 
 PATH_SAMPLES_DIR = Path().cwd() / 'samples'
 PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'metadata UK weather.json'
+# PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'squid_example.json'
 # PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'supersimple.json'
 # PATH_SAMPLE_METADATA = PATH_SAMPLES_DIR / 'test.json'
 assert PATH_SAMPLE_METADATA.exists()
