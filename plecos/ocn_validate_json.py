@@ -1,6 +1,7 @@
 """Ocean Protocol wrapper around json schema"""
 
 import click
+from pathlib import Path
 import jsonschema as jsonschema
 # @click.command()
 # @click.argument('location')
@@ -27,9 +28,13 @@ def validate(schema_file_name, json_file):
         JSON_FILE: the relative (to current directory) path of the json file to validate against
     """
 
-    click.echo('Hello World!')
     click.echo("schema_file_name: {}".format(schema_file_name))
     click.echo("json_file {}".format(json_file))
+
+    json_file_path = Path.cwd() / json_file
+    assert json_file_path.exists(), "Json file path {} does not exist".format(json_file_path)
+
+
 
 if __name__ == "__main__":
     validate()
