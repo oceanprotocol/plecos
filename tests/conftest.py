@@ -5,7 +5,7 @@ from pathlib import Path
 import logging
 
 # Select the latest schema path here
-PATH_SCHEMA_DIR = Path().cwd() / 'schemas'
+PATH_SCHEMA_DIR = Path().cwd() / 'plecos' / 'schemas'
 PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'schema_v190118.json'
 # PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'supersimple.json'
 # PATH_LATEST_SCHEMA = PATH_SCHEMA_DIR / 'test.json'
