@@ -41,6 +41,14 @@ docs_requirements = [
     'sphinxcontrib-apidoc',
 ]
 
+# data_files = [
+#         ('plecos', glob('schemas/*.json')),
+#         ('plecos', glob('samples/*.json')),
+#     ],
+# print("Data files:")
+# for df in data_files:
+#     print(df)
+
 packages = []
 for d, _, _ in os.walk('plecos'):
     if os.path.exists(os.path.join(d, '__init__.py')):
@@ -73,10 +81,7 @@ setup(
     # packages=packages,
     packages=packages,
     # package_data = {'plecos' : files },
-    data_files=[
-        ('.', glob('schemas/*.json')),
-        ('.', glob('samples/*.json')),
-    ],
+    # package_data=data_files,
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
