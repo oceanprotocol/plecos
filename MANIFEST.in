@@ -1,0 +1,2 @@
+include_package_data=True
+include plecos/schemas/*.json

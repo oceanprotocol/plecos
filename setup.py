@@ -3,6 +3,7 @@
 
 """The setup script."""
 
+# from setuptools import setup
 from setuptools import setup
 import os
 from os.path import join
@@ -41,7 +42,7 @@ docs_requirements = [
 
 packages = []
 for d, _, _ in os.walk('plecos'):
-    if os.path.exists(join(d, '__init__.py')):
+    if os.path.exists(os.path.join(d, '__init__.py')):
         packages.append(d.replace(os.path.sep, '.'))
         print("Added {}".format(d))
 
@@ -68,7 +69,9 @@ setup(
     include_package_data=True,
     keywords='ocean',
     name='plecos',
+    # packages=packages,
     packages=packages,
+    # package_data = {'plecos' : files },
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
