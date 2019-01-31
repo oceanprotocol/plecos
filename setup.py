@@ -7,6 +7,7 @@
 from setuptools import setup
 import os
 from os.path import join
+from glob import glob
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -72,6 +73,10 @@ setup(
     # packages=packages,
     packages=packages,
     # package_data = {'plecos' : files },
+    data_files=[
+        ('.', glob('schemas/*.json')),
+        ('.', glob('samples/*.json')),
+    ],
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
