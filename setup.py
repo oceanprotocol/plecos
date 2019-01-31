@@ -52,16 +52,16 @@ docs_requirements = [
 schema_folder = 'schemas'
 # install_folder = 'lib/python3.6/site-packages/plecos/schemas'
 print("Adding all files in /{}".format(schema_folder))
-data_files = [('plecos' in glob(os.path.join(schema_folder, '**/*'))])]
+data_files = [   (  'plecos'   in   glob(os.path.join(schema_folder, '**/*'))   )  ]
 
 sample_folder = 'samples'
 # install_folder = 'lib/python3.6/site-packages/plecos/samples'
 print("Adding all files in /{}".format(sample_folder))
-data_files.append(('plecos', [f for f in glob(os.path.join(sample_folder, '**/*'))]))
+data_files.append(   (   'plecos', glob(os.path.join(sample_folder, '**/*'))   ))
 
-# print("data_files=")
-# for df in data_files:
-#     print(df)
+print("data_files=")
+for df in data_files:
+    print(df)
 
 
 # packages = []
@@ -95,7 +95,7 @@ setup(
     name='plecos',
     # packages=packages,
     packages=['plecos'],
-    package_dir={'plecos': 'src/plecos'}
+    package_dir={'plecos': 'src/plecos'},
     # data_files=data_files,
     # package_data = {'plecos' : files },
     package_data=data_files,
