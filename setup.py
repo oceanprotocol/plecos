@@ -50,25 +50,25 @@ docs_requirements = [
 #     print(df)
 
 schema_folder = 'schemas'
-install_folder = 'lib/python3.6/site-packages/plecos/schemas'
+# install_folder = 'lib/python3.6/site-packages/plecos/schemas'
 print("Adding all files in /{}".format(schema_folder))
-data_files = [(install_folder, [f for f in glob(os.path.join(schema_folder, '**/*'))])]
+data_files = [('plecos' in glob(os.path.join(schema_folder, '**/*'))])]
 
 sample_folder = 'samples'
-install_folder = 'lib/python3.6/site-packages/plecos/samples'
+# install_folder = 'lib/python3.6/site-packages/plecos/samples'
 print("Adding all files in /{}".format(sample_folder))
-data_files.append((sample_folder, [f for f in glob(os.path.join(sample_folder, '**/*'))]))
+data_files.append(('plecos', [f for f in glob(os.path.join(sample_folder, '**/*'))]))
 
-print("data_files=")
-for df in data_files:
-    print(df)
+# print("data_files=")
+# for df in data_files:
+#     print(df)
 
 
-packages = []
-for d, _, _ in os.walk('plecos'):
-    if os.path.exists(os.path.join(d, '__init__.py')):
-        packages.append(d.replace(os.path.sep, '.'))
-        print("Added {}".format(d))
+# packages = []
+# for d, _, _ in os.walk('plecos'):
+#     if os.path.exists(os.path.join(d, '__init__.py')):
+#         packages.append(d.replace(os.path.sep, '.'))
+#         print("Added {}".format(d))
 # !!!! Note MANIFEST.in does not affect binary distributions such as wheels. !!!!!
 setup(
     author="leucothia",
@@ -94,10 +94,11 @@ setup(
     keywords='ocean',
     name='plecos',
     # packages=packages,
-    packages=packages,
-    data_files=data_files,
+    packages=['plecos'],
+    package_dir={'plecos': 'src/plecos'}
+    # data_files=data_files,
     # package_data = {'plecos' : files },
-    # package_data=data_files,
+    package_data=data_files,
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
