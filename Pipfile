@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 jsonschema = "==3.0.0b3"
 pytest = "*"
+click = "*"
 
 [requires]
 python_version = "3.6"
