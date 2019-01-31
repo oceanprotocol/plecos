@@ -1,3 +1,2 @@
-include_package_data=True
-include schemas/*.json
-include samples/*.json
+recursive-include schemas *.*
+recursive-include samples *.*

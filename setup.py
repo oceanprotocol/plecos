@@ -49,12 +49,25 @@ docs_requirements = [
 # for df in data_files:
 #     print(df)
 
+schema_folder = 'schemas'
+print("Adding all files in /{}".format(schema_folder))
+data_files = [(schema_folder, [f for f in glob(os.path.join(schema_folder, '**/*'))])]
+
+sample_folder = 'samples'
+print("Adding all files in /{}".format(sample_folder))
+data_files.append((sample_folder, [f for f in glob(os.path.join(sample_folder, '**/*'))]))
+
+print("data_files=")
+for df in data_files:
+    print(df)
+
+
 packages = []
 for d, _, _ in os.walk('plecos'):
     if os.path.exists(os.path.join(d, '__init__.py')):
         packages.append(d.replace(os.path.sep, '.'))
         print("Added {}".format(d))
-
+# !!!! Note MANIFEST.in does not affect binary distributions such as wheels. !!!!!
 setup(
     author="leucothia",
     author_email='devops@oceanprotocol.com',
@@ -80,6 +93,7 @@ setup(
     name='plecos',
     # packages=packages,
     packages=packages,
+    data_files=data_files,
     # package_data = {'plecos' : files },
     # package_data=data_files,
     setup_requires=setup_requirements,
