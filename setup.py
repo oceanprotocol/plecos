@@ -12,8 +12,8 @@ from glob import glob
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.md') as history_file:
-    history = history_file.read()
+# with open('HISTORY.md') as history_file:
+#     history = history_file.read()
 
 # Installed by pip install squid-py
 # or pip install -e .
@@ -50,10 +50,12 @@ docs_requirements = [
 #     print(df)
 
 schema_folder = 'schemas'
+install_folder = 'lib/python3.6/site-packages/plecos/schemas'
 print("Adding all files in /{}".format(schema_folder))
-data_files = [(schema_folder, [f for f in glob(os.path.join(schema_folder, '**/*'))])]
+data_files = [(install_folder, [f for f in glob(os.path.join(schema_folder, '**/*'))])]
 
 sample_folder = 'samples'
+install_folder = 'lib/python3.6/site-packages/plecos/samples'
 print("Adding all files in /{}".format(sample_folder))
 data_files.append((sample_folder, [f for f in glob(os.path.join(sample_folder, '**/*'))]))
 
