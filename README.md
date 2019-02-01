@@ -2,12 +2,15 @@
 
 # Plecos
 
-> Help publishers validate metadata
+> Utility library to validate the Metadata of assets
 > [oceanprotocol.com](https://oceanprotocol.com)
-
 
 ___"🌊 Plecos are fish which mostly eat green surface algae and are excellent window cleaners."___
 
+[![photo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ancistrus_sp._%28aka%29.jpg/1920px-Ancistrus_sp._%28aka%29.jpg)]
+
+> Hypostomus plecostomus, the suckermouth catfish or common pleco, ('hypo' = under, 'stoma' = mouth, 'pleco'= pleated) is a tropical fish belonging to the armored catfish family (Loricariidae), named for the armor-like longitudinal rows of scutes that cover the upper parts of the head and body. Hypostomus plecostomus is named for its sucker-like mouth, which allows it to adhere to a surface, as well as to hold and rasp at food. This omnivorous species feeds on algae, aquatic plants, and small crustaceans.
+-[Wikipedia](https://en.wikipedia.org/wiki/Hypostomus_plecostomus)
 
 **🐲🦑 THERE BE DRAGONS AND SQUIDS. This is in alpha state and you can expect running into problems. If you run into them, please open up [a new issue](https://github.com/oceanprotocol/brizo/issues). 🦑🐲**
 
@@ -34,7 +37,19 @@ https://www.jsonschema.net/
 https://jsonlint.com/
 http://jsonviewer.stack.hu/
 
-__TBD__
+```python
+import plecos.plecos as plecos
+
+# Get a file path to your metadata.json file
+PATH_DATA_ROOT = Path("~/DATA").expanduser()
+path_data_dir = PATH_DATA_ROOT / 'British_birdsong'
+path_metadata = path_data_dir / 'metadata.json'
+
+# Check if valid, if not - list the error in a summary form
+if not plecos.is_valid(path_metadata):
+    plecos.list_errors(path_metadata)
+```
+
 
 ## License
 
