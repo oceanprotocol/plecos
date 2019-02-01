@@ -7,7 +7,7 @@
 
 ___"🌊 Plecos are fish which mostly eat green surface algae and are excellent window cleaners."___
 
-[![photo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ancistrus_sp._%28aka%29.jpg/1920px-Ancistrus_sp._%28aka%29.jpg)]
+![photo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ancistrus_sp._%28aka%29.jpg/1920px-Ancistrus_sp._%28aka%29.jpg)
 
 > Hypostomus plecostomus, the suckermouth catfish or common pleco, ('hypo' = under, 'stoma' = mouth, 'pleco'= pleated) is a tropical fish belonging to the armored catfish family (Loricariidae), named for the armor-like longitudinal rows of scutes that cover the upper parts of the head and body. Hypostomus plecostomus is named for its sucker-like mouth, which allows it to adhere to a surface, as well as to hold and rasp at food. This omnivorous species feeds on algae, aquatic plants, and small crustaceans.
 -[Wikipedia](https://en.wikipedia.org/wiki/Hypostomus_plecostomus)
