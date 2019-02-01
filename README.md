@@ -29,6 +29,11 @@ which contain metadata.
 
 ## Get Started 
 
+The following online tools are useful when working with JSON and schemas;
+https://www.jsonschema.net/
+https://jsonlint.com/
+http://jsonviewer.stack.hu/
+
 __TBD__
 
 ## License

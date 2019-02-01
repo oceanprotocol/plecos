@@ -151,7 +151,7 @@ setuptools.setup(
     # setup_requires=setup_requirements,
     # test_suite='tests',
     # tests_require=test_requirements,
-    url='https://github.com/oceanprotocol/squid-py',
+    url='https://github.com/oceanprotocol/plecos',
     version='0.0.2',
     zip_safe=False,
 )
