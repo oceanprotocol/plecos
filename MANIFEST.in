@@ -1,0 +1,2 @@
+recursive-include plecos/schemas *.*
+recursive-include plecos/samples *.*
