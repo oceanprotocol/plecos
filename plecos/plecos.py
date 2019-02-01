@@ -12,19 +12,29 @@ assert SCHEMA_FILE.exists(), "Can't find schema file {}".format(SCHEMA_FILE)
 
 
 # %%
-def load_json(json_file_path):
-    assert Path(json_file_path).exists(), "File path {} does not exist".format(json_file_path)
-    with open(json_file_path) as fp:
-       json_dict  = json.load(fp)
-    return json_dict
+def load_serial_data_file_path(file_path):
+    file_path_obj = Path(file_path)
+    assert Path(file_path_obj).exists(), "File path {} does not exist".format(file_path)
+
+    assert file_path_obj.is_file()
+    # file_name = file_path_obj.name
+
+    if file_path_obj.suffix == '.json':
+        with open(file_path_obj) as fp:
+           json_dict  = json.load(fp)
+        return json_dict
+    if file_path_obj.suffix in ['.yaml', '.yml']:
+        with open(file_path_obj) as fp:
+            json_dict  = json.load(fp)
+        return json_dict
 
 def validate_against(this_json_file, schema_file):
     """
     """
     logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_json(schema_file)
+    this_json_schema_dict = load_serial_data_file_path(schema_file)
     logging.info("Json to validate: {}".format(this_json_file))
-    this_json_dict = load_json(this_json_file)
+    this_json_dict = load_serial_data_file_path(this_json_file)
     # assert Path(schema_file).exists(), "Schema file path {} does not exist".format(schema_file)
     # with open(schema_file) as f_schema:
     #     this_json_schema_dict = json.load(f_schema)
@@ -47,9 +57,9 @@ def validate_against(this_json_file, schema_file):
 
 def is_valid(json_file_abs_path, schema_file=SCHEMA_FILE):
     logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_json(schema_file)
+    this_json_schema_dict = load_serial_data_file_path(schema_file)
     logging.info("Json to validate: {}".format(json_file_abs_path))
-    this_json_dict = load_json(json_file_abs_path)
+    this_json_dict = load_serial_data_file_path(json_file_abs_path)
 
     validator = jschema.validators.Draft7Validator(this_json_schema_dict)
     # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
@@ -75,9 +85,9 @@ def list_errors(json_file_abs_path, schema_file=SCHEMA_FILE):
     :return:
     """
     logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_json(schema_file)
+    this_json_schema_dict = load_serial_data_file_path(schema_file)
     logging.info("Json to validate: {}".format(json_file_abs_path))
-    this_json_dict = load_json(json_file_abs_path)
+    this_json_dict = load_serial_data_file_path(json_file_abs_path)
 
     validator = jschema.Draft4Validator(this_json_schema_dict)
     logging.info("Instantiated validator {}".format(validator))
