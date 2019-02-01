@@ -4,10 +4,13 @@
 """The setup script."""
 
 # from setuptools import setup
-from setuptools import setup
+# from setuptools import setup
+import setuptools
+
 import os
 from os.path import join
 from glob import glob
+import sys
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -49,19 +52,64 @@ install_requirements = [
 # for df in data_files:
 #     print(df)
 
-# schema_folder = 'schemas'
-# # install_folder = 'lib/python3.6/site-packages/plecos/schemas'
-# print("Adding all files in /{}".format(schema_folder))
-# data_files = [   (  'plecos'   in   glob(os.path.join(schema_folder, '**/*'))   )  ]
+
+def get_data_files():
+    """Get data files in share/jupyter"""
+
+    data_files = []
+    ntrim = len(here + os.path.sep)
+
+    for (d, dirs, filenames) in os.walk(share_jupyterhub):
+        data_files.append((
+            d[ntrim:],
+            [ pjoin(d, f) for f in filenames ]
+        ))
+    return data_files
+
+def get_package_data(package_name='plecos'):
+    """Get package data
+
+    (mostly alembic config)
+    """
+
+    package_data = {}
+    package_data[package_name] = [
+        'samples/*',
+        'schemas/*',
+    ]
+    return package_data
+
 #
+# print('sys.prefix',sys.prefix)
+# source_folder = 'schemas'
+# tgt_path = 'schemas'
+# print("Adding all files in /{}".format(source_folder))
+# data_files = list()
+# for fpath in glob(os.path.join(source_folder, '**/*')):
+#     print("\t Adding",fpath)
+#     data_files.append((tgt_path, [fpath]))
+#
+# source_folder = 'samples'
+# tgt_path = 'samples'
+# print("Adding all files in /{}".format(source_folder))
+# for fpath in glob(os.path.join(source_folder, '**/*')):
+#     print("\t Adding",fpath)
+#     data_files.append((tgt_path, [fpath]))
+# #
+# # data_files = [   (  'plecos'   in   glob(os.path.join(schema_folder, '**/*'))   )  ]
+# print(data_files)
 # sample_folder = 'samples'
+# print("Adding all files in /{}".format(schema_folder))
+# data_files = list()
+# for fpath in glob(os.path.join(schema_folder, '**/*')):
+#     data_files.append(schema_tgt_path, fpath)
 # # install_folder = 'lib/python3.6/site-packages/plecos/samples'
-# print("Adding all files in /{}".format(sample_folder))
-# data_files.append(   (   'plecos', glob(os.path.join(sample_folder, '**/*'))   ))
+# # print("Adding all files in /{}".format(sample_folder))
+# # data_files.append(   (   'plecos', glob(os.path.join(sample_folder, '**/*'))   ))
 #
-# print("data_files=")
-# for df in data_files:
-#     print(df)
+# print("data_files:")
+# for df_tuple in data_files:
+#     print("\t", df_tuple )
 
 
 # packages = []
@@ -70,7 +118,7 @@ install_requirements = [
 #         packages.append(d.replace(os.path.sep, '.'))
 #         print("Added {}".format(d))
 # !!!! Note MANIFEST.in does not affect binary distributions such as wheels. !!!!!
-setup(
+setuptools.setup(
     author="leucothia",
     author_email='devops@oceanprotocol.com',
     classifiers=[
@@ -92,6 +140,7 @@ setup(
     long_description_content_type="text/markdown",
     include_package_data=True,
     keywords='ocean',
+    package_data=get_package_data(),
     name='plecos',
     # packages=packages,
     packages=['plecos'],

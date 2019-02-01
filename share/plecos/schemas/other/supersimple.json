@@ -1,0 +1,40 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "required": [
+    "base"
+  ],
+  "properties": {
+    "base": {
+      "$id": "#/properties/base",
+      "type": "object",
+      "required": [
+        "name",
+        "price",
+        "categories"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/base/properties/name",
+          "type": "string",
+          "pattern": "^(.*)$"
+        },
+        "price": {
+          "$id": "#/properties/base/properties/price",
+          "type": "integer"
+        },
+        "categories": {
+          "$id": "#/properties/base/properties/categories",
+          "type": "array",
+          "items": {
+            "$id": "#/properties/base/properties/categories/items",
+            "type": "string",
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}
