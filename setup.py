@@ -55,7 +55,7 @@ install_requirements = [
 
 def get_data_files():
     """Get data files in share/jupyter"""
-
+    raise "Not used..."
     data_files = []
     ntrim = len(here + os.path.sep)
 
