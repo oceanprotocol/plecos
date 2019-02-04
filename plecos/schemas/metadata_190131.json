@@ -18,8 +18,7 @@
         "contentType",
         "price",
         "files",
-        "checksum",
-        "tags"
+        "checksum"
       ],
       "properties": {
         "name": {

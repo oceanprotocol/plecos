@@ -25,7 +25,7 @@ def load_serial_data_file_path(file_path):
         return json_dict
     if file_path_obj.suffix in ['.yaml', '.yml']:
         with open(file_path_obj) as fp:
-            json_dict  = json.load(fp)
+            json_dict = json.load(fp)
         return json_dict
 
 def validate_against(this_json_file, schema_file):
