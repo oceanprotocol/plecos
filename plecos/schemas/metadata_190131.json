@@ -18,8 +18,7 @@
         "contentType",
         "price",
         "files",
-        "checksum",
-        "tags"
+        "checksum"
       ],
       "properties": {
         "name": {
@@ -82,11 +81,7 @@
             "$id": "#/properties/base/properties/files/items",
             "type": "object",
             "required": [
-              "url",
-              "checksum",
-              "checksumType",
-              "contentLength",
-              "resourceId"
+              "url"
             ],
             "properties": {
               "url": {
@@ -118,10 +113,10 @@
               },
               "contentLength": {
                 "$id": "#/properties/base/properties/files/items/properties/contentLength",
-                "type": "string",
-                "default": "",
+                "type": "integer",
+                "default": 0,
                 "examples": [
-                  "4535431"
+                  4535431
                 ],
                 "pattern": "^(.*)$"
               },
