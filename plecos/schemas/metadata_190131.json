@@ -244,8 +244,6 @@
             "$id": "#/properties/base/properties/links/items",
             "type": "object",
             "required": [
-              "name",
-              "type",
               "url"
             ],
             "properties": {
