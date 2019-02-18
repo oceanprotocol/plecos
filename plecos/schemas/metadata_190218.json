@@ -12,12 +12,10 @@
       "type": "object",
       "required": [
         "name",
-        "dateCreated",
         "author",
         "license",
         "contentType",
         "price",
-        "files",
         "checksum"
       ],
       "properties": {
@@ -37,7 +35,7 @@
           "examples": [
             "2012-02-01T10:55:11Z"
           ],
-          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "pattern": "^(.*)$"
         },
         "author": {
           "$id": "#/properties/base/properties/author",
@@ -74,9 +72,14 @@
             10
           ]
         },
+        "encryptedFiles": {
+          "$id": "#/properties/base/properties/encryptedFiles",
+          "type": "string"
+        },
         "files": {
           "$id": "#/properties/base/properties/files",
           "type": "array",
+          "default": null,
           "items": {
             "$id": "#/properties/base/properties/files/items",
             "type": "object",
@@ -117,8 +120,7 @@
                 "default": 0,
                 "examples": [
                   4535431
-                ],
-                "pattern": "^(.*)$"
+                ]
               },
               "resourceId": {
                 "$id": "#/properties/base/properties/files/items/properties/resourceId",
@@ -243,9 +245,6 @@
           "items": {
             "$id": "#/properties/base/properties/links/items",
             "type": "object",
-            "required": [
-              "url"
-            ],
             "properties": {
               "name": {
                 "$id": "#/properties/base/properties/links/items/properties/name",
@@ -274,7 +273,10 @@
                 ],
                 "pattern": "^(.*)$"
               }
-            }
+            },
+            "required": [
+              "url"
+            ]
           }
         },
         "inLanguage": {
@@ -300,7 +302,7 @@
         "rating": {
           "$id": "#/properties/curation/properties/rating",
           "type": "number",
-          "default": 0.0,
+          "default": 0,
           "examples": [
             0.93
           ]
@@ -322,8 +324,8 @@
           ],
           "pattern": "^(.*)$"
         },
-        "flag": {
-          "$id": "#/properties/curation/properties/flag",
+        "isDeleted": {
+          "$id": "#/properties/curation/properties/isDeleted",
           "type": "boolean",
           "default": false,
           "examples": [

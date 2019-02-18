@@ -29,27 +29,28 @@ def test_validator_simple():
     with pytest.raises(ValidationError) as e_info:
         validate(instance={"name" : "Eggs", }, schema=schema, )
         assert e_info
-    print("Raised",e_info.value.message)
+    print("Raised", e_info.value.message)
 
 
 #%%
-def test_base_metadata(schema_dict,sample_metadata_dict):
+def test_local_metadata(schema_dict, sample_metadata_dict_local):
     validator = Draft7Validator(schema_dict)
-    validator.validate(sample_metadata_dict)
+    validator.validate(sample_metadata_dict_local)
 
-def test_missing_attribute(schema_dict,sample_metadata_dict):
+def test_remote_metadata(schema_dict, sample_metadata_dict_remote):
+    validator = Draft7Validator(schema_dict)
+    validator.validate(sample_metadata_dict_remote)
 
-    del sample_metadata_dict['base']['price']
+def test_missing_attribute(schema_dict,sample_metadata_dict_local):
+    del sample_metadata_dict_local['base']['price']
     with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict, schema=schema_dict)
+        validate(instance=sample_metadata_dict_local, schema=schema_dict)
         assert e_info
 
-def test_type_mismatch(schema_dict, sample_metadata_dict):
-    
-    sample_metadata_dict['base']['price'] = "A string is not allowed!"
-
+def test_type_mismatch(schema_dict, sample_metadata_dict_local):
+    sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
     with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict, schema=schema_dict)
+        validate(instance=sample_metadata_dict_local, schema=schema_dict)
         assert e_info
     assert e_info.value.absolute_path[0] == 'base'
     assert e_info.value.absolute_path[1] == 'price'

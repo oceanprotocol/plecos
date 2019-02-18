@@ -7,7 +7,7 @@ import jsonschema as jschema
 
 # %%
 # Here is the Schema file
-SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_190131.json'))
+SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_190218.json'))
 assert SCHEMA_FILE.exists(), "Can't find schema file {}".format(SCHEMA_FILE)
 
 
