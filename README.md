@@ -37,19 +37,20 @@ https://www.jsonschema.net/
 https://jsonlint.com/
 http://jsonviewer.stack.hu/
 
+### Quickstart
+After installing and importing the package, call the `.is_valid(YOUR_JSON_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
 ```python
-import plecos.plecos as plecos
+from pathlib import Path
+import plecos
 
 # Get a file path to your metadata.json file
 PATH_DATA_ROOT = Path("~/DATA").expanduser()
-path_data_dir = PATH_DATA_ROOT / 'British_birdsong'
-path_metadata = path_data_dir / 'metadata.json'
+path_to_json = PATH_DATA_ROOT / 'metadata.json'
 
 # Check if valid, if not - list the error in a summary form
-if not plecos.is_valid(path_metadata):
-    plecos.list_errors(path_metadata)
+if not plecos.is_valid(path_to_json):
+    plecos.list_errors(path_to_json)
 ```
-
 
 ## License
 

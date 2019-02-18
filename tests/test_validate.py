@@ -29,7 +29,7 @@ def test_validator_simple():
     with pytest.raises(ValidationError) as e_info:
         validate(instance={"name" : "Eggs", }, schema=schema, )
         assert e_info
-    print("Raised",e_info.value.message)
+    print("Raised", e_info.value.message)
 
 
 #%%
@@ -48,9 +48,7 @@ def test_missing_attribute(schema_dict,sample_metadata_dict_local):
         assert e_info
 
 def test_type_mismatch(schema_dict, sample_metadata_dict_local):
-    
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
-
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_dict)
         assert e_info
