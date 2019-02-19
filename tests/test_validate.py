@@ -6,6 +6,7 @@ from jsonschema import validate
 from jsonschema.exceptions import ValidationError
 import json
 import logging
+import plecos
 
 # %%
 
@@ -58,6 +59,7 @@ def test_type_mismatch(schema_dict, sample_metadata_dict_local):
     assert e_info.value.validator_value == 'integer'
 
 
+def test
 
 
 

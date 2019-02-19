@@ -38,3 +38,12 @@ def sample_metadata_dict_remote():
         this_json = json.load(json_file)
     print("Loaded sample:", PATH_SAMPLE_METADATA_REMOTE)
     return this_json
+
+
+@pytest.fixture
+def path_sample_metadata_local():
+    return PATH_SAMPLE_METADATA_LOCAL
+
+@pytest.fixture
+def path_sample_metadata_remote():
+    return PATH_SAMPLE_METADATA_REMOTE
