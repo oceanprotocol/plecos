@@ -64,12 +64,6 @@ def test_validate_file(path_sample_metadata_local):
 def test_validate_dict(sample_metadata_dict_local):
     plecos.validate_dict(sample_metadata_dict_local)
 
-def test_validate_file(path_sample_metadata_local):
-    plecos.validate_file(path_sample_metadata_local)
-
-def test_validate_dict(sample_metadata_dict_local):
-    plecos.validate_dict(sample_metadata_dict_local)
-
 def test_is_valid_file(path_sample_metadata_local):
     assert plecos.is_valid_file(path_sample_metadata_local)
 
