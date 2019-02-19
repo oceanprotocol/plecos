@@ -4,6 +4,7 @@ from jsonschema.validators import Draft7Validator
 import pytest
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError
+import json
 import logging
 
 # %%
