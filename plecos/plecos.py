@@ -30,6 +30,17 @@ def load_serial_data_file_path(file_path):
     #         json_dict = json.load(fp)
     #     return json_dict
 
+
+#%%
+def validator_file(schema_file=SCHEMA_FILE):
+    logging.info("Schema: {}".format(schema_file))
+    this_json_schema_dict = load_serial_data_file_path(schema_file)
+
+    return jschema.validators.Draft7Validator(this_json_schema_dict)
+
+def validator_dict(schema_dict):
+    return jschema.validators.Draft7Validator(schema_dict)
+
 #%%
 def validate_against_file(json_file_abs_path, schema_file):
     """
