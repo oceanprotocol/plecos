@@ -58,9 +58,22 @@ def test_type_mismatch(schema_dict, sample_metadata_dict_local):
     assert e_info.value.absolute_path[1] == 'price'
     assert e_info.value.validator_value == 'integer'
 
+def test_validate_file(path_sample_metadata_local):
+    plecos.validate_file(path_sample_metadata_local)
 
-def test
+def test_validate_dict(sample_metadata_dict_local):
+    plecos.validate_dict(sample_metadata_dict_local)
 
+def test_validate_file(path_sample_metadata_local):
+    plecos.validate_file(path_sample_metadata_local)
 
+def test_validate_dict(sample_metadata_dict_local):
+    plecos.validate_dict(sample_metadata_dict_local)
+
+def test_is_valid_file(path_sample_metadata_local):
+    assert plecos.is_valid_file(path_sample_metadata_local)
+
+def test_is_valid_dict(sample_metadata_dict_local):
+    assert plecos.is_valid_dict(sample_metadata_dict_local)
 
 
