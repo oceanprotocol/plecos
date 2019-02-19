@@ -84,11 +84,15 @@ list_errors_file(json_file_path, schema_file=SCHEMA_FILE)
 list_errors_dict(python_dict, schema_file=SCHEMA_FILE)
 ```
 
-Calling [jsonschema](https://pypi.org/project/jsonschema/) more directly, if your API depends on this;
+Calling [jsonschema](https://pypi.org/project/jsonschema/) more directly, if your API depends on this. 
 ```python
+# Return a jsonschema.Validator object
+validator = validator_file(schema_file=SCHEMA_FILE)
+validator = validator_dict(python_schema_dict)
+
+# Call jsonschema.validators.Draft7Validator(this_json_schema_dict).validate(this_json_dict)
 validate_file(json_file_path, schema_file=SCHEMA_FILE)
 validate_dict(python_dict, schema_file=SCHEMA_FILE)
-# Calls: jsonschema.validators.Draft7Validator(this_json_schema_dict).validate(this_json_dict)
 ```
 
 *SCHEMA_FILE* points to the latest OEP8 schema. Other versions are included in the package. 
