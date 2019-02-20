@@ -126,6 +126,7 @@ def list_errors_file(json_file_abs_path, schema_file=SCHEMA_FILE):
         stack_path = [str(p) for p in stack_path]
         logging.warning("Error {} at {}".format(i,"/".join(stack_path)))
         logging.warning("\t" + err.message)
+    return errors
 
 def list_errors_dict(this_json_dict, schema_file=SCHEMA_FILE):
     """ Iterate over the validation errors, print to log.warn
@@ -146,3 +147,4 @@ def list_errors_dict(this_json_dict, schema_file=SCHEMA_FILE):
         stack_path = [str(p) for p in stack_path]
         logging.warning("Error {} at {}".format(i,"/".join(stack_path)))
         logging.warning("\t" + err.message)
+    return errors
