@@ -70,4 +70,17 @@ def test_is_valid_file(path_sample_metadata_local):
 def test_is_valid_dict(sample_metadata_dict_local):
     assert plecos.is_valid_dict(sample_metadata_dict_local)
 
+def test_list_errors_dict(sample_metadata_dict_local):
+    # print(plecos.list_errors_dict(sample_metadata_dict_local))
+    assert len(plecos.list_errors_dict(sample_metadata_dict_local)) == 0
 
+    sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
+    del sample_metadata_dict_local['base']['name']
+    errors = plecos.list_errors_dict(sample_metadata_dict_local)
+    # print(errors)
+    for i,err in enumerate(errors):
+        stack_path = list(err.relative_path)
+        stack_path = [str(p) for p in stack_path]
+        print("Error {} at {}: {}".format(i,"/".join(stack_path),err.message))
+
+    assert len(errors) == 2
