@@ -35,48 +35,63 @@ def test_validator_simple():
 
 
 #%%
-def test_local_metadata(schema_dict, sample_metadata_dict_local):
-    validator = Draft7Validator(schema_dict)
+
+
+def test_local_metadata(schema_local_dict, sample_metadata_dict_local):
+    validator = Draft7Validator(schema_local_dict)
     validator.validate(sample_metadata_dict_local)
 
-def test_remote_metadata(schema_dict, sample_metadata_dict_remote):
-    validator = Draft7Validator(schema_dict)
+
+def test_remote_metadata(schema_remote_dict, sample_metadata_dict_remote):
+    validator = Draft7Validator(schema_remote_dict)
     validator.validate(sample_metadata_dict_remote)
 
-def test_missing_attribute(schema_dict,sample_metadata_dict_local):
-    del sample_metadata_dict_local['base']['price']
+def test_remote_additonal_metadata(schema_remote_dict, sample_metadata_dict_remote):
+    sample_metadata_dict_remote['base']['EXTRA ATTRIB!'] = 0
     with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict_local, schema=schema_dict)
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
         assert e_info
 
-def test_type_mismatch(schema_dict, sample_metadata_dict_local):
+def test_local_missing_attribute(schema_local_dict, sample_metadata_dict_local):
+    del sample_metadata_dict_local['base']['price']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+
+def test_type_mismatch(schema_local_dict, sample_metadata_dict_local):
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
     with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict_local, schema=schema_dict)
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
         assert e_info
     assert e_info.value.absolute_path[0] == 'base'
     assert e_info.value.absolute_path[1] == 'price'
     assert e_info.value.validator_value == 'integer'
 
+
 def test_validate_file(path_sample_metadata_local):
-    plecos.validate_file(path_sample_metadata_local)
+    plecos.validate_file_local(path_sample_metadata_local)
+
 
 def test_validate_dict(sample_metadata_dict_local):
-    plecos.validate_dict(sample_metadata_dict_local)
+    plecos.validate_dict_local(sample_metadata_dict_local)
+
 
 def test_is_valid_file(path_sample_metadata_local):
-    assert plecos.is_valid_file(path_sample_metadata_local)
+    assert plecos.is_valid_file_local(path_sample_metadata_local)
+
 
 def test_is_valid_dict(sample_metadata_dict_local):
-    assert plecos.is_valid_dict(sample_metadata_dict_local)
+    assert plecos.is_valid_dict_local(sample_metadata_dict_local)
+
 
 def test_list_errors_dict(sample_metadata_dict_local):
     # print(plecos.list_errors_dict(sample_metadata_dict_local))
-    assert len(plecos.list_errors_dict(sample_metadata_dict_local)) == 0
+    assert len(plecos.list_errors_dict_local(sample_metadata_dict_local)) == 0
 
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
     del sample_metadata_dict_local['base']['name']
-    errors = plecos.list_errors_dict(sample_metadata_dict_local)
+    errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
     # print(errors)
     for i,err in enumerate(errors):
         stack_path = list(err.relative_path)

@@ -275,7 +275,7 @@
           "pattern": "^(.*)$"
         },
         "isDeleted": {
-          "$id": "#/properties/curation/properties/isDeleted",
+          "$id": "#/properties/curation/properties/isListed",
           "type": "boolean",
           "default": false,
           "examples": [
