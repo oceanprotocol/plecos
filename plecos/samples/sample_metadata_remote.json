@@ -34,5 +34,11 @@
       }
     ],
     "inLanguage": "en"
-  }
+  },
+  "curation": {
+        "rating": 0.93,
+        "numVotes": 123,
+        "schema": "Binary Voting",
+        "flag": false
+    }
 }

@@ -13,12 +13,12 @@ import logging
 
 # Local sample
 PATH_SAMPLES_DIR = Path().cwd() / 'plecos' / 'samples'
-PATH_SAMPLE_METADATA_LOCAL = PATH_SAMPLES_DIR / 'metadata_local.json'
+PATH_SAMPLE_METADATA_LOCAL = PATH_SAMPLES_DIR / 'sample_metadata_local.json'
 assert PATH_SAMPLE_METADATA_LOCAL.exists(), "Path not found: {}".format(PATH_SAMPLE_METADATA_LOCAL)
 
 # Remote sample
 PATH_SAMPLES_DIR = Path().cwd() / 'plecos' / 'samples'
-PATH_SAMPLE_METADATA_REMOTE = PATH_SAMPLES_DIR / 'metadata_remote.json'
+PATH_SAMPLE_METADATA_REMOTE = PATH_SAMPLES_DIR / 'sample_metadata_remote.json'
 assert PATH_SAMPLE_METADATA_REMOTE.exists(), "Path not found: {}".format(PATH_SAMPLE_METADATA_REMOTE)
 
 @pytest.fixture

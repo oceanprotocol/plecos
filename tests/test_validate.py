@@ -46,20 +46,32 @@ def test_remote_metadata(schema_remote_dict, sample_metadata_dict_remote):
     validator = Draft7Validator(schema_remote_dict)
     validator.validate(sample_metadata_dict_remote)
 
-def test_remote_additonal_metadata(schema_remote_dict, sample_metadata_dict_remote):
+
+def test_fail_additonal_metadata(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    sample_metadata_dict_local['base']['EXTRA ATTRIB!'] = 0
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
     sample_metadata_dict_remote['base']['EXTRA ATTRIB!'] = 0
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
         assert e_info
 
-def test_local_missing_attribute(schema_local_dict, sample_metadata_dict_local):
+
+def test_fail_missing_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     del sample_metadata_dict_local['base']['price']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
         assert e_info
 
+    del sample_metadata_dict_remote['base']['price']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
 
-def test_type_mismatch(schema_local_dict, sample_metadata_dict_local):
+
+def test_type_mismatch(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
@@ -68,6 +80,13 @@ def test_type_mismatch(schema_local_dict, sample_metadata_dict_local):
     assert e_info.value.absolute_path[1] == 'price'
     assert e_info.value.validator_value == 'integer'
 
+    sample_metadata_dict_remote['base']['price'] = "A string is not allowed!"
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
+    assert e_info.value.absolute_path[0] == 'base'
+    assert e_info.value.absolute_path[1] == 'price'
+    assert e_info.value.validator_value == 'integer'
 
 def test_validate_file(path_sample_metadata_local):
     plecos.validate_file_local(path_sample_metadata_local)
@@ -86,7 +105,6 @@ def test_is_valid_dict(sample_metadata_dict_local):
 
 
 def test_list_errors_dict(sample_metadata_dict_local):
-    # print(plecos.list_errors_dict(sample_metadata_dict_local))
     assert len(plecos.list_errors_dict_local(sample_metadata_dict_local)) == 0
 
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
@@ -94,8 +112,8 @@ def test_list_errors_dict(sample_metadata_dict_local):
     errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
     # print(errors)
     for i,err in enumerate(errors):
-        stack_path = list(err.relative_path)
+        stack_path = list(err[1].relative_path)
         stack_path = [str(p) for p in stack_path]
-        print("Error {} at {}: {}".format(i,"/".join(stack_path),err.message))
+        print("Error {} at {}: {}".format(i,"/".join(stack_path),err[1].message))
 
     assert len(errors) == 2
