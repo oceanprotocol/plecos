@@ -71,56 +71,6 @@
         "type": "sample"
       },
       {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n3048.jpg",
-        "name": "n3048.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n5049.jpg",
-        "name": "n5049.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n1131.jpg",
-        "name": "n1131.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/monkey_labels.txt",
-        "name": "monkey_labels.txt",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n3120.jpg",
-        "name": "n3120.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n7025.jpg",
-        "name": "n7025.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n2140.jpg",
-        "name": "n2140.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n5151.jpg",
-        "name": "n5151.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n8145.jpg",
-        "name": "n8145.jpg",
-        "type": "sample"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n0113.jpg",
-        "name": "n0113.jpg",
-        "type": "sample"
-      },
-      {
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/sample.zip",
         "name": "sample.zip",
         "type": "sample"

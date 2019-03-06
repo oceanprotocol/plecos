@@ -74,27 +74,41 @@ def validate_against_dict(this_json_dict, schema_file):
 
 #%% Validate files in local path
 
-
-def is_valid_file_local(json_file_abs_path, schema_file=LOCAL_SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
+def is_valid_file(json_file_abs_path, schema_file):
     this_json_schema_dict = load_serial_data_file_path(schema_file)
-    logging.info("Json to validate: {}".format(json_file_abs_path))
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
-
     validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
     return validator.is_valid(this_json_dict)
 
 
-def is_valid_file_remote(json_file_abs_path, schema_file=REMOTE_SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    logging.info("Json to validate: {}".format(json_file_abs_path))
-    this_json_dict = load_serial_data_file_path(json_file_abs_path)
-
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+def is_valid_file_local(json_file_abs_path):
+    return is_valid_file(json_file_abs_path, LOCAL_SCHEMA_FILE)
+    # logging.info("Schema: {}".format(schema_file))
+    # this_json_schema_dict = load_serial_data_file_path(schema_file)
+    # logging.info("Json to validate: {}".format(json_file_abs_path))
+    # this_json_dict = load_serial_data_file_path(json_file_abs_path)
+    #
     # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    # return validator.is_valid(this_json_dict)
+
+
+def is_valid_file_remote(json_file_abs_path):
+    return is_valid_file(json_file_abs_path, REMOTE_SCHEMA_FILE)
+    # logging.info("Schema: {}".format(schema_file))
+    # this_json_schema_dict = load_serial_data_file_path(schema_file)
+    # logging.info("Json to validate: {}".format(json_file_abs_path))
+    # this_json_dict = load_serial_data_file_path(json_file_abs_path)
+    #
+    # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    # # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    # return validator.is_valid(this_json_dict)
+
+
+def is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
+    this_json_schema_dict = load_serial_data_file_path(schema_file)
+    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
     return validator.is_valid(this_json_dict)
+
 
 
 def is_valid_dict_local(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
