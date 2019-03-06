@@ -38,66 +38,76 @@ https://jsonlint.com/
 http://jsonviewer.stack.hu/
 
 ### Quickstart
-After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
+After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH, JSON_SCHEMA_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
+
+
+
 ```python
 from pathlib import Path
 import plecos
 
-# Get a file path to your metadata.json file
-PATH_DATA_ROOT = Path("~/DATA").expanduser()
-path_to_json = PATH_DATA_ROOT / 'metadata.json'
-
 # Check if valid, if not - list the error in a summary form
-if not plecos.is_valid_file(path_to_json):
-    plecos.list_errors_file(path_to_json)
+if not plecos.is_valid_file('metadata.json'):
+    errors = plecos.list_errors_file('metadata.json')
+if errors:
+    for e in errors:
+        print(e)    
 ```
 
 A dictionary object can also be checked against the schema, using `.is_valid_dict(python_dictionary)`. 
 ```python
-from pathlib import Path
 import plecos
 import json
 
-# Get a file path to your metadata.json file
-PATH_DATA_ROOT = Path("~/DATA").expanduser()
-path_to_json = PATH_DATA_ROOT / 'metadata.json'
-
 # Load it into a dictionary
-with open(path_to_json) as json_file:
+with open('metadata.json') as json_file:
     this_json_dict = json.load(json_file)
         
 # Check if valid, if not - list the error in a summary form
 if not plecos.is_valid_dict(this_json_dict):
-    plecos.list_errors_dict(this_json_dict)
+    errors = plecos.list_errors_dict(this_json_dict)
+if errors:
+    for e in errors:
+        print(e)
+
 ```
 
 ### Summary of functions
-Returning True/False;
-```python
-is_valid_file(python_dict, schema_file=SCHEMA_FILE)
-is_valid_dict(json_file_path, schema_file=SCHEMA_FILE)
-```
 
-For listing all errors in JSON;
-```python
-list_errors_file(json_file_path, schema_file=SCHEMA_FILE)
-list_errors_dict(python_dict, schema_file=SCHEMA_FILE)
-```
 
-Calling [jsonschema](https://pypi.org/project/jsonschema/) more directly, if your API depends on this. 
-```python
-# Return a jsonschema.Validator object
-validator = validator_file(schema_file=SCHEMA_FILE)
-validator = validator_dict(python_schema_dict)
+Several convenience functions are defined for validated against "local" or "remote" metadata. 
 
-# Call jsonschema.validators.Draft7Validator(this_json_schema_dict).validate(this_json_dict)
-validate_file(json_file_path, schema_file=SCHEMA_FILE)
-validate_dict(python_dict, schema_file=SCHEMA_FILE)
-```
+- Wrapping [jschema.Draft7Validator.validate()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.validate)
+  - validate_dict(json_dict, schema_path)
+    - validate_dict_local(json_dict)
+    - validate_dict_remote(json_dict)
+  - validate_file(json_path, schema_path)
+    - validate_file_local(json_path)
+    - validate_file_remote(json_path)
 
-*SCHEMA_FILE* points to the latest OEP8 schema. Other versions are included in the package. 
+- Wrapping [jschema.Draft7Validator.is_valid()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.is_valid)
+  - is_valid_dict(json_dict, schema_path)
+    - is_valid_dict_local(json_dict)
+    - is_valid_dict_remote(json_dict)
+  - is_valid_file(json_path, schema_path)
+    - is_valid_file_local(json_path)
+    - is_valid_file_remote(json_path)
 
-*SCHEMA_FILE* can also be replaced with your own file path to your own schema. 
+- Wrapping [jschema.Draft7Validator.iter_errors()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.iter_errors)
+  - list_errors(json_dict, schema_path)
+    - list_errors_dict_remote(json_dict)
+    - list_errors_dict_remote(json_dict)
+    - list_errors_file_local(json_path)
+    - list_errors_file_remote(json_path)
+   
+`list_errors` returns a tuple containing a short summary of the error (the json path), and the full error object. 
+
+
+*LOCAL_SCHEMA_FILE_* points to the latest OEP8 schema for local metadata. Older versions are included in the package. 
+
+*REMOTE_SCHEMA_FILE_* points to the latest OEP8 schema for remote metadata. Older versions are included in the package. 
+
+*LOCAL_SCHEMA_FILE* and *REMOTE_SCHEMA_FILE_* can be replaced with your own file path to your own schema. 
 
 ## License
 
