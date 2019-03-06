@@ -73,10 +73,12 @@
           "$id": "#/properties/base/properties/files",
           "type": "array",
           "default": null,
+          "additionalItems": false,
           "items": {
             "$id": "#/properties/base/properties/files/items",
             "type": "object",
             "default": null,
+            "additionalProperties": false,
             "required": [
               "url"
             ],
@@ -141,6 +143,7 @@
           "$id": "#/properties/base/properties/categories",
           "type": "array",
           "default": null,
+          "additionalItems": false,
           "items": {
             "$id": "#/properties/base/properties/categories/items",
             "type": "string",
@@ -155,6 +158,8 @@
         "tags": {
           "$id": "#/properties/base/properties/tags",
           "type": "array",
+          "default": null,
+          "additionalItems": false,
           "items": {
             "$id": "#/properties/base/properties/tags/items",
             "type": "string",
@@ -236,6 +241,7 @@
           "$id": "#/properties/base/properties/links",
           "type": "array",
           "default": null,
+          "additionalItems": false,
           "items": {
             "$id": "#/properties/base/properties/links/items",
             "type": "object",

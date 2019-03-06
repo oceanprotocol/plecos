@@ -7,31 +7,19 @@
     "price": 10,
     "files": [
       {
-        "size": 12057,
         "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
         "checksumType": "MD5",
         "contentLength": 12057507,
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/training.zip",
-        "name": "training",
-        "object_key": "10_Monkey_Species_Small/assets/training.zip"
+        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/training.zip"
       },
       {
-        "size": 0,
         "checksum": "354d19c0733c47ef3a6cce5b633116b0",
         "checksumType": "MD5",
         "contentLength": 928,
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/monkey_labels.txt",
-        "name": "monkey_labels",
-        "object_key": "10_Monkey_Species_Small/assets/monkey_labels.txt"
+        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/monkey_labels.txt"
       },
       {
-        "size": 12057,
-        "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
-        "checksumType": "MD5",
-        "contentLength": 12057507,
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/validation.zip",
-        "name": "validation",
-        "object_key": "10_Monkey_Species_Small/assets/validation.zip"
+        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/validation.zip"
       }
     ],
     "checksum": "",
@@ -40,15 +28,16 @@
     ],
     "tags": [
       "image data",
-      " animals"
+      "classification",
+      "animals"
     ],
     "type": "dataset",
     "description": "EXAMPLE ONLY ",
-    "size": "",
-    "copyrightHolder": "",
-    "encoding": "",
-    "compression": "",
-    "workExample": "",
+    "size": "3.1gb",
+    "copyrightHolder": "Unknown",
+    "encoding": "UTF-8",
+    "compression": "zip",
+    "workExample": "image path, id, label",
     "links": [
       {
         "name": "example model",
@@ -63,11 +52,6 @@
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/discovery/n5151.jpg",
         "name": "n5151.jpg",
         "type": "discovery"
-      },
-      {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/n2053.jpg",
-        "name": "n2053.jpg",
-        "type": "sample"
       },
       {
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/sample.zip",

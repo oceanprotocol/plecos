@@ -11,7 +11,7 @@ path_to_schema_remote = Path("~/ocn/Plecos/plecos/schemas/metadata_remote_190305
 
 # Select remote or local metadata
 # LOCAL=True
-LOCAL=False
+LOCAL=True
 
 if LOCAL:
     path_json_file = path_to_json_local
@@ -33,9 +33,8 @@ print("Schema file:", path_schema_file)
 
 
 
-
-
 # json_dict['base']['EXTRA ATTRIB!'] = 0
+# json_dict['base']['files'][0]['EXTRA_ATTR'] = "????"
 # json_dict['base']['price'] = "A string is not allowed!"
 errors = plecos.list_errors(json_dict, path_schema_file)
 
@@ -45,6 +44,8 @@ if errors:
         print(e)
 else:
     print("No errors")
+
+raise
 #%%
 
 
