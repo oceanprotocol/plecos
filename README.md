@@ -40,14 +40,12 @@ http://jsonviewer.stack.hu/
 ### Quickstart
 After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH, JSON_SCHEMA_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
 
-
-
 ```python
 from pathlib import Path
 import plecos
 
 # Check if valid, if not - list the error in a summary form
-if not plecos.is_valid_file('metadata.json'):
+if not plecos.is_valid_file_local('metadata.json'):
     errors = plecos.list_errors_file('metadata.json')
 if errors:
     for e in errors:
@@ -64,7 +62,7 @@ with open('metadata.json') as json_file:
     this_json_dict = json.load(json_file)
         
 # Check if valid, if not - list the error in a summary form
-if not plecos.is_valid_dict(this_json_dict):
+if not plecos.is_valid_dict_local(this_json_dict):
     errors = plecos.list_errors_dict(this_json_dict)
 if errors:
     for e in errors:
