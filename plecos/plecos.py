@@ -48,12 +48,11 @@ def validator_file(schema_file):
 def validator_dict(schema_dict):
     return jschema.validators.Draft7Validator(schema_dict)
 
-#%% Return the result from validator.validate()
+#%% Wrapper over jschema.Draft7Validator.validate()
 
 
 def validate_against_dict(this_json_dict, schema_file):
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    validator = validator_file(schema_file)
     return validator.validate(this_json_dict)
 
 
@@ -81,19 +80,18 @@ def validate_dict_remote(this_json_dict):
 
 
 #%%
-# Return the result from validator.is_valid()
+# Wrapper over jschema.Draft7Validator.is_valid()
 
 def is_valid_file(json_file_abs_path, schema_file):
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
+    validator = validator_file(schema_file)
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
     return validator.is_valid(this_json_dict)
 
 
 def is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    validator = validator_file(schema_file)
     return validator.is_valid(this_json_dict)
+
 
 # Convenience functions
 def is_valid_file_local(json_file_abs_path):
@@ -112,17 +110,15 @@ def is_valid_dict_remote(this_json_dict):
     return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
 
 
-#%%
+#%% Wrapper over jschema.Draft7Validator.iter_errors()
 def list_errors(json_dict, schema_file):
     """ Iterate over the validation errors, print to log.warn
 
-    :param json_file_abs_path:
+    :param json_dict:
     :param schema_file:
     :return:
     """
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    validator = jschema.Draft7Validator(this_json_schema_dict)
-    # logging.info("Instantiated validator {}".format(validator))
+    validator = validator_file(schema_file)
 
     # Build a list of 'errors', summarizing each
     errors = sorted(validator.iter_errors(json_dict), key=lambda e: e.path)
@@ -134,86 +130,21 @@ def list_errors(json_dict, schema_file):
     return errors
 
 
+# Convenience functions
 def list_errors_file_local(json_file_abs_path):
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
     return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
-    # logging.info("Schema: {}".format(schema_file))
-    # this_json_schema_dict = load_serial_data_file_path(schema_file)
-    # logging.info("Json to validate: {}".format(json_file_abs_path))
-    #
-    # validator = jschema.Draft4Validator(this_json_schema_dict)
-    # logging.info("Instantiated validator {}".format(validator))
-    #
-    # errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    # for i, err in enumerate(errors):
-    #     stack_path = list(err.relative_path)
-    #     stack_path = [str(p) for p in stack_path]
-    #     logging.warning("Error {} at {}".format(i, "/".join(stack_path)))
-    #     logging.warning("\t" + err.message)
-    # return errors
 
 
 def list_errors_file_remote(json_file_abs_path):
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
     return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
-    # logging.info("Schema: {}".format(schema_file))
-    # this_json_schema_dict = load_serial_data_file_path(schema_file)
-    # logging.info("Json to validate: {}".format(json_file_abs_path))
-    # this_json_dict = load_serial_data_file_path(json_file_abs_path)
-    #
-    # validator = jschema.Draft4Validator(this_json_schema_dict)
-    # logging.info("Instantiated validator {}".format(validator))
-    #
-    # errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    # for i, err in enumerate(errors):
-    #     stack_path = list(err.relative_path)
-    #     stack_path = [str(p) for p in stack_path]
-    #     logging.warning("Error {} at {}".format(i, "/".join(stack_path)))
-    #     logging.warning("\t" + err.message)
-    # return errors
 
 
 def list_errors_dict_local(this_json_dict):
     return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
-    # """ Iterate over the validation errors, print to log.warn
-    #
-    # :param this_json_dict:
-    # :param schema_file:
-    # :return:
-    # """
-    # logging.info("Schema: {}".format(schema_file))
-    # this_json_schema_dict = load_serial_data_file_path(schema_file)
-    #
-    # validator = jschema.Draft4Validator(this_json_schema_dict)
-    # logging.info("Instantiated validator {}".format(validator))
-    #
-    # errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    # for i, err in enumerate(errors):
-    #     stack_path = list(err.relative_path)
-    #     stack_path = [str(p) for p in stack_path]
-    #     logging.warning("Error {} at {}".format(i, "/".join(stack_path)))
-    #     logging.warning("\t" + err.message)
-    # return errors
 
 
 def list_errors_dict_remote(this_json_dict):
     return list_errors(this_json_dict, REMOTE_SCHEMA_FILE)
-    # """ Iterate over the validation errors, print to log.warn
-    #
-    # :param this_json_dict:
-    # :param schema_file:
-    # :return:
-    # """
-    # logging.info("Schema: {}".format(schema_file))
-    # this_json_schema_dict = load_serial_data_file_path(schema_file)
-    #
-    # validator = jschema.Draft4Validator(this_json_schema_dict)
-    # logging.info("Instantiated validator {}".format(validator))
-    #
-    # errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    # for i, err in enumerate(errors):
-    #     stack_path = list(err.relative_path)
-    #     stack_path = [str(p) for p in stack_path]
-    #     logging.warning("Error {} at {}".format(i, "/".join(stack_path)))
-    #     logging.warning("\t" + err.message)
-    # return errors
+
