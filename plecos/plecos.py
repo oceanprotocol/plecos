@@ -7,10 +7,13 @@ import jsonschema as jschema
 
 # %%
 # Here is the Schema file, loaded as the default to validate against
-SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_190218.json'))
-assert SCHEMA_FILE.exists(), "Can't find schema file {}".format(SCHEMA_FILE)
+LOCAL_SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_local_190305.json'))
+assert LOCAL_SCHEMA_FILE.exists(), "Can't find schema file {}".format(LOCAL_SCHEMA_FILE)
+REMOTE_SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_remote_190305.json'))
+assert LOCAL_SCHEMA_FILE.exists(), "Can't find schema file {}".format(REMOTE_SCHEMA_FILE)
 
-#TODO: Handle full file path vs. dictionary better?
+# TODO: Handle full file path vs. dictionary better?
+
 
 # %%
 def load_serial_data_file_path(file_path):
@@ -22,9 +25,11 @@ def load_serial_data_file_path(file_path):
 
     if file_path_obj.suffix == '.json':
         with open(file_path_obj) as fp:
-           json_dict  = json.load(fp)
+            json_dict = json.load(fp)
         return json_dict
-    #TODO: Add Yaml parser
+
+    # TODO: Add Yaml parser
+
     # if file_path_obj.suffix in ['.yaml', '.yml']:
     #     with open(file_path_obj) as fp:
     #         json_dict = json.load(fp)
@@ -32,7 +37,9 @@ def load_serial_data_file_path(file_path):
 
 
 #%%
-def validator_file(schema_file=SCHEMA_FILE):
+
+
+def validator_file(schema_file):
     logging.info("Schema: {}".format(schema_file))
     this_json_schema_dict = load_serial_data_file_path(schema_file)
     return jschema.validators.Draft7Validator(this_json_schema_dict)
@@ -41,110 +48,108 @@ def validator_file(schema_file=SCHEMA_FILE):
 def validator_dict(schema_dict):
     return jschema.validators.Draft7Validator(schema_dict)
 
-#%%
-def validate_against_file(json_file_abs_path, schema_file):
-    """
-    """
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    logging.info("Json to validate: {}".format(json_file_abs_path))
-    this_json_dict = load_serial_data_file_path(json_file_abs_path)
+#%% Wrapper over jschema.Draft7Validator.validate()
 
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+
+def validate_dict(this_json_dict, schema_file):
+    validator = validator_file(schema_file)
     return validator.validate(this_json_dict)
 
-def validate_against_dict(this_json_dict, schema_file):
-    """
-    """
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
 
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    return validator.validate(this_json_dict)
+# Convenience function, load into dictionary first
+def validate_file(json_file_abs_path, schema_file):
+    this_json_dict = load_serial_data_file_path(json_file_abs_path)
+    return validate_dict(this_json_dict, schema_file)
+
+
+# Convenience functions
+def validate_file_local(json_file_abs_path):
+    return validate_file(json_file_abs_path, LOCAL_SCHEMA_FILE)
+
+
+def validate_file_remote(json_file_abs_path):
+    return validate_file(json_file_abs_path, REMOTE_SCHEMA_FILE)
+
+
+def validate_dict_local(this_json_dict):
+    return validate_dict(this_json_dict, LOCAL_SCHEMA_FILE)
+
+
+def validate_dict_remote(this_json_dict):
+    return validate_dict(this_json_dict, REMOTE_SCHEMA_FILE)
+
 
 #%%
-def is_valid_file(json_file_abs_path, schema_file=SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    logging.info("Json to validate: {}".format(json_file_abs_path))
-    this_json_dict = load_serial_data_file_path(json_file_abs_path)
+# Wrapper over jschema.Draft7Validator.is_valid()
 
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+def is_valid_file(json_file_abs_path, schema_file):
+    validator = validator_file(schema_file)
+    this_json_dict = load_serial_data_file_path(json_file_abs_path)
     return validator.is_valid(this_json_dict)
 
-def is_valid_dict(this_json_dict, schema_file=SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
 
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+def is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
+    validator = validator_file(schema_file)
     return validator.is_valid(this_json_dict)
 
-#%%
-def validate_file(json_file_abs_path, schema_file=SCHEMA_FILE):
-    """ Wrapper around validate_against
 
-    TODO: This function should handle default schemas for DDO and MetaData
+# Convenience functions
+def is_valid_file_local(json_file_abs_path):
+    return is_valid_file(json_file_abs_path, LOCAL_SCHEMA_FILE)
 
-    :param json_file_abs_path:
-    :param schema_file:
-    :return:
-    """
-    return validate_against_file(json_file_abs_path, schema_file)
 
-def validate_dict(this_json_dict, schema_file=SCHEMA_FILE):
-    """ Wrapper around validate_against
+def is_valid_file_remote(json_file_abs_path):
+    return is_valid_file(json_file_abs_path, REMOTE_SCHEMA_FILE)
 
-    TODO: This function should handle default schemas for DDO and MetaData
 
-    :param json_file_abs_path:
-    :param schema_file:
-    :return:
-    """
-    return validate_against_dict(this_json_dict, schema_file)
+def is_valid_dict_local(this_json_dict):
+    return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
 
-#%%
-def list_errors_file(json_file_abs_path, schema_file=SCHEMA_FILE):
+
+def is_valid_dict_remote(this_json_dict):
+    return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
+
+
+#%% Wrapper over jschema.Draft7Validator.iter_errors()
+def list_errors(json_dict, schema_file):
     """ Iterate over the validation errors, print to log.warn
 
-    :param json_file_abs_path:
+    :param json_dict:
     :param schema_file:
     :return:
     """
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-    logging.info("Json to validate: {}".format(json_file_abs_path))
+    validator = validator_file(schema_file)
+
+    # Build a list of 'errors', summarizing each
+    errors = sorted(validator.iter_errors(json_dict), key=lambda e: e.path)
+    error_summary = list()
+    for i, err in enumerate(errors):
+        # print("ERR",i)
+        stack_path = list(err.relative_path)
+        stack_path = [str(p) for p in stack_path]
+        error_string = "Error {} at {}".format(i, "/".join(stack_path))
+        # logging.warning("Error {} at {}".format(i, "/".join(stack_path)))
+        # logging.warning("\t" + err.message)
+        # error_summary.append(error_string)
+        error_summary.append((error_string, err))
+    return error_summary
+
+
+# Convenience functions
+def list_errors_file_local(json_file_abs_path):
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
+    return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
 
-    validator = jschema.Draft4Validator(this_json_schema_dict)
-    logging.info("Instantiated validator {}".format(validator))
 
-    errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    for i,err in enumerate(errors):
-        stack_path = list(err.relative_path)
-        stack_path = [str(p) for p in stack_path]
-        logging.warning("Error {} at {}".format(i,"/".join(stack_path)))
-        logging.warning("\t" + err.message)
-    return errors
+def list_errors_file_remote(json_file_abs_path):
+    this_json_dict = load_serial_data_file_path(json_file_abs_path)
+    return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
 
-def list_errors_dict(this_json_dict, schema_file=SCHEMA_FILE):
-    """ Iterate over the validation errors, print to log.warn
 
-    :param json_file_abs_path:
-    :param schema_file:
-    :return:
-    """
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
+def list_errors_dict_local(this_json_dict):
+    return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
 
-    validator = jschema.Draft4Validator(this_json_schema_dict)
-    logging.info("Instantiated validator {}".format(validator))
 
-    errors = sorted(validator.iter_errors(this_json_dict), key=lambda e: e.path)
-    for i,err in enumerate(errors):
-        stack_path = list(err.relative_path)
-        stack_path = [str(p) for p in stack_path]
-        logging.warning("Error {} at {}".format(i,"/".join(stack_path)))
-        logging.warning("\t" + err.message)
-    return errors
+def list_errors_dict_remote(this_json_dict):
+    return list_errors(this_json_dict, REMOTE_SCHEMA_FILE)
+
