@@ -110,72 +110,57 @@ def is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
     return validator.is_valid(this_json_dict)
 
 
-
-def is_valid_dict_local(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+def is_valid_dict_local(this_json_dict):
+    return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
+    # logging.info("Schema: {}".format(schema_file))
+    # this_json_schema_dict = load_serial_data_file_path(schema_file)
+    #
     # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    return validator.is_valid(this_json_dict)
+    # # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    # return validator.is_valid(this_json_dict)
 
 
-def is_valid_dict_remote(this_json_dict, schema_file=REMOTE_SCHEMA_FILE):
-    logging.info("Schema: {}".format(schema_file))
-    this_json_schema_dict = load_serial_data_file_path(schema_file)
-
-    validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+def is_valid_dict_remote(this_json_dict):
+    return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
+    # logging.info("Schema: {}".format(schema_file))
+    # this_json_schema_dict = load_serial_data_file_path(schema_file)
+    #
     # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
-    return validator.is_valid(this_json_dict)
+    # # validator = jschema.validators.Draft7Validator(this_json_schema_dict)
+    # return validator.is_valid(this_json_dict)
 
 #%%
 
 
-def validate_file_local(json_file_abs_path, schema_file=LOCAL_SCHEMA_FILE):
-    """ Wrapper around validate_against
-
-    TODO: This function should handle default schemas for DDO and MetaData
-
-    """
-    return validate_against_file(json_file_abs_path, schema_file)
+def validate_file_local(json_file_abs_path):
+    return validate_against_file(json_file_abs_path, LOCAL_SCHEMA_FILE)
 
 
-def validate_file_remote(json_file_abs_path, schema_file=REMOTE_SCHEMA_FILE):
-    """ Wrapper around validate_against
-
-    TODO: This function should handle default schemas for DDO and MetaData
-
-    """
-    return validate_against_file(json_file_abs_path, schema_file)
+def validate_file_remote(json_file_abs_path):
+    return validate_against_file(json_file_abs_path, REMOTE_SCHEMA_FILE)
 
 
-def validate_dict_local(this_json_dict, schema_file=LOCAL_SCHEMA_FILE):
-    """ Wrapper around validate_against
-
-    TODO: This function should handle default schemas for DDO and MetaData
-
-    """
-    return validate_against_dict(this_json_dict, schema_file)
+def validate_dict_local(this_json_dict):
+    return validate_against_dict(this_json_dict, LOCAL_SCHEMA_FILE)
 
 
-def validate_dict_remote(this_json_dict, schema_file=REMOTE_SCHEMA_FILE):
-    """ Wrapper around validate_against
-
-    TODO: This function should handle default schemas for DDO and MetaData
-
-    """
-    return validate_against_dict(this_json_dict, schema_file)
+def validate_dict_remote(this_json_dict):
+    return validate_against_dict(this_json_dict, REMOTE_SCHEMA_FILE)
 
 #%%
-
-
-def list_errors_file_local(json_file_abs_path, schema_file=LOCAL_SCHEMA_FILE):
+def list_errors(json_dict, schema_file):
     """ Iterate over the validation errors, print to log.warn
 
     :param json_file_abs_path:
     :param schema_file:
     :return:
     """
+
+    pass
+
+
+def list_errors_file_local(json_file_abs_path, schema_file=LOCAL_SCHEMA_FILE):
+
     logging.info("Schema: {}".format(schema_file))
     this_json_schema_dict = load_serial_data_file_path(schema_file)
     logging.info("Json to validate: {}".format(json_file_abs_path))
