@@ -4,7 +4,7 @@
   "$id": "http://example.com/root.json",
   "type": "object",
   "default": null,
-  "additionalProperties": false,
+  "additionalProperties": true,
   "required": [
     "base"
   ],
