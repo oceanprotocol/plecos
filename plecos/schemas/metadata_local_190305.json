@@ -1,10 +1,10 @@
 {
   "definitions": {},
-  "$schema": "",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/root.json",
   "type": "object",
   "default": null,
-  "additionalProperties": true,
+  "additionalProperties": false,
   "required": [
     "base"
   ],
@@ -12,6 +12,8 @@
     "base": {
       "$id": "#/properties/base",
       "type": "object",
+      "default": null,
+      "additionalProperties": false,
       "required": [
         "name",
         "author",
