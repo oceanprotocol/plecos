@@ -9,7 +9,6 @@ verify_ssl = true
 jsonschema = "==3.0.0b3"
 pytest = "*"
 click = "*"
-pyyaml = "*"
 
 [requires]
 python_version = "3.6"
