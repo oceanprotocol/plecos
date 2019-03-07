@@ -6,12 +6,11 @@ print(plecos.__version__)
 path_to_json_local = Path("~/ocn/Plecos/plecos/samples/sample_metadata_local.json").expanduser()
 path_to_json_remote = Path("~/ocn/Plecos/plecos/samples/sample_metadata_remote.json").expanduser()
 path_to_broken_json = Path("~/ocn/Plecos/plecos/samples/metadata_local_broken.json").expanduser()
-path_to_schema_local = Path("~/ocn/Plecos/plecos/schemas/metadata_local_190305.json").expanduser()
-path_to_schema_remote = Path("~/ocn/Plecos/plecos/schemas/metadata_remote_190305.json").expanduser()
+path_to_schema_local = Path("~/ocn/Plecos/plecos/schemas/metadata_local_v0_1.json").expanduser()
+path_to_schema_remote = Path("~/ocn/Plecos/plecos/schemas/metadata_remote_v0_1.json").expanduser()
 
 # Select remote or local metadata
-# LOCAL=True
-LOCAL=True
+LOCAL=False
 
 if LOCAL:
     path_json_file = path_to_json_local

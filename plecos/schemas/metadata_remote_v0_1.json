@@ -247,6 +247,7 @@
       "$id": "#/properties/curation",
       "type": "object",
       "default": null,
+      "additionalProperties": false,
       "required": [
         "rating",
         "numVotes"
@@ -277,7 +278,7 @@
           ],
           "pattern": "^(.*)$"
         },
-        "isDeleted": {
+        "isListed": {
           "$id": "#/properties/curation/properties/isListed",
           "type": "boolean",
           "default": false,
