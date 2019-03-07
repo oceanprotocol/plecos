@@ -16,6 +16,7 @@
       "additionalProperties": false,
       "required": [
         "name",
+        "dateCreated",
         "author",
         "license",
         "contentType",
@@ -31,6 +32,15 @@
           "default": "",
           "examples": [
             "UK Weather information 2011"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "dateCreated": {
+          "$id": "#/properties/base/properties/dateCreated",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2012-02-01T10:55:11Z"
           ],
           "pattern": "^(.*)$"
         },
