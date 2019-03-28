@@ -4,23 +4,29 @@
     "dateCreated": "2012-02-01T10:55:11Z",
     "author": "Mario",
     "license": "CC0: Public Domain",
-    "contentType": "jpg/txt",
     "price": 10,
     "files": [
       {
+        "contentType": "application/zip",
+        "encoding": "UTF-8",
+        "compression": "zip",
         "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
         "checksumType": "MD5",
         "contentLength": 12057507,
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/training.zip"
+        "url": "https://s3.amazonaws.com/assets/training.zip"
       },
       {
+        "contentType": "text/txt",
+        "encoding": "UTF-8",
+        "compression": "none",
         "checksum": "354d19c0733c47ef3a6cce5b633116b0",
         "checksumType": "MD5",
         "contentLength": 928,
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/monkey_labels.txt"
+        "url": "https://s3.amazonaws.com/datacommons/monkey_labels.txt"
       },
       {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/validation.zip"
+        "contentType": "application/zip",
+        "url": "https://s3.amazonaws.com/datacommons/validation.zip"
       }
     ],
     "checksum": "",
@@ -34,10 +40,7 @@
     ],
     "type": "dataset",
     "description": "EXAMPLE ONLY ",
-    "size": "3.1gb",
     "copyrightHolder": "Unknown",
-    "encoding": "UTF-8",
-    "compression": "zip",
     "workExample": "image path, id, label",
     "links": [
       {
@@ -50,12 +53,12 @@
         "url": "https://github.com/slothkong/CNN_classification_10_monkey_species"
       },
       {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/discovery/n5151.jpg",
+        "url": "https://s3.amazonaws.com/datacommons/links/discovery/n5151.jpg",
         "name": "n5151.jpg",
         "type": "discovery"
       },
       {
-        "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/sample.zip",
+        "url": "https://s3.amazonaws.com/datacommons/links/sample/sample.zip",
         "name": "sample.zip",
         "type": "sample"
       }
