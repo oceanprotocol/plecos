@@ -283,8 +283,58 @@
           ],
           "pattern": "^(.*)$"
         }
-      }
+      },
+
+
+
+      "curation": {
+        "$id": "#/properties/curation",
+        "type": "object",
+        "default": null,
+        "additionalProperties": false,
+        "required": [
+          "rating",
+          "numVotes"
+        ],
+        "properties": {
+          "rating": {
+            "$id": "#/properties/curation/properties/rating",
+            "type": "number",
+            "default": 0,
+            "examples": [
+              0.93
+            ]
+          },
+          "numVotes": {
+            "$id": "#/properties/curation/properties/numVotes",
+            "type": "integer",
+            "default": 0,
+            "examples": [
+              123
+            ]
+          },
+          "schema": {
+            "$id": "#/properties/curation/properties/schema",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Binary Voting"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "isListed": {
+            "$id": "#/properties/curation/properties/isListed",
+            "type": "boolean",
+            "default": false,
+            "examples": [
+              false
+            ]
+          }
+        }
+      },
+
     },
+
     "additionalInformation": {
       "$id": "#/properties/additionalInformation",
       "type": "object",
