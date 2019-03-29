@@ -80,6 +80,7 @@
             "$id": "#/properties/base/properties/files/items",
             "type": "object",
             "title": "The Items Schema",
+            "additionalProperties": false,
             "properties": {
               "contentType": {
                 "$id": "#/properties/base/properties/files/items/properties/contentType",
