@@ -4,12 +4,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
 
 [packages]
 jsonschema = "==3.0.0b3"
 pytest = "*"
-click = "*"
-pyyaml = "*"
 
 [requires]
 python_version = "3.6"

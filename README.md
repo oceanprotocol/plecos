@@ -38,19 +38,74 @@ https://jsonlint.com/
 http://jsonviewer.stack.hu/
 
 ### Quickstart
-After installing and importing the package, call the `.is_valid(YOUR_JSON_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
+After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH, JSON_SCHEMA_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
+
 ```python
 from pathlib import Path
 import plecos
 
-# Get a file path to your metadata.json file
-PATH_DATA_ROOT = Path("~/DATA").expanduser()
-path_to_json = PATH_DATA_ROOT / 'metadata.json'
-
 # Check if valid, if not - list the error in a summary form
-if not plecos.is_valid(path_to_json):
-    plecos.list_errors(path_to_json)
+if not plecos.is_valid_file_local('metadata.json'):
+    errors = plecos.list_errors_file('metadata.json')
+if errors:
+    for e in errors:
+        print(e)    
 ```
+
+A dictionary object can also be checked against the schema, using `.is_valid_dict(python_dictionary)`. 
+```python
+import plecos
+import json
+
+# Load it into a dictionary
+with open('metadata.json') as json_file:
+    this_json_dict = json.load(json_file)
+        
+# Check if valid, if not - list the error in a summary form
+if not plecos.is_valid_dict_local(this_json_dict):
+    errors = plecos.list_errors_dict(this_json_dict)
+if errors:
+    for e in errors:
+        print(e)
+
+```
+
+### Summary of functions
+
+
+Several convenience functions are defined for validated against "local" or "remote" metadata. 
+
+- Wrapping [jschema.Draft7Validator.validate()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.validate)
+  - validate_dict(json_dict, schema_path)
+    - validate_dict_local(json_dict)
+    - validate_dict_remote(json_dict)
+  - validate_file(json_path, schema_path)
+    - validate_file_local(json_path)
+    - validate_file_remote(json_path)
+
+- Wrapping [jschema.Draft7Validator.is_valid()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.is_valid)
+  - is_valid_dict(json_dict, schema_path)
+    - is_valid_dict_local(json_dict)
+    - is_valid_dict_remote(json_dict)
+  - is_valid_file(json_path, schema_path)
+    - is_valid_file_local(json_path)
+    - is_valid_file_remote(json_path)
+
+- Wrapping [jschema.Draft7Validator.iter_errors()](https://python-jsonschema.readthedocs.io/en/latest/validate/#jsonschema.IValidator.iter_errors)
+  - list_errors(json_dict, schema_path)
+    - list_errors_dict_remote(json_dict)
+    - list_errors_dict_remote(json_dict)
+    - list_errors_file_local(json_path)
+    - list_errors_file_remote(json_path)
+   
+`list_errors` returns a tuple containing a short summary of the error (the json path), and the full error object. 
+
+
+*LOCAL_SCHEMA_FILE_* points to the latest OEP8 schema for local metadata. Older versions are included in the package. 
+
+*REMOTE_SCHEMA_FILE_* points to the latest OEP8 schema for remote metadata. Older versions are included in the package. 
+
+*LOCAL_SCHEMA_FILE* and *REMOTE_SCHEMA_FILE_* can be replaced with your own file path to your own schema. 
 
 ## License
 
