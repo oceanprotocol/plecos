@@ -63,6 +63,9 @@
         "type": "sample"
       }
     ],
-    "inLanguage": "en"
+    "inLanguage": "en",
+    "additionalInformation": {
+      "info": "extra information objects"
+    }
   }
 }
