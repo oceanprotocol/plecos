@@ -17,6 +17,7 @@
       "required": [
         "name",
         "dateCreated",
+        "datePublished",
         "author",
         "license",
         "price",
@@ -38,6 +39,16 @@
           "$id": "#/properties/base/properties/dateCreated",
           "type": "string",
           "title": "The Datecreated Schema",
+          "default": "",
+          "examples": [
+            "2012-02-01T10:55:11Z"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "datePublished": {
+          "$id": "#/properties/base/properties/datePublished",
+          "type": "string",
+          "title": "The Datepublished Schema",
           "default": "",
           "examples": [
             "2012-02-01T10:55:11Z"

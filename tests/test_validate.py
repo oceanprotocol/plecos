@@ -52,12 +52,6 @@ def test_fail_on_additonal_base_attribute(schema_local_dict, schema_remote_dict,
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
         assert e_info
 
-    sample_metadata_dict_local['base']['size'] = 0
-    validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
-    with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
-        assert e_info
-
     sample_metadata_dict_remote['base']['EXTRA ATTRIB!'] = 0
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
