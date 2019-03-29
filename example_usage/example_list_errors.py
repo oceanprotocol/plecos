@@ -31,6 +31,7 @@ print("Schema file:", path_schema_file)
 #%%
 
 
+json_dict['base']['files'][0]['url']
 
 # json_dict['base']['EXTRA ATTRIB!'] = 0
 # json_dict['base']['files'][0]['EXTRA_ATTR'] = "????"
