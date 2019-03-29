@@ -36,18 +36,17 @@ def test_validator_simple():
 
 #%%
 
-
-def test_local_metadata(schema_local_dict, sample_metadata_dict_local):
+def test_local_metadata_passes(schema_local_dict, sample_metadata_dict_local):
     validator = Draft7Validator(schema_local_dict)
     validator.validate(sample_metadata_dict_local)
 
 
-def test_remote_metadata(schema_remote_dict, sample_metadata_dict_remote):
+def test_remote_metadata_passes(schema_remote_dict, sample_metadata_dict_remote):
     validator = Draft7Validator(schema_remote_dict)
     validator.validate(sample_metadata_dict_remote)
 
 
-def test_fail_additonal_metadata(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+def test_fail_on_additonal_base_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     sample_metadata_dict_local['base']['EXTRA ATTRIB!'] = 0
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
@@ -59,7 +58,31 @@ def test_fail_additonal_metadata(schema_local_dict, schema_remote_dict, sample_m
         assert e_info
 
 
-def test_fail_missing_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+def test_fail_on_additonal_file_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    sample_metadata_dict_local['base']['files'][0]['EXTRA ATTRIB!'] = 0
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+    sample_metadata_dict_remote['base']['files'][0]['EXTRA ATTRIB!'] = 0
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
+
+
+def test_fail_on_additonal_links_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    sample_metadata_dict_local['base']['links'][0]['EXTRA ATTRIB!'] = 0
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+    sample_metadata_dict_remote['base']['links'][0]['EXTRA ATTRIB!'] = 0
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
+
+
+def test_fail_on_missing_base_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     del sample_metadata_dict_local['base']['price']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
@@ -71,7 +94,40 @@ def test_fail_missing_attribute(schema_local_dict, schema_remote_dict, sample_me
         assert e_info
 
 
-def test_type_mismatch(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+def test_allow_additional_information(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    more = {'more info': {
+        "extra": "stuff",
+        "item2": 2 }
+    }
+
+    # delete additional info
+    del sample_metadata_dict_local['base']['additionalInformation']
+    validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+
+    del sample_metadata_dict_remote['base']['additionalInformation']
+    validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+    # add additional info
+    sample_metadata_dict_local['base']['additionalInformation'] = more
+    validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+
+    sample_metadata_dict_remote['base']['additionalInformation'] = more
+    validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+def test_fail_local_missing_file_url(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    del sample_metadata_dict_local['base']['files'][0]['url']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+
+def test_assert_remote_without_file_url(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    with pytest.raises(KeyError) as e_info:
+        sample_metadata_dict_remote['base']['files'][0]['url']
+        assert e_info
+
+
+def test_fail_on_type_mismatches(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     sample_metadata_dict_local['base']['price'] = "A string is not allowed!"
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
