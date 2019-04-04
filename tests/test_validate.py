@@ -70,6 +70,29 @@ def test_fail_on_additonal_file_attribute(schema_local_dict, schema_remote_dict,
         assert e_info
 
 
+def test_fail_on_missing_file_index_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    del sample_metadata_dict_local['base']['files'][0]['index']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+    del sample_metadata_dict_remote['base']['files'][0]['index']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
+
+
+def test_fail_on_missing_file_url_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    del sample_metadata_dict_local['base']['files'][0]['url']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+    with pytest.raises(KeyError) as e_info:
+        print(sample_metadata_dict_remote['base']['files'][0]['url'])
+        assert e_info
+
+
 def test_fail_on_additonal_links_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     sample_metadata_dict_local['base']['links'][0]['EXTRA ATTRIB!'] = 0
     with pytest.raises(ValidationError) as e_info:

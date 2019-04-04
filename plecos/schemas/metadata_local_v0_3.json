@@ -81,6 +81,10 @@
             "type": "object",
             "title": "The Items Schema",
             "additionalProperties": false,
+            "required": [
+              "index",
+              "url"
+            ],
             "properties": {
               "contentType": {
                 "$id": "#/properties/base/properties/files/items/properties/contentType",
@@ -169,10 +173,7 @@
                 ],
                 "pattern": "^(.*)$"
               }
-            },
-            "required": [
-              "url"
-            ]
+            }
           }
         },
         "checksum": {
@@ -270,6 +271,9 @@
             "title": "The Items Schema",
             "default": null,
             "additionalProperties": false,
+            "required": [
+              "url"
+            ],
             "properties": {
               "name": {
                 "$id": "#/properties/base/properties/links/items/properties/name",
@@ -301,10 +305,7 @@
                 ],
                 "pattern": "^(.*)$"
               }
-            },
-            "required": [
-              "url"
-            ]
+            }
           }
         },
         "inLanguage": {
