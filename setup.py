@@ -152,6 +152,6 @@ setuptools.setup(
     # test_suite='tests',
     # tests_require=test_requirements,
     url='https://github.com/oceanprotocol/plecos',
-    version='0.7.0',
+    version='version='0.7.0'',
     zip_safe=False,
 )
