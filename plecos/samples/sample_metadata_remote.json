@@ -26,7 +26,8 @@
         "contentLength": 928
       },
       {
-        "index":2
+        "index":2,
+        "resourceId": "test ID"
       }
     ],
     "encryptedFiles": "234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421",

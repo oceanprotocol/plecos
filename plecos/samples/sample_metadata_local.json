@@ -7,6 +7,7 @@
     "price": 10,
     "files": [
       {
+        "index":0,
         "contentType": "application/zip",
         "encoding": "UTF-8",
         "compression": "zip",
@@ -16,6 +17,7 @@
         "url": "https://s3.amazonaws.com/assets/training.zip"
       },
       {
+        "index":1,
         "contentType": "text/txt",
         "encoding": "UTF-8",
         "compression": "none",
@@ -25,7 +27,9 @@
         "url": "https://s3.amazonaws.com/datacommons/monkey_labels.txt"
       },
       {
+        "index":2,
         "contentType": "application/zip",
+        "resourceId": "test ID",
         "url": "https://s3.amazonaws.com/datacommons/validation.zip"
       }
     ],
