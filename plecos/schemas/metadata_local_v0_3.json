@@ -141,6 +141,24 @@
                   12057507
                 ]
               },
+              "index": {
+                "$id": "#/properties/base/properties/files/items/properties/index",
+                "type": "integer",
+                "title": "The index Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "resourceId": {
+                "$id": "#/properties/base/properties/files/items/properties/resourceId",
+                "type": "string",
+                "title": "The resourceId Schema",
+                "default": 0,
+                "examples": [
+                  "bucket:47550"
+                ]
+              },
               "url": {
                 "$id": "#/properties/base/properties/files/items/properties/url",
                 "type": "string",
