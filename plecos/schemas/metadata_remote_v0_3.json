@@ -159,6 +159,15 @@
                 ],
                 "pattern": "^(.*)$"
               },
+              "resourceId": {
+                "$id": "#/properties/base/properties/files/items/properties/resourceId",
+                "type": "string",
+                "title": "The resourceId Schema",
+                "default": 0,
+                "examples": [
+                  "bucket:47550"
+                ]
+              },
               "contentLength": {
                 "$id": "#/properties/base/properties/files/items/properties/contentLength",
                 "type": "integer",
