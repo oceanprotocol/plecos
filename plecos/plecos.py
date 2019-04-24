@@ -107,7 +107,7 @@ def is_valid_dict_local(this_json_dict):
 
 
 def is_valid_dict_remote(this_json_dict):
-    return is_valid_dict(this_json_dict, schema_file=LOCAL_SCHEMA_FILE)
+    return is_valid_dict(this_json_dict, schema_file=REMOTE_SCHEMA_FILE)
 
 
 #%% Wrapper over jschema.Draft7Validator.iter_errors()
@@ -143,7 +143,7 @@ def list_errors_file_local(json_file_abs_path):
 
 def list_errors_file_remote(json_file_abs_path):
     this_json_dict = load_serial_data_file_path(json_file_abs_path)
-    return list_errors(this_json_dict, LOCAL_SCHEMA_FILE)
+    return list_errors(this_json_dict, REMOTE_SCHEMA_FILE)
 
 
 def list_errors_dict_local(this_json_dict):
