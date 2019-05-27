@@ -83,7 +83,8 @@
             "additionalProperties": false,
             "required": [
               "index",
-              "url"
+              "url",
+              "contentType"
             ],
             "properties": {
               "contentType": {
