@@ -5,10 +5,10 @@
     "datePublished": "2019-03-03T12:30:15Z",
     "author": "Mario",
     "license": "CC0: Public Domain",
-    "price": 10,
+    "price": "10",
     "files": [
       {
-        "index":0,
+        "index": 0,
         "contentType": "application/zip",
         "encoding": "UTF-8",
         "compression": "zip",
@@ -17,7 +17,7 @@
         "contentLength": 12057507
       },
       {
-        "index":1,
+        "index": 1,
         "contentType": "text/txt",
         "encoding": "UTF-8",
         "compression": "none",
@@ -26,7 +26,7 @@
         "contentLength": 928
       },
       {
-        "index":2,
+        "index": 2,
         "resourceId": "test ID"
       }
     ],
@@ -64,15 +64,15 @@
         "type": "sample"
       }
     ],
-    "inLanguage": "en",
-    "additionalInformation": {
-      "info": "extra information objects"
-    },
-    "curation": {
-        "rating": 0.93,
-        "numVotes": 123,
-        "schema": "Binary Voting",
-        "isListed": true
-     }
+    "inLanguage": "en"
+  },
+  "curation": {
+    "rating": 0.93,
+    "numVotes": 123,
+    "schema": "Binary Voting",
+    "isListed": true
+  },
+  "additionalInformation": {
+    "info": "extra information objects"
   }
 }
