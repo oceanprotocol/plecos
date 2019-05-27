@@ -4,10 +4,10 @@
     "dateCreated": "2012-02-01T10:55:11Z",
     "author": "Mario",
     "license": "CC0: Public Domain",
-    "price": 10,
+    "price": "10",
     "files": [
       {
-        "index":0,
+        "index": 0,
         "contentType": "application/zip",
         "encoding": "UTF-8",
         "compression": "zip",
@@ -17,7 +17,7 @@
         "url": "https://s3.amazonaws.com/assets/training.zip"
       },
       {
-        "index":1,
+        "index": 1,
         "contentType": "text/txt",
         "encoding": "UTF-8",
         "compression": "none",
@@ -27,7 +27,7 @@
         "url": "https://s3.amazonaws.com/datacommons/monkey_labels.txt"
       },
       {
-        "index":2,
+        "index": 2,
         "contentType": "application/zip",
         "resourceId": "test ID",
         "url": "https://s3.amazonaws.com/datacommons/validation.zip"
@@ -67,9 +67,9 @@
         "type": "sample"
       }
     ],
-    "inLanguage": "en",
-    "additionalInformation": {
-      "info": "extra information objects"
-    }
+    "inLanguage": "en"
+  },
+  "additionalInformation": {
+    "info": "extra information objects"
   }
 }
