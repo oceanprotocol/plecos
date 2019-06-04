@@ -70,7 +70,8 @@
           "default": "0",
           "examples": [
             "10"
-          ]
+          ],
+          "pattern": "^[0-9]+$"
         },
         "files": {
           "$id": "#/properties/base/properties/files",
@@ -177,16 +178,6 @@
             }
           }
         },
-        "checksum": {
-          "$id": "#/properties/base/properties/checksum",
-          "type": "string",
-          "title": "The Checksum Schema",
-          "default": "",
-          "examples": [
-            ""
-          ],
-          "pattern": "^(.*)$"
-        },
         "categories": {
           "$id": "#/properties/base/properties/categories",
           "type": "array",
@@ -271,7 +262,7 @@
             "type": "object",
             "title": "The Items Schema",
             "default": null,
-            "additionalProperties": false,
+            "additionalProperties": true,
             "required": [
               "url"
             ],
