@@ -27,11 +27,12 @@
       },
       {
         "index": 2,
+        "contentType": "application/zip",
         "resourceId": "test ID"
       }
     ],
     "encryptedFiles": "234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421",
-    "checksum": "",
+    "checksum": "0xd7296ccaaec630452be65a13ea1d2d750f071b6f50b779e99cc9adf05faebabc",
     "categories": [
       "image"
     ],
@@ -56,7 +57,8 @@
       {
         "url": "https://s3.amazonaws.com/datacommons/links/discovery/n5151.jpg",
         "name": "n5151.jpg",
-        "type": "discovery"
+        "type": "discovery",
+        "reviewed": true
       },
       {
         "url": "https://s3.amazonaws.com/datacommons/links/sample/sample.zip",
