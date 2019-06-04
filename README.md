@@ -2,8 +2,7 @@
 
 # Plecos
 
-> Utility library to validate the Metadata of assets
-> [oceanprotocol.com](https://oceanprotocol.com)
+An [Ocean Protocol](https://oceanprotocol.com) utility library to validate asset metadata.
 
 ___"🌊 Plecos are fish which mostly eat green surface algae and are excellent window cleaners."___
 
@@ -24,21 +23,22 @@ ___"🌊 Plecos are fish which mostly eat green surface algae and are excellent 
 
 ---
 
-## Features 
+## Features
 
-Plecos contains functions that validate metadata formatted as json according to OEP-8. 
-You can validate a single json containg metadata or a list with with multiple links 
-which contain metadata. 
+Plecos contains functions that validate metadata formatted as JSON according to [OEP-8](https://github.com/oceanprotocol/OEPs/tree/master/8).
+You can validate a single JSON containing metadata or a list with with multiple links which contain metadata.
 
-## Get Started 
+## Get Started
 
-The following online tools are useful when working with JSON and schemas;
-https://www.jsonschema.net/
-https://jsonlint.com/
-http://jsonviewer.stack.hu/
+The following online tools are useful when working with JSON and JSON schemas:
+
+- https://www.jsonschema.net/
+- https://jsonlint.com/
+- http://jsonviewer.stack.hu/
 
 ### Quickstart
-After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH, JSON_SCHEMA_PATH)` function to check a json file against the latest [OEP8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8). 
+
+After installing and importing the package, call the `.is_valid_file(YOUR_JSON_PATH, JSON_SCHEMA_PATH)` function to check a JSON file against the latest [OEP-8 schema](https://github.com/oceanprotocol/OEPs/tree/master/8).
 
 ```python
 from pathlib import Path
@@ -49,10 +49,11 @@ if not plecos.is_valid_file_local('metadata.json'):
     errors = plecos.list_errors_file('metadata.json')
 if errors:
     for e in errors:
-        print(e)    
+        print(e)
 ```
 
-A dictionary object can also be checked against the schema, using `.is_valid_dict(python_dictionary)`. 
+A dictionary object can also be checked against the schema, using `.is_valid_dict(python_dictionary)`.
+
 ```python
 import plecos
 import json
@@ -60,18 +61,16 @@ import json
 # Load it into a dictionary
 with open('metadata.json') as json_file:
     this_json_dict = json.load(json_file)
-        
+
 # Check if valid, if not - list the error in a summary form
 if not plecos.is_valid_dict_local(this_json_dict):
     errors = plecos.list_errors_dict(this_json_dict)
 if errors:
     for e in errors:
         print(e)
-
 ```
 
-### Summary of functions
-
+### Summary of Functions
 
 Several convenience functions are defined for validated against "local" or "remote" metadata. 
 
@@ -97,15 +96,14 @@ Several convenience functions are defined for validated against "local" or "remo
     - list_errors_dict_remote(json_dict)
     - list_errors_file_local(json_path)
     - list_errors_file_remote(json_path)
-   
-`list_errors` returns a tuple containing a short summary of the error (the json path), and the full error object. 
 
+`list_errors` returns a tuple containing a short summary of the error (the json path), and the full error object.
 
-*LOCAL_SCHEMA_FILE_* points to the latest OEP8 schema for local metadata. Older versions are included in the package. 
+*LOCAL_SCHEMA_FILE_* points to the latest OEP-8 schema for local metadata. Older versions are included in the package.
 
-*REMOTE_SCHEMA_FILE_* points to the latest OEP8 schema for remote metadata. Older versions are included in the package. 
+*REMOTE_SCHEMA_FILE_* points to the latest OEP-8 schema for remote metadata. Older versions are included in the package.
 
-*LOCAL_SCHEMA_FILE* and *REMOTE_SCHEMA_FILE_* can be replaced with your own file path to your own schema. 
+*LOCAL_SCHEMA_FILE* and *REMOTE_SCHEMA_FILE_* can be replaced with your own file path to your own schema.
 
 ## License
 
@@ -124,4 +122,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-

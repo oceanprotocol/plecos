@@ -1,0 +1,4 @@
+# pip install dev_requirements.txt
+# will do the same as
+# pip install -e .[dev]
+-e .[dev]
