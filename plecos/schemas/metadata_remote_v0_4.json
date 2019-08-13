@@ -5,14 +5,14 @@
   "type": "object",
   "title": "The Root Schema",
   "required": [
-    "base",
+    "main",
     "curation"
   ],
   "properties": {
-    "base": {
-      "$id": "#/properties/base",
+    "main": {
+      "$id": "#/properties/main",
       "type": "object",
-      "title": "The Base Schema",
+      "title": "The Main Schema",
       "default": null,
       "additionalProperties": false,
       "required": [
@@ -28,7 +28,7 @@
       ],
       "properties": {
         "name": {
-          "$id": "#/properties/base/properties/name",
+          "$id": "#/properties/main/properties/name",
           "type": "string",
           "title": "The Name Schema",
           "default": "",
@@ -38,7 +38,7 @@
           "pattern": "^(.*)$"
         },
         "dateCreated": {
-          "$id": "#/properties/base/properties/dateCreated",
+          "$id": "#/properties/main/properties/dateCreated",
           "title": "The Datecreated Schema",
           "default": "",
           "examples": [
@@ -47,7 +47,7 @@
           "pattern": "^(.*)$"
         },
         "datePublished": {
-          "$id": "#/properties/base/properties/datePublished",
+          "$id": "#/properties/main/properties/datePublished",
           "title": "The Datepublished Schema",
           "default": "",
           "examples": [
@@ -56,7 +56,7 @@
           "pattern": "^(.*)$"
         },
         "author": {
-          "$id": "#/properties/base/properties/author",
+          "$id": "#/properties/main/properties/author",
           "type": "string",
           "title": "The Author Schema",
           "default": "",
@@ -66,7 +66,7 @@
           "pattern": "^(.*)$"
         },
         "license": {
-          "$id": "#/properties/base/properties/license",
+          "$id": "#/properties/main/properties/license",
           "type": "string",
           "title": "The License Schema",
           "default": "",
@@ -76,7 +76,7 @@
           "pattern": "^(.*)$"
         },
         "price": {
-          "$id": "#/properties/base/properties/price",
+          "$id": "#/properties/main/properties/price",
           "type": "string",
           "title": "The Price Schema",
           "default": "0",
@@ -86,13 +86,13 @@
           "pattern": "^[0-9]+$"
         },
         "files": {
-          "$id": "#/properties/base/properties/files",
+          "$id": "#/properties/main/properties/files",
           "type": "array",
           "title": "The Files Schema",
           "default": null,
           "additionalItems": false,
           "items": {
-            "$id": "#/properties/base/properties/files/items",
+            "$id": "#/properties/main/properties/files/items",
             "type": "object",
             "title": "The Items Schema",
             "default": null,
@@ -103,7 +103,7 @@
             ],
             "properties": {
               "index": {
-                "$id": "#/properties/base/properties/files/items/properties/index",
+                "$id": "#/properties/main/properties/files/items/properties/index",
                 "type": "integer",
                 "title": "The Index Schema",
                 "default": 0,
@@ -112,7 +112,7 @@
                 ]
               },
               "contentType": {
-                "$id": "#/properties/base/properties/files/items/properties/contentType",
+                "$id": "#/properties/main/properties/files/items/properties/contentType",
                 "type": "string",
                 "title": "The Contenttype Schema",
                 "default": "",
@@ -122,7 +122,7 @@
                 "pattern": "^(.*)$"
               },
               "encoding": {
-                "$id": "#/properties/base/properties/files/items/properties/encoding",
+                "$id": "#/properties/main/properties/files/items/properties/encoding",
                 "type": "string",
                 "title": "The Encoding Schema",
                 "default": "",
@@ -132,7 +132,7 @@
                 "pattern": "^(.*)$"
               },
               "compression": {
-                "$id": "#/properties/base/properties/files/items/properties/compression",
+                "$id": "#/properties/main/properties/files/items/properties/compression",
                 "type": "string",
                 "title": "The Compression Schema",
                 "default": "",
@@ -142,7 +142,7 @@
                 "pattern": "^(.*)$"
               },
               "checksum": {
-                "$id": "#/properties/base/properties/files/items/properties/checksum",
+                "$id": "#/properties/main/properties/files/items/properties/checksum",
                 "type": "string",
                 "title": "The Checksum Schema",
                 "default": "",
@@ -152,7 +152,7 @@
                 "pattern": "^(.*)$"
               },
               "checksumType": {
-                "$id": "#/properties/base/properties/files/items/properties/checksumType",
+                "$id": "#/properties/main/properties/files/items/properties/checksumType",
                 "type": "string",
                 "title": "The Checksumtype Schema",
                 "default": "",
@@ -162,7 +162,7 @@
                 "pattern": "^(.*)$"
               },
               "resourceId": {
-                "$id": "#/properties/base/properties/files/items/properties/resourceId",
+                "$id": "#/properties/main/properties/files/items/properties/resourceId",
                 "type": "string",
                 "title": "The resourceId Schema",
                 "default": 0,
@@ -171,19 +171,19 @@
                 ]
               },
               "contentLength": {
-                "$id": "#/properties/base/properties/files/items/properties/contentLength",
-                "type": "integer",
+                "$id": "#/properties/main/properties/files/items/properties/contentLength",
+                "type": "string",
                 "title": "The Contentlength Schema",
                 "default": 0,
                 "examples": [
-                  12057507
+                  "12057507"
                 ]
               }
             }
           }
         },
         "encryptedFiles": {
-          "$id": "#/properties/base/properties/encryptedFiles",
+          "$id": "#/properties/main/properties/encryptedFiles",
           "type": "string",
           "title": "The Encryptedfiles Schema",
           "default": "",
@@ -193,7 +193,7 @@
           "pattern": "^(.*)$"
         },
         "checksum": {
-          "$id": "#/properties/base/properties/checksum",
+          "$id": "#/properties/main/properties/checksum",
           "type": "string",
           "title": "The Checksum Schema",
           "default": "",
@@ -203,13 +203,13 @@
           "pattern": "^0x[a-fA-F0-9]{64}$"
         },
         "categories": {
-          "$id": "#/properties/base/properties/categories",
+          "$id": "#/properties/main/properties/categories",
           "type": "array",
           "title": "The Categories Schema",
           "default": null,
           "additionalItems": false,
           "items": {
-            "$id": "#/properties/base/properties/categories/items",
+            "$id": "#/properties/main/properties/categories/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -220,13 +220,13 @@
           }
         },
         "tags": {
-          "$id": "#/properties/base/properties/tags",
+          "$id": "#/properties/main/properties/tags",
           "type": "array",
           "title": "The Tags Schema",
           "default": null,
           "additionalItems": false,
           "items": {
-            "$id": "#/properties/base/properties/tags/items",
+            "$id": "#/properties/main/properties/tags/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -238,7 +238,7 @@
           }
         },
         "type": {
-          "$id": "#/properties/base/properties/type",
+          "$id": "#/properties/main/properties/type",
           "type": "string",
           "title": "The Type Schema",
           "default": "",
@@ -248,7 +248,7 @@
           "pattern": "^(.*)$"
         },
         "description": {
-          "$id": "#/properties/base/properties/description",
+          "$id": "#/properties/main/properties/description",
           "type": "string",
           "title": "The Description Schema",
           "default": "",
@@ -258,7 +258,7 @@
           "pattern": "^(.*)$"
         },
         "copyrightHolder": {
-          "$id": "#/properties/base/properties/copyrightHolder",
+          "$id": "#/properties/main/properties/copyrightHolder",
           "type": "string",
           "title": "The Copyrightholder Schema",
           "default": "",
@@ -268,7 +268,7 @@
           "pattern": "^(.*)$"
         },
         "workExample": {
-          "$id": "#/properties/base/properties/workExample",
+          "$id": "#/properties/main/properties/workExample",
           "type": "string",
           "title": "The Workexample Schema",
           "default": "",
@@ -278,13 +278,13 @@
           "pattern": "^(.*)$"
         },
         "links": {
-          "$id": "#/properties/base/properties/links",
+          "$id": "#/properties/main/properties/links",
           "type": "array",
           "title": "The Links Schema",
           "default": null,
           "additionalItems": false,
           "items": {
-            "$id": "#/properties/base/properties/links/items",
+            "$id": "#/properties/main/properties/links/items",
             "type": "object",
             "title": "The Items Schema",
             "default": null,
@@ -294,7 +294,7 @@
             ],
             "properties": {
               "name": {
-                "$id": "#/properties/base/properties/links/items/properties/name",
+                "$id": "#/properties/main/properties/links/items/properties/name",
                 "type": "string",
                 "title": "The Name Schema",
                 "default": "",
@@ -304,7 +304,7 @@
                 "pattern": "^(.*)$"
               },
               "type": {
-                "$id": "#/properties/base/properties/links/items/properties/type",
+                "$id": "#/properties/main/properties/links/items/properties/type",
                 "type": "string",
                 "title": "sample link",
                 "default": "",
@@ -314,7 +314,7 @@
                 "pattern": "^(.*)$"
               },
               "url": {
-                "$id": "#/properties/base/properties/links/items/properties/url",
+                "$id": "#/properties/main/properties/links/items/properties/url",
                 "type": "string",
                 "title": "The Url Schema",
                 "default": "",
@@ -327,7 +327,7 @@
           }
         },
         "inLanguage": {
-          "$id": "#/properties/base/properties/inLanguage",
+          "$id": "#/properties/main/properties/inLanguage",
           "type": "string",
           "title": "The Inlanguage Schema",
           "default": "",
@@ -339,13 +339,13 @@
       }
     },
     "additionalInformation": {
-          "$id": "#/properties/base/properties/additionalInformation",
+          "$id": "#/properties/main/properties/additionalInformation",
           "type": "object",
           "title": "The Additionalinformation Schema",
           "default": null,
           "properties": {
             "info": {
-              "$id": "#/properties/base/properties/additionalInformation/properties/info",
+              "$id": "#/properties/main/properties/additionalInformation/properties/info",
               "type": "string",
               "title": "The Info Schema",
               "default": "",
@@ -357,7 +357,7 @@
           }
         },
     "curation": {
-          "$id": "#/properties/base/properties/curation",
+          "$id": "#/properties/main/properties/curation",
           "type": "object",
           "title": "The Curation Schema",
           "default": null,
@@ -368,7 +368,7 @@
           ],
           "properties": {
             "rating": {
-              "$id": "#/properties/base/properties/curation/properties/rating",
+              "$id": "#/properties/main/properties/curation/properties/rating",
               "type": "number",
               "title": "The Rating Schema",
               "default": 0.0,
@@ -377,7 +377,7 @@
               ]
             },
             "numVotes": {
-              "$id": "#/properties/base/properties/curation/properties/numVotes",
+              "$id": "#/properties/main/properties/curation/properties/numVotes",
               "type": "integer",
               "title": "The Numvotes Schema",
               "default": 0,
@@ -386,7 +386,7 @@
               ]
             },
             "schema": {
-              "$id": "#/properties/base/properties/curation/properties/schema",
+              "$id": "#/properties/main/properties/curation/properties/schema",
               "type": "string",
               "title": "The Schema Schema",
               "default": "",
@@ -396,7 +396,7 @@
               "pattern": "^(.*)$"
             },
             "isListed": {
-              "$id": "#/properties/base/properties/curation/properties/isListed",
+              "$id": "#/properties/main/properties/curation/properties/isListed",
               "type": "boolean",
               "title": "The Islisted Schema",
               "default": false,
