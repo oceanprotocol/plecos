@@ -230,7 +230,7 @@
           "examples": [
             "EXAMPLE ONLY "
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(.|\\s)*$"
         },
         "copyrightHolder": {
           "$id": "#/properties/base/properties/copyrightHolder",
