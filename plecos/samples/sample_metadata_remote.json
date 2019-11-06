@@ -2,12 +2,13 @@
   "base": {
     "name": "10 Monkey Species Small",
     "dateCreated": "2012-02-01T10:55:11Z",
+    "datePublished": "2019-03-03T12:30:15Z",
     "author": "Mario",
     "license": "CC0: Public Domain",
-    "price": 10,
+    "price": "10",
     "files": [
       {
-        "index":0,
+        "index": 0,
         "contentType": "application/zip",
         "encoding": "UTF-8",
         "compression": "zip",
@@ -16,7 +17,7 @@
         "contentLength": 12057507
       },
       {
-        "index":1,
+        "index": 1,
         "contentType": "text/txt",
         "encoding": "UTF-8",
         "compression": "none",
@@ -25,11 +26,13 @@
         "contentLength": 928
       },
       {
-        "index":2
+        "index": 2,
+        "contentType": "application/zip",
+        "resourceId": "test ID"
       }
     ],
     "encryptedFiles": "234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421",
-    "checksum": "",
+    "checksum": "0xd7296ccaaec630452be65a13ea1d2d750f071b6f50b779e99cc9adf05faebabc",
     "categories": [
       "image"
     ],
@@ -54,7 +57,8 @@
       {
         "url": "https://s3.amazonaws.com/datacommons/links/discovery/n5151.jpg",
         "name": "n5151.jpg",
-        "type": "discovery"
+        "type": "discovery",
+        "reviewed": true
       },
       {
         "url": "https://s3.amazonaws.com/datacommons/links/sample/sample.zip",
@@ -62,15 +66,15 @@
         "type": "sample"
       }
     ],
-    "inLanguage": "en",
-    "additionalInformation": {
-      "info": "extra information objects"
-    },
-    "curation": {
-        "rating": 0.93,
-        "numVotes": 123,
-        "schema": "Binary Voting",
-        "isListed": true
-     }
+    "inLanguage": "en"
+  },
+  "curation": {
+    "rating": 0.93,
+    "numVotes": 123,
+    "schema": "Binary Voting",
+    "isListed": true
+  },
+  "additionalInformation": {
+    "info": "extra information objects"
   }
 }

@@ -6,11 +6,11 @@ print(plecos.__version__)
 path_to_json_local = Path("~/ocn/plecos/plecos/samples/sample_metadata_local.json").expanduser()
 path_to_json_remote = Path("~/ocn/plecos/plecos/samples/sample_metadata_remote.json").expanduser()
 path_to_broken_json = Path("~/ocn/plecos/plecos/samples/metadata_local_broken.json").expanduser()
-path_to_schema_local = Path("~/ocn/plecos/plecos/schemas/metadata_local_v0_2.json").expanduser()
-path_to_schema_remote = Path("~/ocn/plecos/plecos/schemas/metadata_remote_v0_2.json").expanduser()
+path_to_schema_local = Path("~/ocn/plecos/plecos/schemas/metadata_local_v0_3.json").expanduser()
+path_to_schema_remote = Path("~/ocn/plecos/plecos/schemas/metadata_remote_v0_3.json").expanduser()
 
 # Select remote or local metadata
-LOCAL=False
+LOCAL=True
 
 if LOCAL:
     path_json_file = path_to_json_local
@@ -28,10 +28,19 @@ else:
 
 print("Json file:", path_json_file)
 print("Schema file:", path_schema_file)
+
+
 #%%
 
 
-json_dict['base']['files'][0]['url']
+del json_dict['base']['files'][0]['index']
+# del json_dict['base']['files'][0]['url']
+
+
+# json_dict['base']['extra'] = 1
+plecos.is_valid_dict(json_dict)
+
+# json_dict['base']['files'][0]['url']
 
 # json_dict['base']['EXTRA ATTRIB!'] = 0
 # json_dict['base']['files'][0]['EXTRA_ATTR'] = "????"

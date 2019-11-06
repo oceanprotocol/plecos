@@ -70,15 +70,26 @@ def test_fail_on_additonal_file_attribute(schema_local_dict, schema_remote_dict,
         assert e_info
 
 
-def test_fail_on_additonal_links_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
-    sample_metadata_dict_local['base']['links'][0]['EXTRA ATTRIB!'] = 0
+def test_fail_on_missing_file_index_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    del sample_metadata_dict_local['base']['files'][0]['index']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
         assert e_info
 
-    sample_metadata_dict_remote['base']['links'][0]['EXTRA ATTRIB!'] = 0
+    del sample_metadata_dict_remote['base']['files'][0]['index']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+        assert e_info
+
+
+def test_fail_on_missing_file_url_attribute(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
+    del sample_metadata_dict_local['base']['files'][0]['url']
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
+        assert e_info
+
+    with pytest.raises(KeyError) as e_info:
+        print(sample_metadata_dict_remote['base']['files'][0]['url'])
         assert e_info
 
 
@@ -100,19 +111,22 @@ def test_allow_additional_information(schema_local_dict, schema_remote_dict, sam
         "item2": 2 }
     }
 
-    # delete additional info
-    del sample_metadata_dict_local['base']['additionalInformation']
+    # delete additionalInformation, if present
+    if 'additionalInformation' in sample_metadata_dict_local:
+        del sample_metadata_dict_local['additionalInformation']
     validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
 
-    del sample_metadata_dict_remote['base']['additionalInformation']
+    if 'additionalInformation' in sample_metadata_dict_remote:
+        del sample_metadata_dict_remote['additionalInformation']
     validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
 
     # add additional info
-    sample_metadata_dict_local['base']['additionalInformation'] = more
+    sample_metadata_dict_local['additionalInformation'] = more
     validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
 
-    sample_metadata_dict_remote['base']['additionalInformation'] = more
+    sample_metadata_dict_remote['additionalInformation'] = more
     validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
 
 def test_fail_local_missing_file_url(schema_local_dict, schema_remote_dict, sample_metadata_dict_local, sample_metadata_dict_remote):
     del sample_metadata_dict_local['base']['files'][0]['url']
@@ -134,7 +148,7 @@ def test_fail_on_type_mismatches(schema_local_dict, schema_remote_dict, sample_m
         assert e_info
     assert e_info.value.absolute_path[0] == 'base'
     assert e_info.value.absolute_path[1] == 'price'
-    assert e_info.value.validator_value == 'integer'
+    assert e_info.value.validator_value == '^[0-9]+$'
 
     sample_metadata_dict_remote['base']['price'] = "A string is not allowed!"
     with pytest.raises(ValidationError) as e_info:
@@ -142,7 +156,7 @@ def test_fail_on_type_mismatches(schema_local_dict, schema_remote_dict, sample_m
         assert e_info
     assert e_info.value.absolute_path[0] == 'base'
     assert e_info.value.absolute_path[1] == 'price'
-    assert e_info.value.validator_value == 'integer'
+    assert e_info.value.validator_value == '^[0-9]+$'
 
 def test_validate_file(path_sample_metadata_local):
     plecos.validate_file_local(path_sample_metadata_local)
@@ -173,3 +187,14 @@ def test_list_errors_dict(sample_metadata_dict_local):
         print("Error {} at {}: {}".format(i,"/".join(stack_path),err[1].message))
 
     assert len(errors) == 2
+
+
+def test_description_attr_regex_match(sample_metadata_dict_local):
+    # Original metadata should have no problems
+    errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
+    assert list(errors) == [], 'Should have no validation errors.'
+
+    # Modify description to include new lines, should also be valid.
+    sample_metadata_dict_local['base']['description'] = 'multiline description. \n 2nd line. \n'
+    errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
+    assert list(errors) == [], 'Should have no validation errors.'
