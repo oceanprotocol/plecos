@@ -206,7 +206,7 @@
           "examples": [
             "EXAMPLE ONLY "
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(.|\\s)*$"
         },
         "categories": {
           "$id": "#/properties/main/properties/categories",
