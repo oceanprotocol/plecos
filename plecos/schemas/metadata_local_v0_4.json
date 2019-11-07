@@ -89,6 +89,16 @@
               "contentType"
             ],
             "properties": {
+              "name": {
+                "$id": "#/properties/main/properties/files/items/properties/name",
+                "type": "string",
+                "title": "The file Name Schema",
+                "default": "",
+                "examples": [
+                  "monkey_species.csv"
+                ],
+                "pattern": "^(.*)$"
+              },
               "contentType": {
                 "$id": "#/properties/main/properties/files/items/properties/contentType",
                 "type": "string",
@@ -167,6 +177,30 @@
                   "bucket:47550"
                 ]
               },
+              "attributes": {
+                "$id": "#/properties/main/properties/files/items/properties/attributes",
+                "type": "array",
+                "title": "The attributes Schema",
+                "default": []
+              },
+              "encrypted": {
+                "$id": "#/properties/main/properties/files/items/properties/encrypted",
+                "type": "boolean",
+                "title": "The encrypted Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "encryptionMode": {
+                "$id": "#/properties/main/properties/files/items/properties/encryptionMode",
+                "type": "string",
+                "title": "The encryptionMode Schema",
+                "default": "",
+                "examples": [
+                  "CBC"
+                ]
+              },
               "url": {
                 "$id": "#/properties/main/properties/files/items/properties/url",
                 "type": "string",
@@ -193,13 +227,13 @@
       }
     },
     "additionalInformation": {
-      "$id": "#/properties/main/properties/additionalInformation",
+      "$id": "#/properties/additionalInformation",
       "type": "object",
-      "title": "The Additionalinformation Schema",
+      "title": "The AdditionalInformation Schema",
       "default": null,
       "properties": {
         "description": {
-          "$id": "#/properties/main/properties/description",
+          "$id": "#/properties/additionalInformation/properties/description",
           "type": "string",
           "title": "The Description Schema",
           "default": "",
@@ -209,12 +243,12 @@
           "pattern": "^(.|\\s)*$"
         },
         "categories": {
-          "$id": "#/properties/main/properties/categories",
+          "$id": "#/properties/additionalInformation/properties/categories",
           "type": "array",
           "title": "The Categories Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/main/properties/categories/items",
+            "$id": "#/properties/additionalInformation/properties/categories/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -225,12 +259,12 @@
           }
         },
         "tags": {
-          "$id": "#/properties/main/properties/tags",
+          "$id": "#/properties/additionalInformation/properties/tags",
           "type": "array",
           "title": "The Tags Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/main/properties/tags/items",
+            "$id": "#/properties/additionalInformation/properties/tags/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -243,7 +277,7 @@
           }
         },
         "copyrightHolder": {
-          "$id": "#/properties/main/properties/copyrightHolder",
+          "$id": "#/properties/additionalInformation/properties/copyrightHolder",
           "type": "string",
           "title": "The Copyrightholder Schema",
           "default": "",
@@ -253,7 +287,7 @@
           "pattern": "^(.*)$"
         },
         "workExample": {
-          "$id": "#/properties/main/properties/workExample",
+          "$id": "#/properties/additionalInformation/properties/workExample",
           "type": "string",
           "title": "The Workexample Schema",
           "default": "",
@@ -263,12 +297,12 @@
           "pattern": "^(.*)$"
         },
         "links": {
-          "$id": "#/properties/main/properties/links",
+          "$id": "#/properties/additionalInformation/properties/links",
           "type": "array",
           "title": "The Links Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/main/properties/links/items",
+            "$id": "#/properties/additionalInformation/properties/links/items",
             "type": "object",
             "title": "The Items Schema",
             "default": null,
@@ -278,7 +312,7 @@
             ],
             "properties": {
               "name": {
-                "$id": "#/properties/main/properties/links/items/properties/name",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/name",
                 "type": "string",
                 "title": "The Name Schema",
                 "default": "",
@@ -288,7 +322,7 @@
                 "pattern": "^(.*)$"
               },
               "type": {
-                "$id": "#/properties/main/properties/links/items/properties/type",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/type",
                 "type": "string",
                 "title": "sample link",
                 "default": "",
@@ -298,7 +332,7 @@
                 "pattern": "^(.*)$"
               },
               "url": {
-                "$id": "#/properties/main/properties/links/items/properties/url",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/url",
                 "type": "string",
                 "title": "The Url Schema",
                 "default": "",
@@ -311,7 +345,7 @@
           }
         },
         "inLanguage": {
-          "$id": "#/properties/main/properties/inLanguage",
+          "$id": "#/properties/additionalInformation/properties/inLanguage",
           "type": "string",
           "title": "The Inlanguage Schema",
           "default": "",
