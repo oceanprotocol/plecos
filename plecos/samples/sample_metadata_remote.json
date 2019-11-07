@@ -23,10 +23,9 @@
         "compression": "none"
       }
     ],
-    "encryptedFiles": "234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421",
-    "checksum": "0xd7296ccaaec630452be65a13ea1d2d750f071b6f50b779e99cc9adf05faebabc",
     "type": "dataset"
   },
+  "encryptedFiles": "234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421",
   "curation": {
     "rating": 0.93,
     "numVotes": 123,

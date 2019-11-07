@@ -199,3 +199,14 @@ def test_list_errors_dict(sample_metadata_dict_local):
         print("Error {} at {}: {}".format(i, "/".join(stack_path), err[1].message))
 
     assert len(errors) == 2
+
+
+def test_description_attr_regex_match(sample_metadata_dict_local):
+    # Original metadata should have no problems
+    errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
+    assert list(errors) == [], 'Should have no validation errors.'
+
+    # Modify description to include new lines, should also be valid.
+    sample_metadata_dict_local['additionalInformation']['description'] = 'multiline description. \n 2nd line. \n'
+    errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
+    assert list(errors) == [], 'Should have no validation errors.'
