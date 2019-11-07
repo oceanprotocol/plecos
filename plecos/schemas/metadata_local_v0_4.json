@@ -223,6 +223,110 @@
             "dataset"
           ],
           "pattern": "^(.*)$"
+        },
+        "algorithm": {
+          "$id": "#/properties/main/properties/algorithm",
+          "type": "object",
+          "title": "The algorithm Schema",
+          "required": [
+            "language",
+            "entrypoint",
+            "requirements"
+          ],
+          "properties": {
+            "language": {
+              "$id": "#/properties/main/properties/algorithm/properties/language",
+              "type": "string",
+              "title": "The algorithm language Schema"
+            },
+            "format": {
+              "$id": "#/properties/main/properties/algorithm/properties/format",
+              "type": "string",
+              "title": "The algorithm format Schema"
+            },
+            "version": {
+              "$id": "#/properties/main/properties/algorithm/properties/version",
+              "type": "string",
+              "title": "The algorithm version Schema"
+            },
+            "entrypoint": {
+              "$id": "#/properties/main/properties/algorithm/properties/entrypoint",
+              "type": "string",
+              "title": "The algorithm entrypoint Schema"
+            },
+            "requirements": {
+              "$id": "#/properties/main/properties/algorithm/properties/requirements",
+              "type": "array",
+              "title": "The algorithm requirements Schema"
+            }
+          }
+        },
+        "workflow": {
+          "$id": "#/properties/main/properties/workflow",
+          "type": "object",
+          "title": "The workflow Schema",
+          "properties": {
+            "stages": {
+              "$id": "#/properties/main/properties/workflow/properties/stages",
+              "type": "array",
+              "title": "The workflow stages Schema",
+              "items": {
+                "$id": "#/properties/main/properties/workflow/properties/stages/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "properties": {
+                  "index": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/index",
+                    "type": "integer",
+                    "title": "The stage index Schema"
+                  },
+                  "stageType": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/stageType",
+                    "type": "string",
+                    "title": "The stageType Schema"
+                  },
+                  "requirements": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/requirements",
+                    "type": "object",
+                    "title": "The stage requirements Schema"
+                  },
+                  "input": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input",
+                    "type": "array",
+                    "title": "The stage input Schema",
+                    "items": {
+                      "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items",
+                      "properties": {
+                        "index": {
+                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/index",
+                          "type": "integer"
+                        },
+                        "id": {
+                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/id",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "transformation": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/transformation",
+                    "type": "string",
+                    "title": "The stage transformation Schema"
+                  },
+                  "output": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/output",
+                    "type": "object",
+                    "title": "The stage output Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "service": {
+          "$id": "#/properties/main/properties/service",
+          "type": "object",
+          "title": "The service Schema"
         }
       }
     },
