@@ -1,10 +1,11 @@
 {
-  "base": {
-    "name": "10 Monkey Species Small",
+  "main": {
+    "name": "Madrid Weather forecast",
     "dateCreated": "2012-02-01T10:55:11Z",
-    "author": "Mario",
+    "author": "Norwegian Meteorological Institute",
+    "type": "dataset",
     "license": "CC0: Public Domain",
-    "price": "10",
+    "price": "123000000000000000000",
     "files": [
       {
         "index": 0,
@@ -13,26 +14,21 @@
         "compression": "zip",
         "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
         "checksumType": "MD5",
-        "contentLength": 12057507,
+        "contentLength": "12057507",
         "url": "https://s3.amazonaws.com/assets/training.zip"
       },
       {
         "index": 1,
-        "contentType": "text/txt",
-        "encoding": "UTF-8",
+        "contentLength": "0",
+        "contentType": "text/xml",
         "compression": "none",
-        "checksum": "354d19c0733c47ef3a6cce5b633116b0",
-        "checksumType": "MD5",
-        "contentLength": 928,
         "url": "https://s3.amazonaws.com/datacommons/monkey_labels.txt"
-      },
-      {
-        "index": 2,
-        "contentType": "application/zip",
-        "resourceId": "test ID",
-        "url": "https://s3.amazonaws.com/datacommons/validation.zip"
       }
-    ],
+    ]
+  },
+  "additionalInformation": {
+    "description": "EXAMPLE ONLY ",
+    "copyrightHolder": "Unknown",
     "categories": [
       "image"
     ],
@@ -41,10 +37,6 @@
       "classification",
       "animals"
     ],
-    "type": "dataset",
-    "description": "EXAMPLE ONLY ",
-    "copyrightHolder": "Unknown",
-    "workExample": "image path, id, label",
     "links": [
       {
         "name": "example model",
@@ -67,9 +59,7 @@
         "type": "sample"
       }
     ],
+    "workExample": "image path, id, label",
     "inLanguage": "en"
-  },
-  "additionalInformation": {
-    "info": "extra information objects"
   }
 }

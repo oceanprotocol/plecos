@@ -1,16 +1,21 @@
 """Ocean Protocol wrapper around json schema"""
 
-import click
 from pathlib import Path
-import jsonschema as jsonschema
+
+import click
+
 
 @click.command()
-# @click.option('--source', default="source", help='The schema version filename, must exist in /schemas folder')
-# @click.argument('schema', default="metadata_v190118.json")#, help='The schema version filename, must exist in /schemas folder')
+# @click.option('--source', default="source", help='The schema version filename, must exist in
+# /schemas folder')
+# @click.argument('schema', default="metadata_v190118.json")#, help='The schema version filename,
+# must exist in /schemas folder')
 @click.argument('schema_file', type=click.Path(exists=True))
-# @click.argument('json_file', default="metadata_v190118.json")#, help='The schema version filename, must exist in /schemas folder')
+# @click.argument('json_file', default="metadata_v190118.json")#, help='The schema version
+# filename, must exist in /schemas folder')
 @click.argument('json_file', type=click.Path(exists=True))
-# @click.option('--file', default="metadata_v190118.json", help='The schema version filename, must exist in /schemas folder')
+# @click.option('--file', default="metadata_v190118.json", help='The schema version filename,
+# must exist in /schemas folder')
 
 def validate(schema_file, json_file):
     """This script validates a json file according a schema file.
@@ -36,10 +41,6 @@ def validate(schema_file, json_file):
     # Load file
 
     validator = Draft4Validator(valid_schema)
-
-
-
-
 
 
 if __name__ == "__main__":

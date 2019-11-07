@@ -1,7 +1,7 @@
   {
     "productId": 1,
     "productName": "An ice sculpture",
-    "price": 12.50,
+    "price": "1250",
     "tags": [ "cold", "ice" ],
     "dimensions": {
       "length": 7.0,

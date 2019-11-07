@@ -1,16 +1,20 @@
 # %%
-from pathlib import Path
-import pkg_resources
-import logging
 import json
+import logging
+from pathlib import Path
+
 import jsonschema as jschema
+import pkg_resources
 
 # %%
 # Here is the Schema file, loaded as the default to validate against
-LOCAL_SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_local_v0_4.json'))
+LOCAL_SCHEMA_FILE = Path(
+    pkg_resources.resource_filename('plecos', 'schemas/metadata_local_v0_4.json'))
 assert LOCAL_SCHEMA_FILE.exists(), "Can't find schema file {}".format(LOCAL_SCHEMA_FILE)
-REMOTE_SCHEMA_FILE = Path(pkg_resources.resource_filename('plecos', 'schemas/metadata_remote_v0_4.json'))
+REMOTE_SCHEMA_FILE = Path(
+    pkg_resources.resource_filename('plecos', 'schemas/metadata_remote_v0_4.json'))
 assert LOCAL_SCHEMA_FILE.exists(), "Can't find schema file {}".format(REMOTE_SCHEMA_FILE)
+
 
 # TODO: Handle full file path vs. dictionary better?
 
@@ -36,7 +40,7 @@ def load_serial_data_file_path(file_path):
     #     return json_dict
 
 
-#%%
+# %%
 
 
 def validator_file(schema_file):
@@ -48,7 +52,8 @@ def validator_file(schema_file):
 def validator_dict(schema_dict):
     return jschema.validators.Draft7Validator(schema_dict)
 
-#%% Wrapper over jschema.Draft7Validator.validate()
+
+# %% Wrapper over jschema.Draft7Validator.validate()
 
 
 def validate_dict(this_json_dict, schema_file):
@@ -79,7 +84,7 @@ def validate_dict_remote(this_json_dict):
     return validate_dict(this_json_dict, REMOTE_SCHEMA_FILE)
 
 
-#%%
+# %%
 # Wrapper over jschema.Draft7Validator.is_valid()
 
 def is_valid_file(json_file_abs_path, schema_file):
@@ -110,7 +115,7 @@ def is_valid_dict_remote(this_json_dict):
     return is_valid_dict(this_json_dict, schema_file=REMOTE_SCHEMA_FILE)
 
 
-#%% Wrapper over jschema.Draft7Validator.iter_errors()
+# %% Wrapper over jschema.Draft7Validator.iter_errors()
 def list_errors(json_dict, schema_file):
     """ Iterate over the validation errors, print to log.warn
 
@@ -152,4 +157,3 @@ def list_errors_dict_local(this_json_dict):
 
 def list_errors_dict_remote(this_json_dict):
     return list_errors(this_json_dict, REMOTE_SCHEMA_FILE)
-

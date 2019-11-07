@@ -5,13 +5,13 @@
   "type": "object",
   "title": "The Root Schema",
   "required": [
-    "base"
+    "main"
   ],
   "properties": {
-    "base": {
-      "$id": "#/properties/base",
+    "main": {
+      "$id": "#/properties/main",
       "type": "object",
-      "title": "The Base Schema",
+      "title": "The Main Schema",
       "default": null,
       "additionalProperties": false,
       "required": [
@@ -20,11 +20,12 @@
         "author",
         "license",
         "price",
-        "files"
+        "files",
+        "type"
       ],
       "properties": {
         "name": {
-          "$id": "#/properties/base/properties/name",
+          "$id": "#/properties/main/properties/name",
           "type": "string",
           "title": "The Name Schema",
           "default": "",
@@ -34,7 +35,7 @@
           "pattern": "^(.*)$"
         },
         "dateCreated": {
-          "$id": "#/properties/base/properties/dateCreated",
+          "$id": "#/properties/main/properties/dateCreated",
           "type": "string",
           "title": "The Datecreated Schema",
           "default": "",
@@ -44,7 +45,7 @@
           "pattern": "^(.*)$"
         },
         "author": {
-          "$id": "#/properties/base/properties/author",
+          "$id": "#/properties/main/properties/author",
           "type": "string",
           "title": "The Author Schema",
           "default": "",
@@ -54,7 +55,7 @@
           "pattern": "^(.*)$"
         },
         "license": {
-          "$id": "#/properties/base/properties/license",
+          "$id": "#/properties/main/properties/license",
           "type": "string",
           "title": "The License Schema",
           "default": "",
@@ -64,7 +65,7 @@
           "pattern": "^(.*)$"
         },
         "price": {
-          "$id": "#/properties/base/properties/price",
+          "$id": "#/properties/main/properties/price",
           "type": "string",
           "title": "The Price Schema",
           "default": "0",
@@ -74,11 +75,11 @@
           "pattern": "^[0-9]+$"
         },
         "files": {
-          "$id": "#/properties/base/properties/files",
+          "$id": "#/properties/main/properties/files",
           "type": "array",
           "title": "The Files Schema",
           "items": {
-            "$id": "#/properties/base/properties/files/items",
+            "$id": "#/properties/main/properties/files/items",
             "type": "object",
             "title": "The Items Schema",
             "additionalProperties": false,
@@ -88,8 +89,18 @@
               "contentType"
             ],
             "properties": {
+              "name": {
+                "$id": "#/properties/main/properties/files/items/properties/name",
+                "type": "string",
+                "title": "The file Name Schema",
+                "default": "",
+                "examples": [
+                  "monkey_species.csv"
+                ],
+                "pattern": "^(.*)$"
+              },
               "contentType": {
-                "$id": "#/properties/base/properties/files/items/properties/contentType",
+                "$id": "#/properties/main/properties/files/items/properties/contentType",
                 "type": "string",
                 "title": "The Contenttype Schema",
                 "default": "",
@@ -99,7 +110,7 @@
                 "pattern": "^(.*)$"
               },
               "encoding": {
-                "$id": "#/properties/base/properties/files/items/properties/encoding",
+                "$id": "#/properties/main/properties/files/items/properties/encoding",
                 "type": "string",
                 "title": "The Encoding Schema",
                 "default": "",
@@ -109,7 +120,7 @@
                 "pattern": "^(.*)$"
               },
               "compression": {
-                "$id": "#/properties/base/properties/files/items/properties/compression",
+                "$id": "#/properties/main/properties/files/items/properties/compression",
                 "type": "string",
                 "title": "The Compression Schema",
                 "default": "",
@@ -119,7 +130,7 @@
                 "pattern": "^(.*)$"
               },
               "checksum": {
-                "$id": "#/properties/base/properties/files/items/properties/checksum",
+                "$id": "#/properties/main/properties/files/items/properties/checksum",
                 "type": "string",
                 "title": "The Checksum Schema",
                 "default": "",
@@ -129,7 +140,7 @@
                 "pattern": "^(.*)$"
               },
               "checksumType": {
-                "$id": "#/properties/base/properties/files/items/properties/checksumType",
+                "$id": "#/properties/main/properties/files/items/properties/checksumType",
                 "type": "string",
                 "title": "The Checksumtype Schema",
                 "default": "",
@@ -139,16 +150,17 @@
                 "pattern": "^(.*)$"
               },
               "contentLength": {
-                "$id": "#/properties/base/properties/files/items/properties/contentLength",
-                "type": "integer",
+                "$id": "#/properties/main/properties/files/items/properties/contentLength",
+                "type": "string",
                 "title": "The Contentlength Schema",
-                "default": 0,
+                "default": "0",
                 "examples": [
-                  12057507
-                ]
+                  "12057507"
+                ],
+                "pattern": "^[0-9]+$"
               },
               "index": {
-                "$id": "#/properties/base/properties/files/items/properties/index",
+                "$id": "#/properties/main/properties/files/items/properties/index",
                 "type": "integer",
                 "title": "The index Schema",
                 "default": 0,
@@ -157,7 +169,7 @@
                 ]
               },
               "resourceId": {
-                "$id": "#/properties/base/properties/files/items/properties/resourceId",
+                "$id": "#/properties/main/properties/files/items/properties/resourceId",
                 "type": "string",
                 "title": "The resourceId Schema",
                 "default": 0,
@@ -165,8 +177,32 @@
                   "bucket:47550"
                 ]
               },
+              "attributes": {
+                "$id": "#/properties/main/properties/files/items/properties/attributes",
+                "type": "array",
+                "title": "The attributes Schema",
+                "default": []
+              },
+              "encrypted": {
+                "$id": "#/properties/main/properties/files/items/properties/encrypted",
+                "type": "boolean",
+                "title": "The encrypted Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "encryptionMode": {
+                "$id": "#/properties/main/properties/files/items/properties/encryptionMode",
+                "type": "string",
+                "title": "The encryptionMode Schema",
+                "default": "",
+                "examples": [
+                  "CBC"
+                ]
+              },
               "url": {
-                "$id": "#/properties/base/properties/files/items/properties/url",
+                "$id": "#/properties/main/properties/files/items/properties/url",
                 "type": "string",
                 "title": "The Url Schema",
                 "default": "",
@@ -178,13 +214,145 @@
             }
           }
         },
+        "type": {
+          "$id": "#/properties/main/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "dataset"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "algorithm": {
+          "$id": "#/properties/main/properties/algorithm",
+          "type": "object",
+          "title": "The algorithm Schema",
+          "required": [
+            "language",
+            "entrypoint",
+            "requirements"
+          ],
+          "properties": {
+            "language": {
+              "$id": "#/properties/main/properties/algorithm/properties/language",
+              "type": "string",
+              "title": "The algorithm language Schema"
+            },
+            "format": {
+              "$id": "#/properties/main/properties/algorithm/properties/format",
+              "type": "string",
+              "title": "The algorithm format Schema"
+            },
+            "version": {
+              "$id": "#/properties/main/properties/algorithm/properties/version",
+              "type": "string",
+              "title": "The algorithm version Schema"
+            },
+            "entrypoint": {
+              "$id": "#/properties/main/properties/algorithm/properties/entrypoint",
+              "type": "string",
+              "title": "The algorithm entrypoint Schema"
+            },
+            "requirements": {
+              "$id": "#/properties/main/properties/algorithm/properties/requirements",
+              "type": "array",
+              "title": "The algorithm requirements Schema"
+            }
+          }
+        },
+        "workflow": {
+          "$id": "#/properties/main/properties/workflow",
+          "type": "object",
+          "title": "The workflow Schema",
+          "properties": {
+            "stages": {
+              "$id": "#/properties/main/properties/workflow/properties/stages",
+              "type": "array",
+              "title": "The workflow stages Schema",
+              "items": {
+                "$id": "#/properties/main/properties/workflow/properties/stages/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "properties": {
+                  "index": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/index",
+                    "type": "integer",
+                    "title": "The stage index Schema"
+                  },
+                  "stageType": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/stageType",
+                    "type": "string",
+                    "title": "The stageType Schema"
+                  },
+                  "requirements": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/requirements",
+                    "type": "object",
+                    "title": "The stage requirements Schema"
+                  },
+                  "input": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input",
+                    "type": "array",
+                    "title": "The stage input Schema",
+                    "items": {
+                      "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items",
+                      "properties": {
+                        "index": {
+                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/index",
+                          "type": "integer"
+                        },
+                        "id": {
+                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/id",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "transformation": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/transformation",
+                    "type": "string",
+                    "title": "The stage transformation Schema"
+                  },
+                  "output": {
+                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/output",
+                    "type": "object",
+                    "title": "The stage output Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "service": {
+          "$id": "#/properties/main/properties/service",
+          "type": "object",
+          "title": "The service Schema"
+        }
+      }
+    },
+    "additionalInformation": {
+      "$id": "#/properties/additionalInformation",
+      "type": "object",
+      "title": "The AdditionalInformation Schema",
+      "default": null,
+      "properties": {
+        "description": {
+          "$id": "#/properties/additionalInformation/properties/description",
+          "type": "string",
+          "title": "The Description Schema",
+          "default": "",
+          "examples": [
+            "EXAMPLE ONLY "
+          ],
+          "pattern": "^(.|\\s)*$"
+        },
         "categories": {
-          "$id": "#/properties/base/properties/categories",
+          "$id": "#/properties/additionalInformation/properties/categories",
           "type": "array",
           "title": "The Categories Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/base/properties/categories/items",
+            "$id": "#/properties/additionalInformation/properties/categories/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -195,12 +363,12 @@
           }
         },
         "tags": {
-          "$id": "#/properties/base/properties/tags",
+          "$id": "#/properties/additionalInformation/properties/tags",
           "type": "array",
           "title": "The Tags Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/base/properties/tags/items",
+            "$id": "#/properties/additionalInformation/properties/tags/items",
             "type": "string",
             "title": "The Items Schema",
             "default": "",
@@ -212,28 +380,8 @@
             "pattern": "^(.*)$"
           }
         },
-        "type": {
-          "$id": "#/properties/base/properties/type",
-          "type": "string",
-          "title": "The Type Schema",
-          "default": "",
-          "examples": [
-            "dataset"
-          ],
-          "pattern": "^(.*)$"
-        },
-        "description": {
-          "$id": "#/properties/base/properties/description",
-          "type": "string",
-          "title": "The Description Schema",
-          "default": "",
-          "examples": [
-            "EXAMPLE ONLY "
-          ],
-          "pattern": "^(.|\\s)*$"
-        },
         "copyrightHolder": {
-          "$id": "#/properties/base/properties/copyrightHolder",
+          "$id": "#/properties/additionalInformation/properties/copyrightHolder",
           "type": "string",
           "title": "The Copyrightholder Schema",
           "default": "",
@@ -243,7 +391,7 @@
           "pattern": "^(.*)$"
         },
         "workExample": {
-          "$id": "#/properties/base/properties/workExample",
+          "$id": "#/properties/additionalInformation/properties/workExample",
           "type": "string",
           "title": "The Workexample Schema",
           "default": "",
@@ -253,12 +401,12 @@
           "pattern": "^(.*)$"
         },
         "links": {
-          "$id": "#/properties/base/properties/links",
+          "$id": "#/properties/additionalInformation/properties/links",
           "type": "array",
           "title": "The Links Schema",
           "default": null,
           "items": {
-            "$id": "#/properties/base/properties/links/items",
+            "$id": "#/properties/additionalInformation/properties/links/items",
             "type": "object",
             "title": "The Items Schema",
             "default": null,
@@ -268,7 +416,7 @@
             ],
             "properties": {
               "name": {
-                "$id": "#/properties/base/properties/links/items/properties/name",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/name",
                 "type": "string",
                 "title": "The Name Schema",
                 "default": "",
@@ -278,7 +426,7 @@
                 "pattern": "^(.*)$"
               },
               "type": {
-                "$id": "#/properties/base/properties/links/items/properties/type",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/type",
                 "type": "string",
                 "title": "sample link",
                 "default": "",
@@ -288,7 +436,7 @@
                 "pattern": "^(.*)$"
               },
               "url": {
-                "$id": "#/properties/base/properties/links/items/properties/url",
+                "$id": "#/properties/additionalInformation/properties/links/items/properties/url",
                 "type": "string",
                 "title": "The Url Schema",
                 "default": "",
@@ -301,7 +449,7 @@
           }
         },
         "inLanguage": {
-          "$id": "#/properties/base/properties/inLanguage",
+          "$id": "#/properties/additionalInformation/properties/inLanguage",
           "type": "string",
           "title": "The Inlanguage Schema",
           "default": "",
@@ -311,25 +459,6 @@
           "pattern": "^(.*)$"
         }
       }
-    },
-    "additionalInformation": {
-          "$id": "#/properties/base/properties/additionalInformation",
-          "type": "object",
-          "title": "The Additionalinformation Schema",
-          "default": null,
-          "properties": {
-            "info": {
-              "$id": "#/properties/base/properties/additionalInformation/properties/info",
-              "type": "string",
-              "title": "The Info Schema",
-              "default": "",
-              "examples": [
-                "extra information objects"
-              ],
-              "pattern": "^(.*)$"
-            }
-          }
-        }
-
+    }
   }
 }

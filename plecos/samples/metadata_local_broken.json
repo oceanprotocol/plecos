@@ -1,5 +1,5 @@
 {
-  "base": {
+  "main": {
     "process": 1,
     "name": "10 Monkey Species Small",
     "license": "CC0: Public Domain",
@@ -10,7 +10,7 @@
         "size": 12057,
         "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
         "checksumType": "MD5",
-        "contentLength": 12057507,
+        "contentLength": "12057507",
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/training.zip",
         "name": "training",
         "object_key": "10_Monkey_Species_Small/assets/training.zip"
@@ -19,7 +19,7 @@
         "size": 0,
         "checksum": "354d19c0733c47ef3a6cce5b633116b0",
         "checksumType": "MD5",
-        "contentLength": 928,
+        "contentLength": "928",
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/monkey_labels.txt",
         "name": "monkey_labels",
         "object_key": "10_Monkey_Species_Small/assets/monkey_labels.txt"
@@ -28,7 +28,7 @@
         "size": 12057,
         "checksum": "2bf9d229d110d1976cdf85e9f3256c7f",
         "checksumType": "MD5",
-        "contentLength": 12057507,
+        "contentLength": "12057507",
         "url": "https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/validation.zip",
         "name": "validation",
         "object_key": "10_Monkey_Species_Small/assets/validation.zip"

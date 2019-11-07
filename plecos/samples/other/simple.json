@@ -1,8 +1,8 @@
 {
 	"metadata": {
-		"base": {
+		"main": {
 			"name": "UK Weather information 2011",
-			"price": 10,
+			"price": "10",
 			"categories": ["category1", "category2"]
 		}
 	}
