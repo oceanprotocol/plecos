@@ -20,7 +20,6 @@
         "author",
         "license",
         "price",
-        "files",
         "type"
       ],
       "properties": {
@@ -73,6 +72,16 @@
             "10"
           ],
           "pattern": "^[0-9]+$"
+        },
+        "type": {
+          "$id": "#/properties/main/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "dataset"
+          ],
+          "pattern": "^(.*)$"
         },
         "files": {
           "$id": "#/properties/main/properties/files",
@@ -214,16 +223,6 @@
             }
           }
         },
-        "type": {
-          "$id": "#/properties/main/properties/type",
-          "type": "string",
-          "title": "The Type Schema",
-          "default": "",
-          "examples": [
-            "dataset"
-          ],
-          "pattern": "^(.*)$"
-        },
         "algorithm": {
           "$id": "#/properties/main/properties/algorithm",
           "type": "object",
@@ -310,7 +309,7 @@
                   },
                   "transformation": {
                     "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/transformation",
-                    "type": "string",
+                    "type": "object",
                     "title": "The stage transformation Schema"
                   },
                   "output": {
@@ -326,7 +325,50 @@
         "service": {
           "$id": "#/properties/main/properties/service",
           "type": "object",
-          "title": "The service Schema"
+          "title": "The service Schema",
+          "properties": {
+            "spec": {
+              "$id": "#/properties/main/properties/service/properties/spec",
+              "type": "string",
+              "title": "The service spec Schema"
+            },
+            "specChecksum": {
+              "$id": "#/properties/main/properties/service/properties/specChecksum",
+              "type": "string",
+              "title": "The service specChecksum Schema"
+            },
+            "definition": {
+              "$id": "#/properties/main/properties/service/properties/definition",
+              "type": "object",
+              "title": "The service definition Schema"
+            },
+            "endpoints": {
+              "$id": "#/properties/main/properties/service/properties/endpoints",
+              "type": "array",
+              "title": "The service endpoints Schema",
+              "items": {
+                "$id": "#/properties/main/properties/service/properties/endpoints/items",
+                "properties": {
+                  "index": {
+                    "$id": "#/properties/main/properties/service/properties/endpoints/items/properties/index",
+                    "type": "integer"
+                  },
+                  "url": {
+                    "$id": "#/properties/main/properties/service/properties/endpoints/items/properties/url",
+                    "type": "string"
+                  },
+                  "method": {
+                    "$id": "#/properties/main/properties/service/properties/endpoints/items/properties/method",
+                    "type": "string"
+                  },
+                  "contentTypes": {
+                    "$id": "#/properties/main/properties/service/properties/endpoints/items/properties/contentTypes",
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
