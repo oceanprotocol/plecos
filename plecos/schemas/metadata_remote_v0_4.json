@@ -229,9 +229,7 @@
           "type": "object",
           "title": "The algorithm Schema",
           "required": [
-            "language",
-            "entrypoint",
-            "requirements"
+            "container"
           ],
           "properties": {
             "language": {
@@ -249,15 +247,32 @@
               "type": "string",
               "title": "The algorithm version Schema"
             },
-            "entrypoint": {
-              "$id": "#/properties/main/properties/algorithm/properties/entrypoint",
-              "type": "string",
-              "title": "The algorithm entrypoint Schema"
-            },
-            "requirements": {
-              "$id": "#/properties/main/properties/algorithm/properties/requirements",
-              "type": "array",
-              "title": "The algorithm requirements Schema"
+            "container": {
+              "$id": "#/properties/main/properties/algorithm/properties/container",
+              "type": "object",
+              "title": "Object describing the Docker container image",
+              "required": [
+                "entrypoint",
+                "image",
+                "tag"
+              ],
+              "properties": {
+                "entrypoint": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/entrypoint",
+                 "type": "string",
+                 "title": "The command to execute, or script to run inside the Docker image"
+                },
+                "image": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/image",
+                 "type": "string",
+                 "title": "Name of the Docker image"
+                },
+                "tag": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/tag",
+                 "type": "string",
+                 "title": "Tag of the Docker image"
+                }
+              }
             }
           }
         },
