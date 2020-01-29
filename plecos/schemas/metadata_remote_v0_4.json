@@ -5,8 +5,7 @@
   "type": "object",
   "title": "The Root Schema",
   "required": [
-    "main",
-    "curation"
+    "main"
   ],
   "properties": {
     "main": {

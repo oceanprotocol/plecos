@@ -1,5 +1,7 @@
 # from metadata_validator.json_versions import json4, json1
 # from metadata_validator.schema_definitions import valid_schema
+import copy
+
 import pytest
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError
@@ -99,7 +101,7 @@ def test_fail_on_missing_file_url_attribute(schema_local_dict, schema_remote_dic
         assert e_info
 
 
-def test_fail_on_missing_base_attribute(schema_local_dict, schema_remote_dict,
+def test_fail_on_missing_main_attribute(schema_local_dict, schema_remote_dict,
                                         sample_metadata_dict_local, sample_metadata_dict_remote):
     del sample_metadata_dict_local['main']['price']
     with pytest.raises(ValidationError) as e_info:
@@ -192,21 +194,51 @@ def test_list_errors_dict(sample_metadata_dict_local):
     sample_metadata_dict_local['main']['price'] = "A string is not allowed!"
     del sample_metadata_dict_local['main']['name']
     errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
-    # print(errors)
+
     for i, err in enumerate(errors):
         stack_path = list(err[1].relative_path)
         stack_path = [str(p) for p in stack_path]
         print("Error {} at {}: {}".format(i, "/".join(stack_path), err[1].message))
 
-    assert len(errors) == 2
+    assert 2 == len(errors)
 
 
 def test_description_attr_regex_match(sample_metadata_dict_local):
     # Original metadata should have no problems
     errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
-    assert list(errors) == [], 'Should have no validation errors.'
+    assert [] == list(errors), 'Should have no validation errors.'
 
     # Modify description to include new lines, should also be valid.
     sample_metadata_dict_local['additionalInformation']['description'] = 'multiline description. \n 2nd line. \n'
     errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
-    assert list(errors) == [], 'Should have no validation errors.'
+    assert [] == list(errors), 'Should have no validation errors.'
+
+
+def test_algorithm_metadata_local(sample_algorithm_md_dict_local):
+    errors = plecos.list_errors_dict_local(sample_algorithm_md_dict_local)
+    assert [] == list(errors), 'Should have no validation errors.'
+
+    _copy = copy.deepcopy(sample_algorithm_md_dict_local)
+    _copy['main']['algorithm'].pop('container')
+    errors = plecos.list_errors_dict_local(_copy)
+    assert 1 == len(errors), 'Should have one validation error.'
+
+    _copy = copy.deepcopy(sample_algorithm_md_dict_local)
+    _copy['main']['algorithm']['container'].pop('entrypoint')
+    errors = plecos.list_errors_dict_local(_copy)
+    assert 1 == len(errors), 'Should have one validation error.'
+
+
+def test_algorithm_metadata_remote(sample_algorithm_md_dict_remote):
+    errors = plecos.list_errors_dict_remote(sample_algorithm_md_dict_remote)
+    assert [] == list(errors), 'Should have no validation errors.'
+
+    _copy = copy.deepcopy(sample_algorithm_md_dict_remote)
+    _copy['main']['algorithm'].pop('container')
+    errors = plecos.list_errors_dict_remote(_copy)
+    assert 1 == len(errors), 'Should have one validation error.'
+
+    _copy = copy.deepcopy(sample_algorithm_md_dict_remote)
+    _copy['main']['algorithm']['container'].pop('entrypoint')
+    errors = plecos.list_errors_dict_remote(_copy)
+    assert 1 == len(errors), 'Should have one validation error.'
