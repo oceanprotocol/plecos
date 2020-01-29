@@ -5,8 +5,7 @@
   "type": "object",
   "title": "The Root Schema",
   "required": [
-    "main",
-    "curation"
+    "main"
   ],
   "properties": {
     "main": {
@@ -229,9 +228,7 @@
           "type": "object",
           "title": "The algorithm Schema",
           "required": [
-            "language",
-            "entrypoint",
-            "requirements"
+            "container"
           ],
           "properties": {
             "language": {
@@ -249,75 +246,30 @@
               "type": "string",
               "title": "The algorithm version Schema"
             },
-            "entrypoint": {
-              "$id": "#/properties/main/properties/algorithm/properties/entrypoint",
-              "type": "string",
-              "title": "The algorithm entrypoint Schema"
-            },
-            "requirements": {
-              "$id": "#/properties/main/properties/algorithm/properties/requirements",
-              "type": "array",
-              "title": "The algorithm requirements Schema"
-            }
-          }
-        },
-        "workflow": {
-          "$id": "#/properties/main/properties/workflow",
-          "type": "object",
-          "title": "The workflow Schema",
-          "properties": {
-            "stages": {
-              "$id": "#/properties/main/properties/workflow/properties/stages",
-              "type": "array",
-              "title": "The workflow stages Schema",
-              "items": {
-                "$id": "#/properties/main/properties/workflow/properties/stages/items",
-                "type": "object",
-                "title": "The Items Schema",
-                "properties": {
-                  "index": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/index",
-                    "type": "integer",
-                    "title": "The stage index Schema"
-                  },
-                  "stageType": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/stageType",
-                    "type": "string",
-                    "title": "The stageType Schema"
-                  },
-                  "requirements": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/requirements",
-                    "type": "object",
-                    "title": "The stage requirements Schema"
-                  },
-                  "input": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input",
-                    "type": "array",
-                    "title": "The stage input Schema",
-                    "items": {
-                      "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items",
-                      "properties": {
-                        "index": {
-                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/index",
-                          "type": "integer"
-                        },
-                        "id": {
-                          "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/input/items/properties/id",
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "transformation": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/transformation",
-                    "type": "object",
-                    "title": "The stage transformation Schema"
-                  },
-                  "output": {
-                    "$id": "#/properties/main/properties/workflow/properties/stages/items/properties/output",
-                    "type": "object",
-                    "title": "The stage output Schema"
-                  }
+            "container": {
+              "$id": "#/properties/main/properties/algorithm/properties/container",
+              "type": "object",
+              "title": "Object describing the Docker container image",
+              "required": [
+                "entrypoint",
+                "image",
+                "tag"
+              ],
+              "properties": {
+                "entrypoint": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/entrypoint",
+                 "type": "string",
+                 "title": "The command to execute, or script to run inside the Docker image"
+                },
+                "image": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/image",
+                 "type": "string",
+                 "title": "Name of the Docker image"
+                },
+                "tag": {
+                 "$id": "#/properties/main/properties/algorithm/properties/container/properties/tag",
+                 "type": "string",
+                 "title": "Tag of the Docker image"
                 }
               }
             }
