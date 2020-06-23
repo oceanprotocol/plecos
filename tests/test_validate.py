@@ -17,17 +17,16 @@ def test_validator_simple():
     schema = {
         "type": "object",
         "properties": {
-            "price": {"type": "number"},
             "name": {"type": "string"},
         },
-        "required": ["price", "name"]
+        "required": ["name"]
     }
 
     # If no exception is raised by validate(), the instance is valid.
-    validate(instance={"name": "Eggs", "price": 34.99}, schema=schema)
+    validate(instance={"name": "Eggs"}, schema=schema)
 
     with pytest.raises(ValidationError) as e_info:
-        validate(instance={"name": "Eggs", "price": "Invalid"}, schema=schema, )
+        validate(instance={"name": "Eggs"}, schema=schema, )
     print("Raised", e_info.value.message)
 
     with pytest.raises(ValidationError) as e_info:
@@ -103,12 +102,12 @@ def test_fail_on_missing_file_url_attribute(schema_local_dict, schema_remote_dic
 
 def test_fail_on_missing_main_attribute(schema_local_dict, schema_remote_dict,
                                         sample_metadata_dict_local, sample_metadata_dict_remote):
-    del sample_metadata_dict_local['main']['price']
+    del sample_metadata_dict_local['main']['name']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
         assert e_info
 
-    del sample_metadata_dict_remote['main']['price']
+    del sample_metadata_dict_remote['main']['name']
     with pytest.raises(ValidationError) as e_info:
         validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
         assert e_info
@@ -153,24 +152,6 @@ def test_assert_remote_without_file_url(schema_local_dict, schema_remote_dict,
         assert e_info
 
 
-def test_fail_on_type_mismatches(schema_local_dict, schema_remote_dict, sample_metadata_dict_local,
-                                 sample_metadata_dict_remote):
-    sample_metadata_dict_local['main']['price'] = "A string is not allowed!"
-    with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict_local, schema=schema_local_dict)
-        assert e_info
-    assert e_info.value.absolute_path[0] == 'main'
-    assert e_info.value.absolute_path[1] == 'price'
-    assert e_info.value.validator_value == '^[0-9]+$'
-
-    sample_metadata_dict_remote['main']['price'] = "A string is not allowed!"
-    with pytest.raises(ValidationError) as e_info:
-        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
-        assert e_info
-    assert e_info.value.absolute_path[0] == 'main'
-    assert e_info.value.absolute_path[1] == 'price'
-    assert e_info.value.validator_value == '^[0-9]+$'
-
 
 def test_validate_file(path_sample_metadata_local):
     plecos.validate_file_local(path_sample_metadata_local)
@@ -191,7 +172,6 @@ def test_is_valid_dict(sample_metadata_dict_local):
 def test_list_errors_dict(sample_metadata_dict_local):
     assert len(plecos.list_errors_dict_local(sample_metadata_dict_local)) == 0
 
-    sample_metadata_dict_local['main']['price'] = "A string is not allowed!"
     del sample_metadata_dict_local['main']['name']
     errors = plecos.list_errors_dict_local(sample_metadata_dict_local)
 
