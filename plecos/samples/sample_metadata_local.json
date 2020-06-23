@@ -7,6 +7,7 @@
     "license": "CC0: Public Domain",
     "files": [
       {
+        "index": 0,
         "contentType": "application/zip",
         "encoding": "UTF-8",
         "compression": "zip",
@@ -16,6 +17,7 @@
         "url": "https://s3.amazonaws.com/assets/training.zip"
       },
       {
+        "index": 1,
         "contentLength": "0",
         "contentType": "text/xml",
         "compression": "none",
