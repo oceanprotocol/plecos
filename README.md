@@ -105,6 +105,16 @@ Several convenience functions are defined for validated against "local" or "remo
 
 *LOCAL_SCHEMA_FILE* and *REMOTE_SCHEMA_FILE_* can be replaced with your own file path to your own schema.
 
+### Publishing to pypi
+To publish a new version to pypi, first bump the version number using `./bumpversion.sh`, then do the following from the console:
+
+```bash
+# Assuming we are already in the "plecos" directory
+python setup.py install
+python setup.py bdist_wheel
+twine upload --repository-url https://upload.pypi.org/legacy/  dist/*
+```
+
 ## License
 
 ```text
