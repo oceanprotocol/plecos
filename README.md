@@ -118,7 +118,7 @@ twine upload --repository-url https://upload.pypi.org/legacy/  dist/*
 ## License
 
 ```text
-Copyright 2018 Ocean Protocol Foundation Ltd.
+Copyright 2021 Ocean Protocol Foundation Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
