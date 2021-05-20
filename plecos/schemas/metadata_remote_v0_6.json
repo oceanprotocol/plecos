@@ -311,42 +311,6 @@
               }
             }
           }
-        },
-        "status": {
-          "$id": "#/properties/main/properties/status",
-          "type": "object",
-          "title": "The Status Schema",
-          "default": null,
-          "additionalProperties": false,
-          "properties": {
-            "isListed": {
-                "$id": "#/properties/main/properties/status/properties/isListed",
-                "type": "boolean",
-                "title": "Whether the asset is listed",
-                "default": true,
-                "examples": [
-                  true, false
-                 ]
-               },
-            "isRetired": {
-                "$id": "#/properties/main/properties/status/properties/isRetired",
-                "type": "boolean",
-                "title": "Whether the asset is retired",
-                "default": false,
-                "examples": [
-                  true, false
-                 ]
-               },
-            "isOrderDisabled": {
-                "$id": "#/properties/main/properties/status/properties/isOrderDisabled",
-                "type": "boolean",
-                "title": "Whether the asset order functionality is disabled",
-                "default": false,
-                "examples": [
-                  true, false
-                 ]
-               }
-          }
         }
       }
     },
@@ -505,6 +469,7 @@
       "type": "object",
       "title": "The Status Schema",
       "default": null,
+      "additionalProperties": false,
       "properties": {
         "isListed": {
             "$id": "#/properties/status/properties/isListed",
@@ -514,7 +479,25 @@
             "examples": [
               true, false
              ]
-           }
+           },
+        "isRetired": {
+            "$id": "#/properties/status/properties/isRetired",
+            "type": "boolean",
+            "title": "Whether the asset is retired",
+            "default": false,
+            "examples": [
+              true, false
+             ]
+           },
+        "isOrderDisabled": {
+            "$id": "#/properties/status/properties/isOrderDisabled",
+            "type": "boolean",
+            "title": "Whether the asset order functionality is disabled",
+            "default": false,
+            "examples": [
+              true, false
+             ]
+        }
       }
     }
   }

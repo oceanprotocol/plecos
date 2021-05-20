@@ -227,7 +227,7 @@ def test_status_present_empty(
     schema_local_dict, schema_remote_dict,
     sample_metadata_dict_local, sample_metadata_dict_remote
 ):
-    sample_metadata_dict_remote['main']['status'] = {}
+    sample_metadata_dict_remote['status'] = {}
     errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
     assert 0 == len(errors), 'Should be valid.'
     validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
@@ -237,7 +237,7 @@ def test_status_present_with_booleans(
     schema_local_dict, schema_remote_dict,
     sample_metadata_dict_local, sample_metadata_dict_remote
 ):
-    sample_metadata_dict_remote['main']['status'] = {"isListed": True}
+    sample_metadata_dict_remote['status'] = {"isListed": True}
     errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
     assert 0 == len(errors), 'Should be valid.'
     validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
@@ -247,7 +247,7 @@ def test_status_present_with_invalid_string(
     schema_local_dict, schema_remote_dict,
     sample_metadata_dict_local, sample_metadata_dict_remote
 ):
-    sample_metadata_dict_remote['main']['status'] = {"isListed": "blabla"}
+    sample_metadata_dict_remote['status'] = {"isListed": "blabla"}
     errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
     assert 1 == len(errors), 'Should be invalid.'
     with pytest.raises(ValidationError) as e_info:
@@ -260,7 +260,7 @@ def test_status_present_with_two_invalid_strings(
     schema_local_dict, schema_remote_dict,
     sample_metadata_dict_local, sample_metadata_dict_remote
 ):
-    sample_metadata_dict_remote['main']['status'] = {"isListed": "blabla", "isRetired": "bleble"}
+    sample_metadata_dict_remote['status'] = {"isListed": "blabla", "isRetired": "bleble"}
     errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
     assert 2 == len(errors), 'Should be invalid.'
     with pytest.raises(ValidationError) as e_info:
@@ -273,7 +273,7 @@ def test_status_present_with_one_inadmissible_boolean(
     schema_local_dict, schema_remote_dict,
     sample_metadata_dict_local, sample_metadata_dict_remote
 ):
-    sample_metadata_dict_remote['main']['status'] = {"isSomethingElse": True}
+    sample_metadata_dict_remote['status'] = {"isSomethingElse": True}
     errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
     assert 1 == len(errors), 'Should be invalid.'
     with pytest.raises(ValidationError) as e_info:
