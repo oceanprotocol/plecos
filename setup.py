@@ -14,7 +14,7 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 install_requirements = [
-    'jsonschema==3.0.0b3'
+    'jsonschema==3.2.0'
 ]
 
 # Required to run setup.py:
