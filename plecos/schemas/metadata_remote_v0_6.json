@@ -311,6 +311,23 @@
               }
             }
           }
+        },
+        "status": {
+          "$id": "#/properties/main/properties/status",
+          "type": "object",
+          "title": "The Status Schema",
+          "default": null,
+          "properties": {
+            "isListed": {
+                "$id": "#/properties/main/properties/status/properties/isListed",
+                "type": "boolean",
+                "title": "Whether the asset is listed",
+                "default": true,
+                "examples": [
+                  true, false
+                 ]
+               }
+          }
         }
       }
     },
