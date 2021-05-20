@@ -480,6 +480,23 @@
         "0x234ab87234acbd095430853424ab87234acbd09543085340abffh21983ddhiiee9821438274234210abffh21983ddhiiee982143827423421"
       ],
       "pattern": "^(.*)$"
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": "object",
+      "title": "The Status Schema",
+      "default": null,
+      "properties": {
+        "isListed": {
+            "$id": "#/properties/status/properties/isListed",
+            "type": "boolean",
+            "title": "Whether the asset is listed",
+            "default": true,
+            "examples": [
+              true, false
+             ]
+           }
+      }
     }
   }
 }
