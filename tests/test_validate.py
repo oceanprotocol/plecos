@@ -26,12 +26,11 @@ def test_validator_simple():
     validate(instance={"name": "Eggs"}, schema=schema)
 
     with pytest.raises(ValidationError) as e_info:
-        validate(instance={"name": "Eggs"}, schema=schema, )
+        validate(instance={"nnoname": "Eggs"}, schema=schema, )
     print("Raised", e_info.value.message)
 
     with pytest.raises(ValidationError) as e_info:
-        validate(instance={"name": "Eggs", }, schema=schema, )
-        assert e_info
+        validate(instance={"name2": "Eggs", }, schema=schema, )
     print("Raised", e_info.value.message)
 
 
@@ -180,7 +179,7 @@ def test_list_errors_dict(sample_metadata_dict_local):
         stack_path = [str(p) for p in stack_path]
         print("Error {} at {}: {}".format(i, "/".join(stack_path), err[1].message))
 
-    assert 2 == len(errors)
+    assert 1 == len(errors)
 
 
 def test_description_attr_regex_match(sample_metadata_dict_local):
