@@ -222,3 +222,36 @@ def test_algorithm_metadata_remote(sample_algorithm_md_dict_remote):
     _copy['main']['algorithm']['container'].pop('entrypoint')
     errors = plecos.list_errors_dict_remote(_copy)
     assert 1 == len(errors), 'Should have one validation error.'
+
+
+def test_status_present_empty(
+    schema_local_dict, schema_remote_dict,
+    sample_metadata_dict_local, sample_metadata_dict_remote
+):
+    sample_metadata_dict_remote['main']['status'] = {}
+    errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
+    assert 0 == len(errors), 'Should be valid.'
+    validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+
+def test_status_present_with_booleans(
+    schema_local_dict, schema_remote_dict,
+    sample_metadata_dict_local, sample_metadata_dict_remote
+):
+    sample_metadata_dict_remote['main']['status'] = {"isListed": True}
+    errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
+    assert 0 == len(errors), 'Should be valid.'
+    validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+
+def test_status_present_with_invalid_string(
+    schema_local_dict, schema_remote_dict,
+    sample_metadata_dict_local, sample_metadata_dict_remote
+):
+    sample_metadata_dict_remote['main']['status'] = {"isListed": "blabla"}
+    errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
+    assert 1 == len(errors), 'Should be invalid.'
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+    assert e_info.value.message == "'blabla' is not of type 'boolean'"
