@@ -255,3 +255,29 @@ def test_status_present_with_invalid_string(
         validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
 
     assert e_info.value.message == "'blabla' is not of type 'boolean'"
+
+
+def test_status_present_with_two_invalid_strings(
+    schema_local_dict, schema_remote_dict,
+    sample_metadata_dict_local, sample_metadata_dict_remote
+):
+    sample_metadata_dict_remote['main']['status'] = {"isListed": "blabla", "isRetired": "bleble"}
+    errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
+    assert 2 == len(errors), 'Should be invalid.'
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+    assert e_info.value.message == "'blabla' is not of type 'boolean'"
+
+
+def test_status_present_with_one_inadmissible_boolean(
+    schema_local_dict, schema_remote_dict,
+    sample_metadata_dict_local, sample_metadata_dict_remote
+):
+    sample_metadata_dict_remote['main']['status'] = {"isSomethingElse": True}
+    errors = plecos.list_errors_dict_remote(sample_metadata_dict_remote)
+    assert 1 == len(errors), 'Should be invalid.'
+    with pytest.raises(ValidationError) as e_info:
+        validate(instance=sample_metadata_dict_remote, schema=schema_remote_dict)
+
+    assert e_info.value.message == "Additional properties are not allowed ('isSomethingElse' was unexpected)"
