@@ -7,7 +7,7 @@ verify_ssl = true
 pytest = "*"
 
 [packages]
-jsonschema = "==3.0.0b3"
+jsonschema = "==3.2.0"
 pytest = "*"
 
 [requires]
